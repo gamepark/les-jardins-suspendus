@@ -1,1 +1,3 @@
-export enum MaterialType {}
+export enum MaterialType {
+  GameBoard = 1
+}

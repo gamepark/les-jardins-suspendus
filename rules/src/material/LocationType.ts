@@ -1,1 +1,3 @@
-export enum LocationType {}
+export enum LocationType {
+  GameBoardPlace = 1
+}
