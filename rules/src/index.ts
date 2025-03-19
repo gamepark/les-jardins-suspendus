@@ -1,3 +1,3 @@
-export { GameTemplateRules } from './GameTemplateRules'
-export { GameTemplateOptionsSpec } from './GameTemplateOptions'
-export { GameTemplateSetup } from './GameTemplateSetup'
+export { LesJardinsSuspendusRules } from './LesJardinsSuspendusRules'
+export { LesJardinsSuspendusOptionsSpec } from './LesJardinsSuspendusOptions'
+export { LesJardinsSuspendusSetup } from './LesJardinsSuspendusSetup'
