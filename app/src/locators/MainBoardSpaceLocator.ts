@@ -14,6 +14,8 @@ class MainBoardSpaceLocator extends Locator {
     const fixIrregularY = y === 0 ? -0.05 : y === 1 ? -0.13 : y === 2 ? -0.08 : 0
     return { x: (id - 2) * 32 + 50, y: y * -14.2 + 91 + fixIrregularY }
   }
+
+  navigationSorts = []
 }
 
 export const mainBoardSpaceLocator = new MainBoardSpaceLocator()

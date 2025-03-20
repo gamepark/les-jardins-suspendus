@@ -1,6 +1,6 @@
 import { getEnumValues } from '@gamepark/rules-api'
 
-export enum GardenCard {
+export enum Garden {
   LionIrrigation = 1, // x2
   Lion,
   MonkeyIrrigation, // x2
@@ -70,11 +70,15 @@ export enum GardenCard {
 }
 
 export function getGardenCards() {
-  return getEnumValues(GardenCard).concat(
-    GardenCard.LionIrrigation,
-    GardenCard.MonkeyIrrigation,
-    GardenCard.PeacockIrrigation,
-    GardenCard.CedarIrrigation,
-    GardenCard.DatePalm, GardenCard.DatePalm, GardenCard.DatePalm, GardenCard.DatePalm, GardenCard.DatePalm
+  return getEnumValues(Garden).concat(
+    Garden.LionIrrigation,
+    Garden.MonkeyIrrigation,
+    Garden.PeacockIrrigation,
+    Garden.CedarIrrigation,
+    Garden.DatePalm,
+    Garden.DatePalm,
+    Garden.DatePalm,
+    Garden.DatePalm,
+    Garden.DatePalm
   )
 }

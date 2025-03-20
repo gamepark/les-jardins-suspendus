@@ -2,5 +2,6 @@ export enum LocationType {
   GameBoardPlace = 1,
   MiniBoardPlace,
   GardenCardsDeck,
-  MainBoardSpace
+  MainBoardSpace,
+  EnhancementPile
 }

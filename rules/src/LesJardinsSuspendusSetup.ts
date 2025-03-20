@@ -1,7 +1,8 @@
-import { MaterialGameSetup } from '@gamepark/rules-api'
+import { getEnumValues, MaterialGameSetup } from '@gamepark/rules-api'
 import { LesJardinsSuspendusOptions } from './LesJardinsSuspendusOptions'
 import { LesJardinsSuspendusRules } from './LesJardinsSuspendusRules'
-import { getGardenCards } from './material/GardenCard'
+import { Enhancement, EnhancementType, EnhancementId, getEnhancementType } from './material/Enhancement'
+import { getGardenCards } from './material/Garden'
 import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
 import { PlayerColor } from './PlayerColor'
@@ -16,6 +17,7 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
   setupMaterial(_options: LesJardinsSuspendusOptions) {
     this.setupGardenCardsDeck()
     this.dealGardenCards()
+    this.setupEnhancementTiles()
   }
 
   setupGardenCardsDeck() {
@@ -28,6 +30,30 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
     deck.deal({ type: LocationType.MainBoardSpace, id: 1 }, 4)
     deck.deal({ type: LocationType.MainBoardSpace, id: 2 }, 4)
     deck.deal({ type: LocationType.MainBoardSpace, id: 3 }, 4)
+  }
+
+  setupEnhancementTiles() {
+    const ids = getEnumValues(Enhancement).map<EnhancementId>((enhancement) => ({
+      front: enhancement,
+      back: getEnhancementType(enhancement)
+    }))
+    this.material(MaterialType.EnhancementTile).createItems(
+      ids.map((id) => ({
+        id,
+        location: {
+          type: LocationType.EnhancementPile,
+          id: id.back,
+          rotation: true
+        }
+      }))
+    )
+    for (const type of getEnumValues(EnhancementType)) {
+      this.material(MaterialType.EnhancementTile).locationId(type).shuffle()
+      this.material(MaterialType.EnhancementTile)
+        .locationId(type)
+        .maxBy((item) => item.location.x!)
+        .rotateItem(false)
+    }
   }
 
   start() {

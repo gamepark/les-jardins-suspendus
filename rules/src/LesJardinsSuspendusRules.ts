@@ -1,4 +1,4 @@
-import { HiddenMaterialRules, hideItemId, MaterialGame, MaterialMove, PositiveSequenceStrategy, TimeLimit } from '@gamepark/rules-api'
+import { HiddenMaterialRules, hideItemId, MaterialGame, MaterialItem, MaterialMove, PositiveSequenceStrategy, TimeLimit } from '@gamepark/rules-api'
 import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
 import { PlayerColor } from './PlayerColor'
@@ -21,12 +21,18 @@ export class LesJardinsSuspendusRules
     [MaterialType.GardenCard]: {
       [LocationType.GardenCardsDeck]: new PositiveSequenceStrategy(),
       [LocationType.MainBoardSpace]: new PositiveSequenceStrategy('y')
+    },
+    [MaterialType.EnhancementTile]: {
+      [LocationType.EnhancementPile]: new PositiveSequenceStrategy()
     }
   }
 
   hidingStrategies = {
     [MaterialType.GardenCard]: {
       [LocationType.GardenCardsDeck]: hideItemId
+    },
+    [MaterialType.EnhancementTile]: {
+      [LocationType.EnhancementPile]: (item: MaterialItem) => (item.location.rotation ? ['id.front'] : [])
     }
   }
 
