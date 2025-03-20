@@ -1,10 +1,12 @@
 import { getEnumValues, MaterialGameSetup } from '@gamepark/rules-api'
+import { sampleSize } from 'lodash'
 import { LesJardinsSuspendusOptions } from './LesJardinsSuspendusOptions'
 import { LesJardinsSuspendusRules } from './LesJardinsSuspendusRules'
-import { Enhancement, EnhancementType, EnhancementId, getEnhancementType } from './material/Enhancement'
+import { Enhancement, EnhancementId, EnhancementType, getEnhancementType } from './material/Enhancement'
 import { getGardenCards } from './material/Garden'
 import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
+import { Objective } from './material/Objective'
 import { PlayerColor } from './PlayerColor'
 import { RuleId } from './rules/RuleId'
 
@@ -18,6 +20,7 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
     this.setupGardenCardsDeck()
     this.dealGardenCards()
     this.setupEnhancementTiles()
+    this.setupObjectives()
   }
 
   setupGardenCardsDeck() {
@@ -54,6 +57,18 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
         .maxBy((item) => item.location.x!)
         .rotateItem(false)
     }
+  }
+
+  setupObjectives() {
+    this.material(MaterialType.ObjectiveTile).createItems(
+      sampleSize(getEnumValues(Objective), 4).map((id, index) => ({
+        id,
+        location: {
+          type: LocationType.ObjectiveTileSpace,
+          id: index + 1
+        }
+      }))
+    )
   }
 
   start() {

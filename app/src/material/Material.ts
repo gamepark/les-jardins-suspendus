@@ -4,10 +4,12 @@ import { enhancementTileDescription } from './EnhancementTileDescription'
 import { gameBoardDescription } from './GameBoardDescription'
 import { gardenCardDescription } from './GardenCardDescription'
 import { miniBoardDescription } from './MiniBoardDescription'
+import { objectiveTileDescription } from './ObjectiveTileDescription'
 
 export const Material: Partial<Record<MaterialType, MaterialDescription>> = {
   [MaterialType.GameBoard]: gameBoardDescription,
   [MaterialType.MiniBoard]: miniBoardDescription,
   [MaterialType.GardenCard]: gardenCardDescription,
-  [MaterialType.EnhancementTile]: enhancementTileDescription
+  [MaterialType.EnhancementTile]: enhancementTileDescription,
+  [MaterialType.ObjectiveTile]: objectiveTileDescription
 }

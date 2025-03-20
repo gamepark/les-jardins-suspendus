@@ -3,5 +3,6 @@ export enum LocationType {
   MiniBoardPlace,
   GardenCardsDeck,
   MainBoardSpace,
-  EnhancementPile
+  EnhancementPile,
+  ObjectiveTileSpace
 }
