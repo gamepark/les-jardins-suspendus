@@ -3,5 +3,6 @@ export enum MaterialType {
   MiniBoard,
   GardenCard,
   EnhancementTile,
-  ObjectiveTile
+  ObjectiveTile,
+  IrrigationCard
 }

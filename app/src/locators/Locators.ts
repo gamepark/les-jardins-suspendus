@@ -7,11 +7,13 @@ import { gardenCardsDeckLocator } from './GardenCardsDeckLocator'
 import { mainBoardSpaceLocator } from './MainBoardSpaceLocator'
 import { miniBoardPlaceLocator } from './MiniBoardPlaceLocator'
 import { objectiveTileSpaceLocator } from './ObjectiveTileSpaceLocator'
+import { playerIrrigationCardLocator } from './PlayerIrrigationCardLocator'
 
 export const Locators: Partial<Record<LocationType, Locator<PlayerColor, MaterialType, LocationType>>> = {
   [LocationType.MiniBoardPlace]: miniBoardPlaceLocator,
   [LocationType.GardenCardsDeck]: gardenCardsDeckLocator,
   [LocationType.MainBoardSpace]: mainBoardSpaceLocator,
   [LocationType.EnhancementPile]: enhancementPileLocator,
-  [LocationType.ObjectiveTileSpace]: objectiveTileSpaceLocator
+  [LocationType.ObjectiveTileSpace]: objectiveTileSpaceLocator,
+  [LocationType.PlayerIrrigationCard]: playerIrrigationCardLocator
 }

@@ -4,5 +4,6 @@ export enum LocationType {
   GardenCardsDeck,
   MainBoardSpace,
   EnhancementPile,
-  ObjectiveTileSpace
+  ObjectiveTileSpace,
+  PlayerIrrigationCard
 }

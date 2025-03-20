@@ -4,6 +4,7 @@ import { LesJardinsSuspendusOptions } from './LesJardinsSuspendusOptions'
 import { LesJardinsSuspendusRules } from './LesJardinsSuspendusRules'
 import { Enhancement, EnhancementId, EnhancementType, getEnhancementType } from './material/Enhancement'
 import { getGardenCards } from './material/Garden'
+import { IrrigationPattern } from './material/IrrigationPattern'
 import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
 import { Objective } from './material/Objective'
@@ -21,6 +22,7 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
     this.dealGardenCards()
     this.setupEnhancementTiles()
     this.setupObjectives()
+    this.setupIrrigationCards()
   }
 
   setupGardenCardsDeck() {
@@ -69,6 +71,19 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
         }
       }))
     )
+  }
+
+  setupIrrigationCards() {
+    const cards = sampleSize(getEnumValues(IrrigationPattern), this.players.length)
+    for (let i = 0; i < this.players.length; i++) {
+      this.material(MaterialType.IrrigationCard).createItem({
+        id: cards[i],
+        location: {
+          type: LocationType.PlayerIrrigationCard,
+          player: this.players[i]
+        }
+      })
+    }
   }
 
   start() {
