@@ -3,8 +3,10 @@ import { MaterialDescription } from '@gamepark/react-game'
 import { enhancementTileDescription } from './EnhancementTileDescription'
 import { gameBoardDescription } from './GameBoardDescription'
 import { gardenCardDescription } from './GardenCardDescription'
+import { gardenerDescription } from './GardenerDescription'
 import { irrigationCardDescription } from './IrrigationCardDescription'
 import { miniBoardDescription } from './MiniBoardDescription'
+import { objectiveMarkerDescription } from './ObjectiveMarkerDescription'
 import { objectiveTileDescription } from './ObjectiveTileDescription'
 
 export const Material: Partial<Record<MaterialType, MaterialDescription>> = {
@@ -13,5 +15,7 @@ export const Material: Partial<Record<MaterialType, MaterialDescription>> = {
   [MaterialType.GardenCard]: gardenCardDescription,
   [MaterialType.EnhancementTile]: enhancementTileDescription,
   [MaterialType.ObjectiveTile]: objectiveTileDescription,
-  [MaterialType.IrrigationCard]: irrigationCardDescription
+  [MaterialType.IrrigationCard]: irrigationCardDescription,
+  [MaterialType.Gardener]: gardenerDescription,
+  [MaterialType.ObjectiveMarker]: objectiveMarkerDescription,
 }

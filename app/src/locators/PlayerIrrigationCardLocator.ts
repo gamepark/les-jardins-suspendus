@@ -1,5 +1,5 @@
 import { Locator, MaterialContext } from '@gamepark/react-game'
-import { Location } from '../../../../rules-api'
+import { Location } from '@gamepark/rules-api'
 import { getPlayerLocation, PlayerColumn } from './PlayerLocation'
 
 class PlayerIrrigationCardLocator extends Locator {

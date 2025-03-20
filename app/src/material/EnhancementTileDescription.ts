@@ -1,6 +1,6 @@
 import { Enhancement, EnhancementId, EnhancementType } from '@gamepark/les-jardins-suspendus/material/Enhancement'
 import { ComponentSize, TokenDescription } from '@gamepark/react-game'
-import { MaterialItem } from '../../../../rules-api'
+import { MaterialItem } from '@gamepark/rules-api'
 import Cedar from '../images/tiles/enhancements/Cedar.png'
 import CedarGold from '../images/tiles/enhancements/CedarGold.png'
 import CedarTools from '../images/tiles/enhancements/CedarTools.png'

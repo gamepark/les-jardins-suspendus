@@ -23,6 +23,8 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
     this.setupEnhancementTiles()
     this.setupObjectives()
     this.setupIrrigationCards()
+    this.setupGardeners()
+    this.setupObjectiveMarkers()
   }
 
   setupGardenCardsDeck() {
@@ -84,6 +86,26 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
         }
       })
     }
+  }
+
+  setupGardeners() {
+    this.material(MaterialType.Gardener).createItems(
+      this.players.map((player) => ({
+        id: player,
+        location: { type: LocationType.PlayerGardeners, player },
+        quantity: 3
+      }))
+    )
+  }
+
+  setupObjectiveMarkers() {
+    this.material(MaterialType.ObjectiveMarker).createItems(
+      this.players.map((player) => ({
+        id: player,
+        location: { type: LocationType.PlayerObjectiveMarkers, player },
+        quantity: 4
+      }))
+    )
   }
 
   start() {

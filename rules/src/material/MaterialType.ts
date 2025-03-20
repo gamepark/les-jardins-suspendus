@@ -4,5 +4,7 @@ export enum MaterialType {
   GardenCard,
   EnhancementTile,
   ObjectiveTile,
-  IrrigationCard
+  IrrigationCard,
+  Gardener,
+  ObjectiveMarker
 }

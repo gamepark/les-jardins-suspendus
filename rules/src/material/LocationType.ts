@@ -5,5 +5,7 @@ export enum LocationType {
   MainBoardSpace,
   EnhancementPile,
   ObjectiveTileSpace,
-  PlayerIrrigationCard
+  PlayerIrrigationCard,
+  PlayerGardeners,
+  PlayerObjectiveMarkers
 }
