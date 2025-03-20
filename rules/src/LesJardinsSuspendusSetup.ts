@@ -15,11 +15,19 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
 
   setupMaterial(_options: LesJardinsSuspendusOptions) {
     this.setupGardenCardsDeck()
+    this.dealGardenCards()
   }
 
   setupGardenCardsDeck() {
     this.material(MaterialType.GardenCard).createItems(getGardenCards().map((id) => ({ id, location: { type: LocationType.GardenCardsDeck } })))
     this.material(MaterialType.GardenCard).location(LocationType.GardenCardsDeck).shuffle()
+  }
+
+  dealGardenCards() {
+    const deck = this.material(MaterialType.GardenCard).location(LocationType.GardenCardsDeck).deck()
+    deck.deal({ type: LocationType.MainBoardSpace, id: 1 }, 4)
+    deck.deal({ type: LocationType.MainBoardSpace, id: 2 }, 4)
+    deck.deal({ type: LocationType.MainBoardSpace, id: 3 }, 4)
   }
 
   start() {

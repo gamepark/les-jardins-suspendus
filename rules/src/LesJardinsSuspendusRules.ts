@@ -11,14 +11,16 @@ import { TheFirstStepRule } from './rules/TheFirstStepRule'
  */
 export class LesJardinsSuspendusRules
   extends HiddenMaterialRules<PlayerColor, MaterialType, LocationType>
-  implements TimeLimit<MaterialGame<PlayerColor, MaterialType, LocationType>, MaterialMove<PlayerColor, MaterialType, LocationType>, PlayerColor> {
+  implements TimeLimit<MaterialGame<PlayerColor, MaterialType, LocationType>, MaterialMove<PlayerColor, MaterialType, LocationType>, PlayerColor>
+{
   rules = {
     [RuleId.TheFirstStep]: TheFirstStepRule
   }
 
   locationsStrategies = {
     [MaterialType.GardenCard]: {
-      [LocationType.GardenCardsDeck]: new PositiveSequenceStrategy()
+      [LocationType.GardenCardsDeck]: new PositiveSequenceStrategy(),
+      [LocationType.MainBoardSpace]: new PositiveSequenceStrategy('y')
     }
   }
 
