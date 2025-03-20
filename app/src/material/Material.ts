@@ -1,6 +1,7 @@
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
 import { MaterialDescription } from '@gamepark/react-game'
 import { enhancementTileDescription } from './EnhancementTileDescription'
+import { firstPlayerMarkerDescription } from './FirstPlayerMarkerDescription'
 import { gameBoardDescription } from './GameBoardDescription'
 import { gardenCardDescription } from './GardenCardDescription'
 import { gardenerDescription } from './GardenerDescription'
@@ -18,4 +19,5 @@ export const Material: Partial<Record<MaterialType, MaterialDescription>> = {
   [MaterialType.IrrigationCard]: irrigationCardDescription,
   [MaterialType.Gardener]: gardenerDescription,
   [MaterialType.ObjectiveMarker]: objectiveMarkerDescription,
+  [MaterialType.FirstPlayerMarker]: firstPlayerMarkerDescription
 }

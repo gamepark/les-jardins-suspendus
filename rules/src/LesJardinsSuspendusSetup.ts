@@ -25,6 +25,7 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
     this.setupIrrigationCards()
     this.setupGardeners()
     this.setupObjectiveMarkers()
+    this.setupFirstPlayerMarker()
   }
 
   setupGardenCardsDeck() {
@@ -106,6 +107,15 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
         quantity: 4
       }))
     )
+  }
+
+  setupFirstPlayerMarker() {
+    this.material(MaterialType.FirstPlayerMarker).createItem({
+      location: {
+        type: LocationType.FirstPlayerMarkerPlace,
+        player: this.players[0]
+      }
+    })
   }
 
   start() {

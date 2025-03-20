@@ -6,5 +6,6 @@ export enum MaterialType {
   ObjectiveTile,
   IrrigationCard,
   Gardener,
-  ObjectiveMarker
+  ObjectiveMarker,
+  FirstPlayerMarker
 }

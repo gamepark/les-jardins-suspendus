@@ -3,6 +3,7 @@ import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialT
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
 import { Locator } from '@gamepark/react-game'
 import { enhancementPileLocator } from './EnhancementPileLocator'
+import { firstPlayerMarkerPlaceLocator } from './FirstPlayerMarkerPlaceLocator'
 import { gardenCardsDeckLocator } from './GardenCardsDeckLocator'
 import { mainBoardSpaceLocator } from './MainBoardSpaceLocator'
 import { miniBoardPlaceLocator } from './MiniBoardPlaceLocator'
@@ -19,5 +20,6 @@ export const Locators: Partial<Record<LocationType, Locator<PlayerColor, Materia
   [LocationType.ObjectiveTileSpace]: objectiveTileSpaceLocator,
   [LocationType.PlayerIrrigationCard]: playerIrrigationCardLocator,
   [LocationType.PlayerGardeners]: playerGardenersLocator,
-  [LocationType.PlayerObjectiveMarkers]: playerObjectiveMarkersLocator
+  [LocationType.PlayerObjectiveMarkers]: playerObjectiveMarkersLocator,
+  [LocationType.FirstPlayerMarkerPlace]: firstPlayerMarkerPlaceLocator
 }

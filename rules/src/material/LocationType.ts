@@ -7,5 +7,6 @@ export enum LocationType {
   ObjectiveTileSpace,
   PlayerIrrigationCard,
   PlayerGardeners,
-  PlayerObjectiveMarkers
+  PlayerObjectiveMarkers,
+  FirstPlayerMarkerPlace
 }
