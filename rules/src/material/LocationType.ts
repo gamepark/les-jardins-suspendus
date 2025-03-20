@@ -1,4 +1,5 @@
 export enum LocationType {
   GameBoardPlace = 1,
-  MiniBoardPlace
+  MiniBoardPlace,
+  GardenCardsDeck
 }

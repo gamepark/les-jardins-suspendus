@@ -1,6 +1,7 @@
 import { MaterialGameSetup } from '@gamepark/rules-api'
 import { LesJardinsSuspendusOptions } from './LesJardinsSuspendusOptions'
 import { LesJardinsSuspendusRules } from './LesJardinsSuspendusRules'
+import { getGardenCards } from './material/GardenCard'
 import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
 import { PlayerColor } from './PlayerColor'
@@ -13,7 +14,12 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
   Rules = LesJardinsSuspendusRules
 
   setupMaterial(_options: LesJardinsSuspendusOptions) {
-    // TODO
+    this.setupGardenCardsDeck()
+  }
+
+  setupGardenCardsDeck() {
+    this.material(MaterialType.GardenCard).createItems(getGardenCards().map((id) => ({ id, location: { type: LocationType.GardenCardsDeck } })))
+    this.material(MaterialType.GardenCard).location(LocationType.GardenCardsDeck).shuffle()
   }
 
   start() {
