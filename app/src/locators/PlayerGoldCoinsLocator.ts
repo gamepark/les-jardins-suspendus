@@ -1,17 +1,17 @@
 import { MaterialContext, PileLocator } from '@gamepark/react-game'
 import { Location } from '../../../../rules-api/src'
-import { getPlayerLocation, PlayerColumn } from './PlayerLocation'
+import { playerGardenLocator } from './PlayerGardenLocator'
 
 class PlayerGoldCoinsLocator extends PileLocator {
   getCoordinates(location: Location, context: MaterialContext) {
-    const { column, line } = getPlayerLocation(context, location.player!)
+    const { x, y } = playerGardenLocator.getCoordinates(location, context)
     return {
-      x: column === PlayerColumn.Left ? -20 : 20,
-      y: line * 15 - 25
+      x: x < 0 ? x + 16.5 : x - 16.5,
+      y: y - 6.3
     }
   }
 
-  radius = 3
+  radius = 2
 }
 
 export const playerGoldCoinsLocator = new PlayerGoldCoinsLocator()

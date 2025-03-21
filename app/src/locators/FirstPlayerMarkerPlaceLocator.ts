@@ -1,13 +1,13 @@
 import { Locator, MaterialContext } from '@gamepark/react-game'
 import { Location } from '@gamepark/rules-api'
-import { getPlayerLocation, PlayerColumn } from './PlayerLocation'
+import { playerGardenLocator } from './PlayerGardenLocator'
 
 class FirstPlayerMarkerPlaceLocator extends Locator {
   getCoordinates(location: Location, context: MaterialContext) {
-    const { column, line } = getPlayerLocation(context, location.player!)
+    const { x, y } = playerGardenLocator.getCoordinates(location, context)
     return {
-      x: column === PlayerColumn.Left ? -36 : 36,
-      y: line * 15 - 30
+      x: x < 0 ? x + 19.3 : x - 19.3,
+      y: y - 0.1
     }
   }
 }

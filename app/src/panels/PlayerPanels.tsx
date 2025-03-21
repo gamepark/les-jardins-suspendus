@@ -1,11 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
-import { StyledPlayerPanel, usePlayers } from '@gamepark/react-game'
+import { MaterialContext, StyledPlayerPanel, useMaterialContext, usePlayers } from '@gamepark/react-game'
 import { createPortal } from 'react-dom'
+import { getPlayerLocation, PlayerColumn } from '../locators/PlayerLocation'
 
 export const PlayerPanels = () => {
-  const players = usePlayers<PlayerColor>({ sortFromMe: true })
+  const players = usePlayers<PlayerColor>()
+  const context = useMaterialContext()
   const root = document.getElementById('root')
   if (!root) {
     return null
@@ -13,16 +15,36 @@ export const PlayerPanels = () => {
 
   return createPortal(
     <>
-      {players.map((player, index) => (
-        <StyledPlayerPanel key={player.id} player={player} css={panelPosition(index)} />
+      {players.map((player) => (
+        <StyledPlayerPanel key={player.id} player={player} css={[panelCss, getPanelPosition(context, player.id)]} />
       ))}
     </>,
     root
   )
 }
-const panelPosition = (index: number) => css`
+
+const panelCss = css`
   position: absolute;
-  right: 1em;
-  top: ${8.5 + index * 16}em;
   width: 28em;
+`
+
+function getPanelPosition(context: MaterialContext, player: PlayerColor) {
+  const { line, column } = getPlayerLocation(context, player)
+  const is5Players = context.rules.players.length === 5
+  const topMax = is5Players ? 70 : 68
+  if (column === PlayerColumn.Left) {
+    return leftPanel(topMax - line * (is5Players ? 28 : 29.7))
+  } else {
+    return rightPanel(topMax - line * (is5Players ? 30.75 : 29.7))
+  }
+}
+
+const leftPanel = (top: number) => css`
+  left: 1em;
+  top: ${top}em;
+`
+
+const rightPanel = (top: number) => css`
+  right: 1em;
+  top: ${top}em;
 `

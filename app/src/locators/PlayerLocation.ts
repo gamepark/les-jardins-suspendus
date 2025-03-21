@@ -12,9 +12,9 @@ export enum PlayerColumn {
 }
 
 export enum PlayerLine {
-  Top = 1,
+  Bottom,
   Middle,
-  Bottom
+  Top
 }
 
 const topLeft: PlayerLocation = { column: PlayerColumn.Left, line: PlayerLine.Top }
