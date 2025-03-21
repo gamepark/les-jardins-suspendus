@@ -5,12 +5,16 @@ import { Locator } from '@gamepark/react-game'
 import { enhancementPileLocator } from './EnhancementPileLocator'
 import { firstPlayerMarkerPlaceLocator } from './FirstPlayerMarkerPlaceLocator'
 import { gardenCardsDeckLocator } from './GardenCardsDeckLocator'
+import { goldCoinsStockLocator } from './GoldCoinsStockLocator'
 import { mainBoardSpaceLocator } from './MainBoardSpaceLocator'
 import { miniBoardPlaceLocator } from './MiniBoardPlaceLocator'
 import { objectiveTileSpaceLocator } from './ObjectiveTileSpaceLocator'
 import { playerGardenersLocator } from './PlayerGardenersLocator'
+import { playerGoldCoinsLocator } from './PlayerGoldCoinsLocator'
 import { playerIrrigationCardLocator } from './PlayerIrrigationCardLocator'
 import { playerObjectiveMarkersLocator } from './PlayerObjectiveMarkersLocator'
+import { playerToolsLocator } from './PlayerToolsLocator'
+import { toolsStockLocator } from './ToolsStockLocator'
 
 export const Locators: Partial<Record<LocationType, Locator<PlayerColor, MaterialType, LocationType>>> = {
   [LocationType.MiniBoardPlace]: miniBoardPlaceLocator,
@@ -21,5 +25,9 @@ export const Locators: Partial<Record<LocationType, Locator<PlayerColor, Materia
   [LocationType.PlayerIrrigationCard]: playerIrrigationCardLocator,
   [LocationType.PlayerGardeners]: playerGardenersLocator,
   [LocationType.PlayerObjectiveMarkers]: playerObjectiveMarkersLocator,
-  [LocationType.FirstPlayerMarkerPlace]: firstPlayerMarkerPlaceLocator
+  [LocationType.FirstPlayerMarkerPlace]: firstPlayerMarkerPlaceLocator,
+  [LocationType.GoldCoinsStock]: goldCoinsStockLocator,
+  [LocationType.PlayerGoldCoins]: playerGoldCoinsLocator,
+  [LocationType.ToolsStock]: toolsStockLocator,
+  [LocationType.PlayerTools]: playerToolsLocator
 }

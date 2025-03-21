@@ -26,6 +26,8 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
     this.setupGardeners()
     this.setupObjectiveMarkers()
     this.setupFirstPlayerMarker()
+    this.setupGoldCoins()
+    this.setupTools()
   }
 
   setupGardenCardsDeck() {
@@ -116,6 +118,30 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
         player: this.players[0]
       }
     })
+  }
+
+  setupGoldCoins() {
+    this.material(MaterialType.GoldCoin).createItem({
+      location: { type: LocationType.GoldCoinsStock },
+      quantity: 20
+    })
+    const stock = this.material(MaterialType.GoldCoin).location(LocationType.GoldCoinsStock)
+    for (const player of this.players) {
+      stock.moveItem({ type: LocationType.PlayerGoldCoins, player }, 2)
+    }
+  }
+
+  setupTools() {
+    this.material(MaterialType.Tool).createItem({
+      location: { type: LocationType.ToolsStock },
+      quantity: 30
+    })
+    const stock = this.material(MaterialType.Tool).location(LocationType.ToolsStock)
+    for (const player of this.players) {
+      stock.moveItem({ type: LocationType.PlayerTools, player }, 4)
+    }
+    const lastPlayer = this.players[this.players.length - 1]
+    stock.moveItem({ type: LocationType.PlayerTools, player: lastPlayer }, 1)
   }
 
   start() {

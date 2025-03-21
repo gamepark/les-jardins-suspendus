@@ -8,5 +8,9 @@ export enum LocationType {
   PlayerIrrigationCard,
   PlayerGardeners,
   PlayerObjectiveMarkers,
-  FirstPlayerMarkerPlace
+  FirstPlayerMarkerPlace,
+  GoldCoinsStock,
+  PlayerGoldCoins,
+  ToolsStock,
+  PlayerTools
 }

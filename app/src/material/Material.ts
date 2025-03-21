@@ -5,10 +5,12 @@ import { firstPlayerMarkerDescription } from './FirstPlayerMarkerDescription'
 import { gameBoardDescription } from './GameBoardDescription'
 import { gardenCardDescription } from './GardenCardDescription'
 import { gardenerDescription } from './GardenerDescription'
+import { goldCoinDescription } from './GoldCoinDescription'
 import { irrigationCardDescription } from './IrrigationCardDescription'
 import { miniBoardDescription } from './MiniBoardDescription'
 import { objectiveMarkerDescription } from './ObjectiveMarkerDescription'
 import { objectiveTileDescription } from './ObjectiveTileDescription'
+import { toolDescription } from './ToolDescription'
 
 export const Material: Partial<Record<MaterialType, MaterialDescription>> = {
   [MaterialType.GameBoard]: gameBoardDescription,
@@ -19,5 +21,7 @@ export const Material: Partial<Record<MaterialType, MaterialDescription>> = {
   [MaterialType.IrrigationCard]: irrigationCardDescription,
   [MaterialType.Gardener]: gardenerDescription,
   [MaterialType.ObjectiveMarker]: objectiveMarkerDescription,
-  [MaterialType.FirstPlayerMarker]: firstPlayerMarkerDescription
+  [MaterialType.FirstPlayerMarker]: firstPlayerMarkerDescription,
+  [MaterialType.GoldCoin]: goldCoinDescription,
+  [MaterialType.Tool]: toolDescription
 }
