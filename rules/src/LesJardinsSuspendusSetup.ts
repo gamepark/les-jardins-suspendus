@@ -145,6 +145,6 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
   }
 
   start() {
-    this.startPlayerTurn(RuleId.TheFirstStep, this.players[0])
+    this.startPlayerTurn(RuleId.PlaceGardenCard, this.players[0])
   }
 }

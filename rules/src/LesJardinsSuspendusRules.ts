@@ -3,7 +3,7 @@ import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
 import { PlayerColor } from './PlayerColor'
 import { RuleId } from './rules/RuleId'
-import { TheFirstStepRule } from './rules/TheFirstStepRule'
+import { PlaceGardenCard } from './rules/PlaceGardenCard'
 
 /**
  * This class implements the rules of the board game.
@@ -14,7 +14,7 @@ export class LesJardinsSuspendusRules
   implements TimeLimit<MaterialGame<PlayerColor, MaterialType, LocationType>, MaterialMove<PlayerColor, MaterialType, LocationType>, PlayerColor>
 {
   rules = {
-    [RuleId.TheFirstStep]: TheFirstStepRule
+    [RuleId.PlaceGardenCard]: PlaceGardenCard
   }
 
   locationsStrategies = {

@@ -13,5 +13,6 @@ export enum LocationType {
   PlayerGoldCoins,
   ToolsStock,
   PlayerTools,
-  PlayerGarden
+  PlayerGarden,
+  GardenerSpace
 }
