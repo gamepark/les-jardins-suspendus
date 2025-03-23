@@ -1,5 +1,6 @@
-import { isMoveItemType, ItemMove, PlayerTurnRule, XYCoordinates } from '@gamepark/rules-api'
+import { isMoveItemType, ItemMove, MaterialMove, PlayerTurnRule, XYCoordinates } from '@gamepark/rules-api'
 import { minBy } from 'lodash'
+import { Garden, gardensAnatomy } from '../material/Garden'
 import { LocationType } from '../material/LocationType'
 import { MaterialType } from '../material/MaterialType'
 
@@ -79,6 +80,33 @@ export class PlaceGardenCard extends PlayerTurnRule {
         }
         return moves
       }
+    }
+    return []
+  }
+
+  afterItemMove(move: ItemMove) {
+    if (isMoveItemType(MaterialType.GardenCard)(move) && move.location.type === LocationType.PlayerGarden) {
+      const anatomy = gardensAnatomy[this.material(MaterialType.GardenCard).getItem<Garden>(move.itemIndex).id]
+      const moves: MaterialMove[] = []
+      if (anatomy.crown) {
+        const firstPlayerMarker = this.material(MaterialType.FirstPlayerMarker)
+        if (firstPlayerMarker.getItem()?.location.player !== this.player) {
+          moves.push(firstPlayerMarker.moveItem({ type: LocationType.FirstPlayerMarkerPlace, player: this.player }))
+        }
+      }
+      if (anatomy.gold) {
+        const goldStock = this.material(MaterialType.GoldCoin).location(LocationType.GoldCoinsStock)
+        if (goldStock.getQuantity() > 0) {
+          moves.push(goldStock.moveItem({ type: LocationType.PlayerGoldCoins, player: this.player }, move.location.y! + 1))
+        }
+      }
+      if (anatomy.tools) {
+        const toolsStock = this.material(MaterialType.Tool).location(LocationType.ToolsStock)
+        if (toolsStock.getQuantity() > 0) {
+          moves.push(toolsStock.moveItem({ type: LocationType.PlayerTools, player: this.player }, move.location.y! + 1))
+        }
+      }
+      return moves
     }
     return []
   }

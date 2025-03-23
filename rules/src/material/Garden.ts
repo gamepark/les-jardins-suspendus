@@ -20,8 +20,8 @@ export enum Garden {
   CedarGold,
   DragonTreeIrrigation,
   DragonTreeB,
-  DragonTreeY,
   DragonTreeR,
+  DragonTreeY,
   EmptyBRY,
   EmptyBRCrown,
   EmptyBYCrown,
@@ -32,27 +32,27 @@ export enum Garden {
   EmptyBRGold,
   EmptyBYGold,
   EmptyYRGold,
-  EmptyRRGold,
   EmptyBBGold,
+  EmptyRRGold,
   EmptyYYGold,
-  EmptyYYTools,
   EmptyBBTools,
   EmptyRRTools,
+  EmptyYYTools,
   EmptyBRIrrigation,
   EmptyBYIrrigation,
   EmptyRYIrrigation,
   EmptyBIrrigationCrown,
-  EmptyYIrrigationCrown,
   EmptyRIrrigationCrown,
+  EmptyYIrrigationCrown,
   EmptyBIrrigationGold,
-  EmptyYIrrigationGold,
   EmptyRIrrigationGold,
+  EmptyYIrrigationGold,
   EmptyBIrrigationTools,
-  EmptyYIrrigationTools,
   EmptyRIrrigationTools,
+  EmptyYIrrigationTools,
   EmptyBCrownGold,
-  EmptyYCrownGold,
   EmptyRCrownGold,
+  EmptyYCrownGold,
   VisitorBlueFlowersIrrigation,
   VisitorYellowFlowersIrrigation,
   VisitorRedFlowersIrrigation,
@@ -81,4 +81,119 @@ export function getGardenCards() {
     Garden.DatePalm,
     Garden.DatePalm
   )
+}
+
+type GardenAnatomy = {
+  main?: MainSight
+  irrigation?: boolean
+  flowers?: Flower[]
+  crown?: boolean
+  gold?: boolean
+  tools?: boolean
+}
+
+enum Flower {
+  Blue = 1,
+  Red,
+  Yellow
+}
+
+enum Animal {
+  Lion = 1,
+  Monkey,
+  Peacock
+}
+
+enum Tree {
+  DragonTree = 11,
+  Cedar,
+  DatePalm
+}
+
+enum Visitor {
+  BlueFlowers = 21,
+  YellowFlowers,
+  RedFlowers,
+  Irrigation,
+  Crowns,
+  Flowers,
+  Visitors,
+  Objectives,
+  Animals,
+  Trees,
+  GoldBonus,
+  Enhancement,
+  TreeVisitorAnimal,
+  ToolsBonus
+}
+
+type MainSight = Animal | Tree | Visitor
+
+export const gardensAnatomy: Record<Garden, GardenAnatomy> = {
+  [Garden.LionIrrigation]: { main: Animal.Lion, irrigation: true },
+  [Garden.Lion]: { main: Animal.Lion, irrigation: true },
+  [Garden.MonkeyIrrigation]: { main: Animal.Monkey, irrigation: true },
+  [Garden.MonkeyBY]: { main: Animal.Monkey, flowers: [Flower.Blue, Flower.Yellow] },
+  [Garden.MonkeyRY]: { main: Animal.Monkey, flowers: [Flower.Red, Flower.Yellow] },
+  [Garden.MonkeyBR]: { main: Animal.Monkey, flowers: [Flower.Blue, Flower.Red] },
+  [Garden.Monkey]: { main: Animal.Monkey },
+  [Garden.PeacockIrrigation]: { main: Animal.Peacock, irrigation: true },
+  [Garden.PeacockCrown]: { main: Animal.Peacock, crown: true },
+  [Garden.PeacockGold]: { main: Animal.Peacock, gold: true },
+  [Garden.PeacockTools]: { main: Animal.Peacock, tools: true },
+  [Garden.Peacock]: { main: Animal.Peacock },
+  [Garden.DatePalm]: { main: Tree.DatePalm },
+  [Garden.CedarIrrigation]: { main: Tree.Cedar, irrigation: true },
+  [Garden.CedarCrown]: { main: Tree.Cedar, crown: true },
+  [Garden.CedarTools]: { main: Tree.Cedar, tools: true },
+  [Garden.CedarGold]: { main: Tree.Cedar, gold: true },
+  [Garden.DragonTreeIrrigation]: { main: Tree.DragonTree, irrigation: true },
+  [Garden.DragonTreeB]: { main: Tree.DragonTree, flowers: [Flower.Blue] },
+  [Garden.DragonTreeR]: { main: Tree.DragonTree, flowers: [Flower.Red] },
+  [Garden.DragonTreeY]: { main: Tree.DragonTree, flowers: [Flower.Yellow] },
+  [Garden.EmptyBRY]: { flowers: [Flower.Blue, Flower.Red, Flower.Yellow] },
+  [Garden.EmptyBRCrown]: { flowers: [Flower.Blue, Flower.Red], crown: true },
+  [Garden.EmptyBYCrown]: { flowers: [Flower.Blue, Flower.Yellow], crown: true },
+  [Garden.EmptyYRCrown]: { flowers: [Flower.Yellow, Flower.Red], crown: true },
+  [Garden.EmptyBRTools]: { flowers: [Flower.Blue, Flower.Red], tools: true },
+  [Garden.EmptyBYTools]: { flowers: [Flower.Blue, Flower.Yellow], tools: true },
+  [Garden.EmptyYRTools]: { flowers: [Flower.Yellow, Flower.Red], tools: true },
+  [Garden.EmptyBRGold]: { flowers: [Flower.Blue, Flower.Red], gold: true },
+  [Garden.EmptyBYGold]: { flowers: [Flower.Blue, Flower.Yellow], gold: true },
+  [Garden.EmptyYRGold]: { flowers: [Flower.Yellow, Flower.Red], gold: true },
+  [Garden.EmptyBBGold]: { flowers: [Flower.Blue, Flower.Blue], gold: true },
+  [Garden.EmptyRRGold]: { flowers: [Flower.Red, Flower.Red], gold: true },
+  [Garden.EmptyYYGold]: { flowers: [Flower.Yellow, Flower.Yellow], gold: true },
+  [Garden.EmptyBBTools]: { flowers: [Flower.Blue, Flower.Blue], tools: true },
+  [Garden.EmptyRRTools]: { flowers: [Flower.Red, Flower.Red], tools: true },
+  [Garden.EmptyYYTools]: { flowers: [Flower.Yellow, Flower.Yellow], tools: true },
+  [Garden.EmptyBRIrrigation]: { irrigation: true, flowers: [Flower.Blue, Flower.Red] },
+  [Garden.EmptyBYIrrigation]: { irrigation: true, flowers: [Flower.Blue, Flower.Yellow] },
+  [Garden.EmptyRYIrrigation]: { irrigation: true, flowers: [Flower.Yellow, Flower.Red] },
+  [Garden.EmptyBIrrigationCrown]: { irrigation: true, flowers: [Flower.Blue], crown: true },
+  [Garden.EmptyRIrrigationCrown]: { irrigation: true, flowers: [Flower.Red], crown: true },
+  [Garden.EmptyYIrrigationCrown]: { irrigation: true, flowers: [Flower.Yellow], crown: true },
+  [Garden.EmptyBIrrigationGold]: { irrigation: true, flowers: [Flower.Blue], gold: true },
+  [Garden.EmptyRIrrigationGold]: { irrigation: true, flowers: [Flower.Red], gold: true },
+  [Garden.EmptyYIrrigationGold]: { irrigation: true, flowers: [Flower.Yellow], gold: true },
+  [Garden.EmptyBIrrigationTools]: { irrigation: true, flowers: [Flower.Blue], tools: true },
+  [Garden.EmptyRIrrigationTools]: { irrigation: true, flowers: [Flower.Red], tools: true },
+  [Garden.EmptyYIrrigationTools]: { irrigation: true, flowers: [Flower.Yellow], tools: true },
+  [Garden.EmptyBCrownGold]: { flowers: [Flower.Blue], crown: true, gold: true },
+  [Garden.EmptyRCrownGold]: { flowers: [Flower.Red], crown: true, gold: true },
+  [Garden.EmptyYCrownGold]: { flowers: [Flower.Yellow], crown: true, gold: true },
+  [Garden.VisitorBlueFlowersIrrigation]: { main: Visitor.BlueFlowers, irrigation: true },
+  [Garden.VisitorYellowFlowersIrrigation]: { main: Visitor.YellowFlowers, irrigation: true },
+  [Garden.VisitorRedFlowersIrrigation]: { main: Visitor.RedFlowers, irrigation: true },
+  [Garden.VisitorIrrigation]: { main: Visitor.Irrigation },
+  [Garden.VisitorCrowns]: { main: Visitor.Crowns },
+  [Garden.VisitorFlowers]: { main: Visitor.Flowers },
+  [Garden.VisitorVisitorsIrrigation]: { main: Visitor.Visitors, irrigation: true },
+  [Garden.VisitorObjectivesCrown]: { main: Visitor.Objectives, crown: true },
+  [Garden.VisitorAnimalsCrown]: { main: Visitor.Animals, crown: true },
+  [Garden.VisitorTreesCrown]: { main: Visitor.Trees, crown: true },
+  [Garden.VisitorGoldBonus]: { main: Visitor.GoldBonus },
+  [Garden.VisitorEnhancementGold]: { main: Visitor.Enhancement, gold: true },
+  [Garden.VisitorTreeVisitorAnimal]: { main: Visitor.TreeVisitorAnimal },
+  [Garden.VisitorToolsBonus]: { main: Visitor.ToolsBonus }
 }
