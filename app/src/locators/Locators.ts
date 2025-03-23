@@ -5,6 +5,7 @@ import { Locator } from '@gamepark/react-game'
 import { enhancementPileLocator } from './EnhancementPileLocator'
 import { firstPlayerMarkerPlaceLocator } from './FirstPlayerMarkerPlaceLocator'
 import { gardenCardsDeckLocator } from './GardenCardsDeckLocator'
+import { gardenerSpaceLocator } from './GardenerSpaceLocator'
 import { goldCoinsStockLocator } from './GoldCoinsStockLocator'
 import { mainBoardSpaceLocator } from './MainBoardSpaceLocator'
 import { miniBoardPlaceLocator } from './MiniBoardPlaceLocator'
@@ -31,5 +32,6 @@ export const Locators: Partial<Record<LocationType, Locator<PlayerColor, Materia
   [LocationType.PlayerGoldCoins]: playerGoldCoinsLocator,
   [LocationType.ToolsStock]: toolsStockLocator,
   [LocationType.PlayerTools]: playerToolsLocator,
-  [LocationType.PlayerGarden]: playerGardenLocator
+  [LocationType.PlayerGarden]: playerGardenLocator,
+  [LocationType.GardenerSpace]: gardenerSpaceLocator
 }

@@ -1,4 +1,4 @@
-import { PlayerTurnRule, XYCoordinates } from '@gamepark/rules-api'
+import { isMoveItemType, ItemMove, PlayerTurnRule, XYCoordinates } from '@gamepark/rules-api'
 import { minBy } from 'lodash'
 import { LocationType } from '../material/LocationType'
 import { MaterialType } from '../material/MaterialType'
@@ -26,7 +26,7 @@ export class PlaceGardenCard extends PlayerTurnRule {
 
   get availableColumns() {
     const gardeners = this.material(MaterialType.Gardener).location(LocationType.GardenerSpace)
-    const gardenersSpaces = Math.min(2, this.game.players.length)
+    const gardenersSpaces = Math.max(2, this.game.players.length)
     return [1, 2, 3].filter((column) => gardeners.locationId(column).length < gardenersSpaces)
   }
 
@@ -59,5 +59,21 @@ export class PlaceGardenCard extends PlayerTurnRule {
       }
     }
     return destinations
+  }
+
+  beforeItemMove(move: ItemMove) {
+    if (isMoveItemType(MaterialType.GardenCard)(move) && move.location.type === LocationType.PlayerGarden) {
+      const origin = this.material(MaterialType.GardenCard).getItem(move.itemIndex).location
+      if (origin.type === LocationType.MainBoardSpace) {
+        const column = origin.id as number
+        return [
+          this.material(MaterialType.Gardener).location(LocationType.PlayerGardeners).player(this.player).moveItem({
+            type: LocationType.GardenerSpace,
+            id: column
+          })
+        ]
+      }
+    }
+    return []
   }
 }

@@ -24,6 +24,9 @@ export class LesJardinsSuspendusRules
     },
     [MaterialType.EnhancementTile]: {
       [LocationType.EnhancementPile]: new PositiveSequenceStrategy()
+    },
+    [MaterialType.Gardener]: {
+      [LocationType.GardenerSpace]: new PositiveSequenceStrategy()
     }
   }
 

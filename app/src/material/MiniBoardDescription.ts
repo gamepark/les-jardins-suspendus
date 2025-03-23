@@ -9,7 +9,6 @@ class MiniBoardDescription extends BoardDescription {
   width = 24.5
   height = 6
   images = {
-    [1]: MiniBoard1Or2Players,
     [2]: MiniBoard1Or2Players,
     [3]: MiniBoard3Players,
     [4]: MiniBoard4Players,
@@ -17,7 +16,7 @@ class MiniBoardDescription extends BoardDescription {
   }
 
   getStaticItems({ rules: { players } }: MaterialContext) {
-    return [{ id: players.length, location: { type: LocationType.MiniBoardPlace } }]
+    return [{ id: Math.max(2, players.length), location: { type: LocationType.MiniBoardPlace } }]
   }
 }
 
