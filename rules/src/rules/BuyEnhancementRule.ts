@@ -1,13 +1,15 @@
-import { isMoveItemType, ItemMove, Location, PlayerTurnRule } from '@gamepark/rules-api'
+import { isMoveItemType, ItemMove, Location, MaterialMove, PlayerTurnRule } from '@gamepark/rules-api'
 import { EnhancementId, EnhancementType } from '../material/Enhancement'
 import { Garden, gardensAnatomy } from '../material/Garden'
 import { LocationType } from '../material/LocationType'
 import { MaterialType } from '../material/MaterialType'
+import { CustomMoveType } from './CustomMoveType'
 
 export class BuyEnhancementRule extends PlayerTurnRule {
   getPlayerMoves() {
     const enhancements = this.availableEnhancements
-    return this.validDestinations.flatMap((destination) => enhancements.moveItems(destination))
+    const pass = this.customMove(CustomMoveType.Pass)
+    return this.validDestinations.flatMap<MaterialMove>((destination) => enhancements.moveItems(destination)).concat(pass)
   }
 
   get availableEnhancements() {
