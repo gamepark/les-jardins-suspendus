@@ -4,8 +4,9 @@ import { MaterialType } from './material/MaterialType'
 import { PlayerColor } from './PlayerColor'
 import { BuyEnhancementRule } from './rules/BuyEnhancementRule'
 import { CompleteObjectiveRule } from './rules/CompleteObjectiveRule'
-import { RuleId } from './rules/RuleId'
 import { PlaceGardenCardRule } from './rules/PlaceGardenCardRule'
+import { RevealNewGardenCardRule } from './rules/RevealNewGardenCardRule'
+import { RuleId } from './rules/RuleId'
 
 /**
  * This class implements the rules of the board game.
@@ -18,7 +19,8 @@ export class LesJardinsSuspendusRules
   rules = {
     [RuleId.PlaceGardenCard]: PlaceGardenCardRule,
     [RuleId.BuyEnhancement]: BuyEnhancementRule,
-    [RuleId.CompleteObjective]: CompleteObjectiveRule
+    [RuleId.CompleteObjective]: CompleteObjectiveRule,
+    [RuleId.RevealNewGardenCard]: RevealNewGardenCardRule
   }
 
   locationsStrategies = {

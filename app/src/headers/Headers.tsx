@@ -4,9 +4,11 @@ import { ComponentType } from 'react'
 import { BuyEnhancementHeader } from './BuyEnhancementHeader'
 import { CompleteObjectiveHeader } from './CompleteObjectiveHeader'
 import { PlaceGardenCardHeader } from './PlaceGardenCardHeader'
+import { RevealNewGardenCardHeader } from './RevealNewGardenCardHeader'
 
 export const Headers: Partial<Record<RuleId, ComponentType>> = {
   [RuleId.PlaceGardenCard]: PlaceGardenCardHeader,
   [RuleId.BuyEnhancement]: BuyEnhancementHeader,
-  [RuleId.CompleteObjective]: CompleteObjectiveHeader
+  [RuleId.CompleteObjective]: CompleteObjectiveHeader,
+  [RuleId.RevealNewGardenCard]: RevealNewGardenCardHeader
 }
