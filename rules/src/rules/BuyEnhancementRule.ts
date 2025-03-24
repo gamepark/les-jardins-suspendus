@@ -1,9 +1,10 @@
-import { isMoveItemType, ItemMove, Location, MaterialMove, PlayerTurnRule } from '@gamepark/rules-api'
+import { CustomMove, isMoveItemType, ItemMove, Location, MaterialMove, PlayerTurnRule } from '@gamepark/rules-api'
 import { EnhancementId, EnhancementType } from '../material/Enhancement'
 import { Garden, gardensAnatomy } from '../material/Garden'
 import { LocationType } from '../material/LocationType'
 import { MaterialType } from '../material/MaterialType'
 import { CustomMoveType } from './CustomMoveType'
+import { RuleId } from './RuleId'
 
 export class BuyEnhancementRule extends PlayerTurnRule {
   getPlayerMoves() {
@@ -36,7 +37,14 @@ export class BuyEnhancementRule extends PlayerTurnRule {
     if (isMoveItemType(MaterialType.EnhancementTile)(move) && move.location.type === LocationType.EmptyGarden) {
       const enhancementType = this.material(MaterialType.EnhancementTile).getItem<EnhancementId>(move.itemIndex).id.back
       const playerGold = this.material(MaterialType.GoldCoin).location(LocationType.PlayerGoldCoins).player(this.player)
-      return [playerGold.moveItem({ type: LocationType.GoldCoinsStock }, enhancementType + 1)]
+      return [playerGold.moveItem({ type: LocationType.GoldCoinsStock }, enhancementType + 1), this.startRule(RuleId.CompleteObjective)]
+    }
+    return []
+  }
+
+  onCustomMove(move: CustomMove) {
+    if (move.type === CustomMoveType.Pass) {
+      return [this.startRule(RuleId.CompleteObjective)]
     }
     return []
   }

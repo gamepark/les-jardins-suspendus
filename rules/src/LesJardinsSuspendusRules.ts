@@ -3,6 +3,7 @@ import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
 import { PlayerColor } from './PlayerColor'
 import { BuyEnhancementRule } from './rules/BuyEnhancementRule'
+import { CompleteObjectiveRule } from './rules/CompleteObjectiveRule'
 import { RuleId } from './rules/RuleId'
 import { PlaceGardenCardRule } from './rules/PlaceGardenCardRule'
 
@@ -16,7 +17,8 @@ export class LesJardinsSuspendusRules
 {
   rules = {
     [RuleId.PlaceGardenCard]: PlaceGardenCardRule,
-    [RuleId.BuyEnhancement]: BuyEnhancementRule
+    [RuleId.BuyEnhancement]: BuyEnhancementRule,
+    [RuleId.CompleteObjective]: CompleteObjectiveRule
   }
 
   locationsStrategies = {
