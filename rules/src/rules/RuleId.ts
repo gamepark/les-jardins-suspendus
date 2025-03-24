@@ -1,3 +1,4 @@
 export enum RuleId {
-  PlaceGardenCard = 1
+  PlaceGardenCard = 1,
+  BuyEnhancement
 }

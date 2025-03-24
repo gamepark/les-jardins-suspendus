@@ -3,8 +3,9 @@ import { minBy } from 'lodash'
 import { Garden, gardensAnatomy } from '../material/Garden'
 import { LocationType } from '../material/LocationType'
 import { MaterialType } from '../material/MaterialType'
+import { RuleId } from './RuleId'
 
-export class PlaceGardenCard extends PlayerTurnRule {
+export class PlaceGardenCardRule extends PlayerTurnRule {
   getPlayerMoves() {
     const cards = this.availableCards
     return this.validDestinations.flatMap((destination) =>
@@ -106,6 +107,7 @@ export class PlaceGardenCard extends PlayerTurnRule {
           moves.push(toolsStock.moveItem({ type: LocationType.PlayerTools, player: this.player }, move.location.y! + 1))
         }
       }
+      moves.push(this.startRule(RuleId.BuyEnhancement))
       return moves
     }
     return []

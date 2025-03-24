@@ -1,5 +1,5 @@
 import { MaterialContext, PileLocator } from '@gamepark/react-game'
-import { Location } from '../../../../rules-api/src'
+import { Location } from '@gamepark/rules-api/src'
 import { playerGardenLocator } from './PlayerGardenLocator'
 
 class PlayerToolsLocator extends PileLocator {

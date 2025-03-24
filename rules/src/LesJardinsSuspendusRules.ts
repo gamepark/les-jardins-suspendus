@@ -2,8 +2,9 @@ import { HiddenMaterialRules, hideItemId, MaterialGame, MaterialItem, MaterialMo
 import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
 import { PlayerColor } from './PlayerColor'
+import { BuyEnhancementRule } from './rules/BuyEnhancementRule'
 import { RuleId } from './rules/RuleId'
-import { PlaceGardenCard } from './rules/PlaceGardenCard'
+import { PlaceGardenCardRule } from './rules/PlaceGardenCardRule'
 
 /**
  * This class implements the rules of the board game.
@@ -14,7 +15,8 @@ export class LesJardinsSuspendusRules
   implements TimeLimit<MaterialGame<PlayerColor, MaterialType, LocationType>, MaterialMove<PlayerColor, MaterialType, LocationType>, PlayerColor>
 {
   rules = {
-    [RuleId.PlaceGardenCard]: PlaceGardenCard
+    [RuleId.PlaceGardenCard]: PlaceGardenCardRule,
+    [RuleId.BuyEnhancement]: BuyEnhancementRule
   }
 
   locationsStrategies = {
