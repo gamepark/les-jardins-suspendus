@@ -127,6 +127,8 @@
       "player.3": "Violet",
       "player.4": "Beige",
       "player.5": "Bleu",
+      "header.garden.you": "Vous devez placer une carte Jardin",
+      "header.garden.player": "{player} doit placer une carte Jardin",
       "Menu": "Menu",
       "OK": "OK",
       "Validate": "Valider",
