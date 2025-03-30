@@ -1,8 +1,11 @@
 import { css } from '@emotion/react'
 import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
+import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
+import { Memory } from '@gamepark/les-jardins-suspendus/rules/Memory'
+import { PlaceGardenCardRule } from '@gamepark/les-jardins-suspendus/rules/PlaceGardenCardRule'
+import { RuleId } from '@gamepark/les-jardins-suspendus/rules/RuleId'
 import { DropAreaDescription, HexagonalGridLocator, MaterialContext } from '@gamepark/react-game'
 import { HexGridSystem, Location } from '@gamepark/rules-api'
-import { range } from 'lodash'
 import { gameBoardDescription } from '../material/GameBoardDescription'
 import { gardenCardDescription } from '../material/GardenCardDescription'
 import { getPlayerLocation, PlayerColumn } from './PlayerLocation'
@@ -10,19 +13,11 @@ import { getPlayerLocation, PlayerColumn } from './PlayerLocation'
 class PlayerGardenLocator extends HexagonalGridLocator {
   locationDescription = new PlayerGardenDescription(gardenCardDescription)
 
-  getLocations(context: MaterialContext) {
-    return context.rules.players.flatMap((player) =>
-      range(-2, 3)
-        .map((x) => ({ x, y: 0 }))
-        .concat(range(-2, 2).map((x) => ({ x, y: 1 })))
-        .concat(range(-2, 1).map((x) => ({ x, y: 2 })))
-        .map(({ x, y }) => ({
-          type: LocationType.PlayerGarden,
-          player,
-          x,
-          y
-        }))
-    )
+  getLocations({ player, rules }: MaterialContext) {
+    if (rules.game.rule!.id === RuleId.PlaceGardenCard && !rules.remind(Memory.GardenPlaced) && rules.getActivePlayer() === player) {
+      return new PlaceGardenCardRule(rules.game).validDestinations
+    }
+    return []
   }
 
   coordinatesSystem = HexGridSystem.Axial
@@ -37,6 +32,15 @@ class PlayerGardenLocator extends HexagonalGridLocator {
       x: column === PlayerColumn.Left ? -35 : 35,
       y: this.baseY - line * deltaY
     }
+  }
+
+  getLocationCoordinates(location: Location, context: MaterialContext) {
+    const { x, y, z } = super.getLocationCoordinates(location, context)
+    const garden = context.rules.material(MaterialType.GardenCard).location(LocationType.PlayerGarden).player(location.player)
+    const minX = garden.minBy((item) => item.location.x!).getItem()?.location.x ?? 0
+    const maxX = garden.maxBy((item) => item.location.x!).getItem()?.location.x ?? 0
+    const deltaX = (minX - maxX) * this.size.x
+    return { x: x! + deltaX, y, z }
   }
 }
 

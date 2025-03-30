@@ -3,9 +3,15 @@ import { minBy } from 'lodash'
 import { Garden, gardensAnatomy } from '../material/Garden'
 import { LocationType } from '../material/LocationType'
 import { MaterialType } from '../material/MaterialType'
+import { Memory } from './Memory'
 import { RuleId } from './RuleId'
 
 export class PlaceGardenCardRule extends PlayerTurnRule {
+  onRuleStart() {
+    this.memorize(Memory.GardenPlaced, false)
+    return []
+  }
+
   getPlayerMoves() {
     const cards = this.availableCards
     return this.validDestinations.flatMap((destination) =>
@@ -65,6 +71,7 @@ export class PlaceGardenCardRule extends PlayerTurnRule {
 
   beforeItemMove(move: ItemMove) {
     if (isMoveItemType(MaterialType.GardenCard)(move) && move.location.type === LocationType.PlayerGarden) {
+      this.memorize(Memory.GardenPlaced, true)
       const origin = this.material(MaterialType.GardenCard).getItem(move.itemIndex).location
       if (origin.type === LocationType.MainBoardSpace) {
         const column = origin.id as number
@@ -110,6 +117,11 @@ export class PlaceGardenCardRule extends PlayerTurnRule {
       moves.push(this.startRule(RuleId.BuyEnhancement))
       return moves
     }
+    return []
+  }
+
+  onRuleEnd() {
+    this.forget(Memory.GardenPlaced)
     return []
   }
 }
