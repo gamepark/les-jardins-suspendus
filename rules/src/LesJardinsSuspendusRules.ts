@@ -35,6 +35,9 @@ export class LesJardinsSuspendusRules
     },
     [MaterialType.Gardener]: {
       [LocationType.GardenerSpace]: new PositiveSequenceStrategy()
+    },
+    [MaterialType.ObjectiveMarker]: {
+      [LocationType.ObjectiveSpace]: new PositiveSequenceStrategy()
     }
   }
 

@@ -11,17 +11,28 @@ class ObjectiveTileSpaceLocator extends Locator {
     return gameBoardDescription.getStaticItems(context)[0]
   }
 
-  getPositionOnParent(location: Location) {
-    switch (location.id as ObjectiveSpace) {
-      case ObjectiveSpace.Score5Or3:
-        return { x: 14, y: 12 }
-      case ObjectiveSpace.Score4Or2:
-        return { x: 38, y: 12 }
-      case ObjectiveSpace.ToolScore2Or1:
-        return { x: 62, y: 12 }
-      case ObjectiveSpace.GoldScore2Or1:
-        return { x: 86, y: 12 }
+  getPositionOnParent(location: Location, context: MaterialContext) {
+    return {
+      x: this.getPositionX(location.id as ObjectiveSpace),
+      y: this.getPositionY(gameBoardDescription.getBoardId(context))
     }
+  }
+
+  getPositionX(objectiveSpace: ObjectiveSpace) {
+    switch (objectiveSpace) {
+      case ObjectiveSpace.Score5Or3:
+        return 14
+      case ObjectiveSpace.Score4Or2:
+        return 38
+      case ObjectiveSpace.ToolScore2Or1:
+        return 62
+      case ObjectiveSpace.GoldScore2Or1:
+        return 86
+    }
+  }
+
+  getPositionY(boardSide: number) {
+    return boardSide === 1 ? 15.2 : 12
   }
 
   navigationSorts = []

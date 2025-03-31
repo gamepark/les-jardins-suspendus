@@ -15,5 +15,6 @@ export enum LocationType {
   PlayerTools,
   PlayerGarden,
   GardenerSpace,
-  EmptyGarden
+  EmptyGarden,
+  ObjectiveSpace
 }

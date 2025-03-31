@@ -3,10 +3,21 @@ export enum Objective {
   BlueFlowers,
   YellowFlowers,
   RedFlowers,
-  Trees,
   Animals,
+  Trees,
   Visitors,
   Crowns,
-  ToolsBonus,
-  GoldBonus
+  GoldBonus,
+  ToolsBonus
+}
+
+export function getObjectiveRequiredAmount(objective: Objective) {
+  switch (objective) {
+    case Objective.BlueFlowers:
+    case Objective.YellowFlowers:
+    case Objective.RedFlowers:
+      return 4
+    default:
+      return 3
+  }
 }

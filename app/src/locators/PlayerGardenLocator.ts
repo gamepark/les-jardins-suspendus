@@ -15,7 +15,7 @@ class PlayerGardenLocator extends HexagonalGridLocator {
 
   getLocations({ player, rules }: MaterialContext) {
     if (rules.game.rule!.id === RuleId.PlaceGardenCard && !rules.remind(Memory.GardenPlaced) && rules.getActivePlayer() === player) {
-      return new PlaceGardenCardRule(rules.game).validDestinations
+      return new PlaceGardenCardRule(rules.game).validDestinations.map((location) => ({ ...location, player }))
     }
     return []
   }
@@ -39,8 +39,8 @@ class PlayerGardenLocator extends HexagonalGridLocator {
     const garden = context.rules.material(MaterialType.GardenCard).location(LocationType.PlayerGarden).player(location.player)
     const minX = garden.minBy((item) => item.location.x!).getItem()?.location.x ?? 0
     const maxX = garden.maxBy((item) => item.location.x!).getItem()?.location.x ?? 0
-    const deltaX = (minX - maxX) * this.size.x
-    return { x: x! + deltaX, y, z }
+    const deltaX = (minX + maxX) * this.size.x
+    return { x: x! - deltaX, y, z }
   }
 }
 

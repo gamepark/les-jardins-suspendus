@@ -83,7 +83,7 @@ export function getGardenCards() {
   )
 }
 
-type GardenAnatomy = {
+export type GardenAnatomy = {
   main?: MainSight
   irrigation?: boolean
   flowers?: Flower[]
@@ -92,25 +92,25 @@ type GardenAnatomy = {
   tools?: boolean
 }
 
-enum Flower {
+export enum Flower {
   Blue = 1,
   Red,
   Yellow
 }
 
-enum Animal {
+export enum Animal {
   Lion = 1,
   Monkey,
   Peacock
 }
 
-enum Tree {
+export enum Tree {
   DragonTree = 11,
   Cedar,
   DatePalm
 }
 
-enum Visitor {
+export enum Visitor {
   BlueFlowers = 21,
   YellowFlowers,
   RedFlowers,
@@ -128,6 +128,10 @@ enum Visitor {
 }
 
 type MainSight = Animal | Tree | Visitor
+
+export const isAnimal = (main?: MainSight): main is Tree => main !== undefined && main < 10
+export const isTree = (main?: MainSight): main is Tree => main !== undefined && main > 10 && main < 20
+export const isVisitor = (main?: MainSight): main is Tree => main !== undefined && main > 20
 
 export const gardensAnatomy: Record<Garden, GardenAnatomy> = {
   [Garden.LionIrrigation]: { main: Animal.Lion, irrigation: true },

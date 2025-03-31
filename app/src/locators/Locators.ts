@@ -10,6 +10,7 @@ import { gardenerSpaceLocator } from './GardenerSpaceLocator'
 import { goldCoinsStockLocator } from './GoldCoinsStockLocator'
 import { mainBoardSpaceLocator } from './MainBoardSpaceLocator'
 import { miniBoardPlaceLocator } from './MiniBoardPlaceLocator'
+import { objectiveSpaceLocator } from './ObjectiveSpaceLocator'
 import { objectiveTileSpaceLocator } from './ObjectiveTileSpaceLocator'
 import { playerGardenersLocator } from './PlayerGardenersLocator'
 import { playerGardenLocator } from './PlayerGardenLocator'
@@ -35,5 +36,6 @@ export const Locators: Partial<Record<LocationType, Locator<PlayerColor, Materia
   [LocationType.PlayerTools]: playerToolsLocator,
   [LocationType.PlayerGarden]: playerGardenLocator,
   [LocationType.GardenerSpace]: gardenerSpaceLocator,
-  [LocationType.EmptyGarden]: emptyGardenLocator
+  [LocationType.EmptyGarden]: emptyGardenLocator,
+  [LocationType.ObjectiveSpace]: objectiveSpaceLocator
 }

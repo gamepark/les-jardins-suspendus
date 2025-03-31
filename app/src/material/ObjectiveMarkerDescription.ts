@@ -9,6 +9,7 @@ import RedMarker from '../images/markers/RedMarker.png'
 class ObjectiveMarkerDescription extends TokenDescription {
   width = 1.9
   height = 1.9
+  borderRadius = 1
 
   images = {
     [PlayerColor.Grey]: GreyMarker,
