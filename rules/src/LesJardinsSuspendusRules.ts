@@ -10,7 +10,9 @@ import {
   TimeLimit
 } from '@gamepark/rules-api'
 import { sumBy } from 'lodash'
-import { Flower } from './material/Garden'
+import { EnhancementId, enhancementsAnatomy } from './material/Enhancement'
+import { Flower, Garden, gardensAnatomy } from './material/Garden'
+import { IrrigationPattern, irrigationPatterns, irrigationScore } from './material/IrrigationPattern'
 import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
 import { PlayerColor } from './PlayerColor'
@@ -64,7 +66,7 @@ export class LesJardinsSuspendusRules
     }
   }
 
-  getScore(player: PlayerColor): number {
+  getScore(player: PlayerColor) {
     return (
       this.scoreIrrigation(player) +
       sumBy(getEnumValues(Flower), (flower) => this.scoreBlooms(player, flower)) +
@@ -75,8 +77,28 @@ export class LesJardinsSuspendusRules
     )
   }
 
-  scoreIrrigation(_playerId: PlayerColor): number {
-    return 0
+  scoreIrrigation(player: PlayerColor) {
+    const pattern = irrigationPatterns[this.material(MaterialType.IrrigationCard).player(player).getItem<IrrigationPattern>()!.id]
+    const garden = this.material(MaterialType.GardenCard).location(LocationType.PlayerGarden).player(player)
+    const xMin = garden.minBy((item) => item.location.x!).getItem()!.location.x!
+    const matches = pattern.reduce(
+      (sum, patternLine, y) =>
+        sum +
+        patternLine.reduce((sum, patternMatch, x) => {
+          if (!patternMatch) return sum
+          const gardenCard = garden.location((l) => l.x === x + xMin && l.y === 2 - y)
+          if (!gardenCard.length) return sum
+          const gardenAnatomy = gardensAnatomy[gardenCard.getItem<Garden>()!.id]
+          const enhancement = this.material(MaterialType.EnhancementTile)
+            .parent(gardenCard.getIndex())
+            .location(LocationType.EmptyGarden)
+            .getItem<EnhancementId>()
+          const irrigated = gardenAnatomy.irrigation === true || (enhancement && enhancementsAnatomy[enhancement.id.front!].irrigation)
+          return sum + (irrigated ? 1 : 0)
+        }, 0),
+      0
+    )
+    return irrigationScore[matches]
   }
 
   scoreBlooms(_playerId: PlayerColor, _flower: Flower): number {
