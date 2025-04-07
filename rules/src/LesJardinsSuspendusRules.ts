@@ -11,7 +11,7 @@ import {
 } from '@gamepark/rules-api'
 import { sumBy } from 'lodash'
 import { EnhancementId, enhancementsAnatomy } from './material/Enhancement'
-import { Flower, Garden, gardensAnatomy } from './material/Garden'
+import { Flower, Garden, gardensAnatomy, isAnimal } from './material/Garden'
 import { IrrigationPattern, irrigationPatterns, irrigationScore } from './material/IrrigationPattern'
 import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
@@ -109,8 +109,22 @@ export class LesJardinsSuspendusRules
     return 0
   }
 
-  scoreAnimals(_playerId: PlayerColor): number {
-    return 0
+  scoreAnimals(player: PlayerColor): number {
+    const garden = this.material(MaterialType.GardenCard).location(LocationType.PlayerGarden).player(player)
+    return sumBy(garden.entries, ([index, item]) => {
+      const anatomy = gardensAnatomy[item.id as Garden]
+      if (isAnimal(anatomy.main)) {
+        return anatomy.animalScoring![item.location.y!]
+      } else if (!anatomy.main) {
+        const enhancement = this.material(MaterialType.EnhancementTile).parent(index).location(LocationType.EmptyGarden).getItem<EnhancementId>()
+        if (enhancement) {
+          console.log(enhancement)
+          const enhancementAnatomy = enhancementsAnatomy[enhancement.id.front!]
+          return enhancementAnatomy.animalScoring?.[item.location.y!] ?? 0
+        }
+      }
+      return 0
+    })
   }
 
   scoreVisitors(_playerId: PlayerColor): number {

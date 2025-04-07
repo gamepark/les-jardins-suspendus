@@ -90,6 +90,7 @@ export type GardenAnatomy = {
   crown?: boolean
   gold?: boolean
   tools?: boolean
+  animalScoring?: number[]
 }
 
 export enum Flower {
@@ -134,18 +135,18 @@ export const isTree = (main?: MainSight): main is Tree => main !== undefined && 
 export const isVisitor = (main?: MainSight): main is Tree => main !== undefined && main > 20
 
 export const gardensAnatomy: Record<Garden, GardenAnatomy> = {
-  [Garden.LionIrrigation]: { main: Animal.Lion, irrigation: true },
-  [Garden.Lion]: { main: Animal.Lion },
-  [Garden.MonkeyIrrigation]: { main: Animal.Monkey, irrigation: true },
-  [Garden.MonkeyBY]: { main: Animal.Monkey, flowers: [Flower.Blue, Flower.Yellow] },
-  [Garden.MonkeyRY]: { main: Animal.Monkey, flowers: [Flower.Red, Flower.Yellow] },
-  [Garden.MonkeyBR]: { main: Animal.Monkey, flowers: [Flower.Blue, Flower.Red] },
-  [Garden.Monkey]: { main: Animal.Monkey },
-  [Garden.PeacockIrrigation]: { main: Animal.Peacock, irrigation: true },
-  [Garden.PeacockCrown]: { main: Animal.Peacock, crown: true },
-  [Garden.PeacockGold]: { main: Animal.Peacock, gold: true },
-  [Garden.PeacockTools]: { main: Animal.Peacock, tools: true },
-  [Garden.Peacock]: { main: Animal.Peacock },
+  [Garden.LionIrrigation]: { main: Animal.Lion, irrigation: true, animalScoring: [4, 2, 2] },
+  [Garden.Lion]: { main: Animal.Lion, animalScoring: [5, 3, 3] },
+  [Garden.MonkeyIrrigation]: { main: Animal.Monkey, irrigation: true, animalScoring: [2, 4, 2] },
+  [Garden.MonkeyBY]: { main: Animal.Monkey, flowers: [Flower.Blue, Flower.Yellow], animalScoring: [2, 3, 2] },
+  [Garden.MonkeyRY]: { main: Animal.Monkey, flowers: [Flower.Red, Flower.Yellow], animalScoring: [2, 3, 2] },
+  [Garden.MonkeyBR]: { main: Animal.Monkey, flowers: [Flower.Blue, Flower.Red], animalScoring: [2, 3, 2] },
+  [Garden.Monkey]: { main: Animal.Monkey, animalScoring: [3, 5, 3] },
+  [Garden.PeacockIrrigation]: { main: Animal.Peacock, irrigation: true, animalScoring: [2, 2, 4] },
+  [Garden.PeacockCrown]: { main: Animal.Peacock, crown: true, animalScoring: [2, 2, 4] },
+  [Garden.PeacockGold]: { main: Animal.Peacock, gold: true, animalScoring: [2, 2, 4] },
+  [Garden.PeacockTools]: { main: Animal.Peacock, tools: true, animalScoring: [2, 2, 4] },
+  [Garden.Peacock]: { main: Animal.Peacock, animalScoring: [3, 3, 5] },
   [Garden.DatePalm]: { main: Tree.DatePalm },
   [Garden.CedarIrrigation]: { main: Tree.Cedar, irrigation: true },
   [Garden.CedarCrown]: { main: Tree.Cedar, crown: true },
