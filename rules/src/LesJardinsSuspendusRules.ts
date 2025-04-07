@@ -1,6 +1,8 @@
 import {
   CompetitiveScore,
+  createAdjacentGroups,
   getEnumValues,
+  HexGridSystem,
   HiddenMaterialRules,
   hideItemId,
   MaterialGame,
@@ -9,9 +11,9 @@ import {
   PositiveSequenceStrategy,
   TimeLimit
 } from '@gamepark/rules-api'
-import { sumBy } from 'lodash'
+import { flatten, range, sum, sumBy, uniq } from 'lodash'
 import { EnhancementId, enhancementsAnatomy } from './material/Enhancement'
-import { Flower, Garden, gardensAnatomy, isAnimal } from './material/Garden'
+import { Flower, Garden, GardenAnatomy, gardensAnatomy, isAnimal } from './material/Garden'
 import { IrrigationPattern, irrigationPatterns, irrigationScore } from './material/IrrigationPattern'
 import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
@@ -77,6 +79,22 @@ export class LesJardinsSuspendusRules
     )
   }
 
+  getPlayerGardenAnatomy(player: PlayerColor): GardenAnatomy[][][] {
+    const result: GardenAnatomy[][][] = range(0, 3).map((y) => range(0, 5 - y).map((_x) => []))
+    const garden = this.material(MaterialType.GardenCard).location(LocationType.PlayerGarden).player(player)
+    const xMin = garden.minBy((item) => item.location.x!).getItem()!.location.x!
+    for (const [index, item] of garden.entries) {
+      const x = item.location.x! - xMin
+      const y = item.location.y!
+      result[y][x].push(gardensAnatomy[item.id as Garden])
+      const enhancement = this.material(MaterialType.EnhancementTile).parent(index).location(LocationType.EmptyGarden).getItem<EnhancementId>()
+      if (enhancement) {
+        result[y][x].push(enhancementsAnatomy[enhancement.id.front!])
+      }
+    }
+    return result
+  }
+
   scoreIrrigation(player: PlayerColor) {
     const pattern = irrigationPatterns[this.material(MaterialType.IrrigationCard).player(player).getItem<IrrigationPattern>()!.id]
     const garden = this.material(MaterialType.GardenCard).location(LocationType.PlayerGarden).player(player)
@@ -101,8 +119,10 @@ export class LesJardinsSuspendusRules
     return irrigationScore[matches]
   }
 
-  scoreBlooms(_playerId: PlayerColor, _flower: Flower): number {
-    return 0
+  scoreBlooms(player: PlayerColor, flower: Flower, anatomy = this.getPlayerGardenAnatomy(player)): number {
+    const flowersMap = anatomy.map((line) => line.map((anatomies) => sumBy(anatomies, (anatomy) => sumBy(anatomy.flowers, (f) => (f === flower ? 1 : 0)))))
+    const groups = uniq(flatten(createAdjacentGroups(flowersMap, { hexGridSystem: HexGridSystem.Axial })))
+    return Math.max(...groups.map((group) => sum(group.values)))
   }
 
   scoreTrees(_playerId: PlayerColor): number {
@@ -118,7 +138,6 @@ export class LesJardinsSuspendusRules
       } else if (!anatomy.main) {
         const enhancement = this.material(MaterialType.EnhancementTile).parent(index).location(LocationType.EmptyGarden).getItem<EnhancementId>()
         if (enhancement) {
-          console.log(enhancement)
           const enhancementAnatomy = enhancementsAnatomy[enhancement.id.front!]
           return enhancementAnatomy.animalScoring?.[item.location.y!] ?? 0
         }
