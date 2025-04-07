@@ -135,7 +135,7 @@ export const isVisitor = (main?: MainSight): main is Tree => main !== undefined 
 
 export const gardensAnatomy: Record<Garden, GardenAnatomy> = {
   [Garden.LionIrrigation]: { main: Animal.Lion, irrigation: true },
-  [Garden.Lion]: { main: Animal.Lion, irrigation: true },
+  [Garden.Lion]: { main: Animal.Lion },
   [Garden.MonkeyIrrigation]: { main: Animal.Monkey, irrigation: true },
   [Garden.MonkeyBY]: { main: Animal.Monkey, flowers: [Flower.Blue, Flower.Yellow] },
   [Garden.MonkeyRY]: { main: Animal.Monkey, flowers: [Flower.Red, Flower.Yellow] },

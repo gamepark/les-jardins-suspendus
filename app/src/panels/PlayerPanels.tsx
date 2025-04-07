@@ -1,7 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
-import { MaterialContext, StyledPlayerPanel, useMaterialContext, usePlayers } from '@gamepark/react-game'
+import { MaterialContext, StyledPlayerPanel, useMaterialContext, usePlayers, useRules } from '@gamepark/react-game'
 import { createPortal } from 'react-dom'
 import { getPlayerLocation, PlayerColumn } from '../locators/PlayerLocation'
 
@@ -9,15 +10,22 @@ export const PlayerPanels = () => {
   const players = usePlayers<PlayerColor>()
   const context = useMaterialContext()
   const root = document.getElementById('root')
+  const rules = useRules<LesJardinsSuspendusRules>()!
   if (!root) {
     return null
   }
 
   return createPortal(
     <>
-      {players.map((player) => (
-        <StyledPlayerPanel key={player.id} player={player} css={[panelCss, getPanelPosition(context, player.id)]} />
-      ))}
+      {players.map((player) => {
+        const counters = [
+          {
+            image: '',
+            value: rules.getScore(player.id)
+          }
+        ]
+        return <StyledPlayerPanel key={player.id} player={player} css={[panelCss, getPanelPosition(context, player.id)]} counters={counters} />
+      })}
     </>,
     root
   )
