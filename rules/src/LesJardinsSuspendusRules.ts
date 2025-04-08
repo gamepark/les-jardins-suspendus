@@ -165,7 +165,7 @@ export class LesJardinsSuspendusRules
       case Visitor.ToolsBonus:
         return sumBy(anatomy, (line) => sumBy(line, (anatomies) => sumBy(anatomies, (anatomy) => (anatomy.tools ? 1 : 0))))
       case Visitor.Objectives:
-        return this.material(MaterialType.ObjectiveMarker).player(player).location(LocationType.ObjectiveSpace).length * 2
+        return this.material(MaterialType.ObjectiveMarker).id(player).location(LocationType.ObjectiveSpace).length * 2
       case Visitor.Enhancement:
         return sumBy(anatomy, (line) => sumBy(line, (anatomies) => (anatomies.length === 2 ? 1 : 0))) * 2
       case Visitor.Flowers:
@@ -183,8 +183,19 @@ export class LesJardinsSuspendusRules
     return sumBy(anatomy, (line) => sumBy(line, (anatomies) => sumBy(anatomies, (anatomy) => (predicate(anatomy.main) ? 1 : 0))))
   }
 
-  scoreRoyalObjectives(_playerId: PlayerColor): number {
-    return 0
+  scoreRoyalObjectives(player: PlayerColor): number {
+    const markers = this.material(MaterialType.ObjectiveMarker).id(player).location(LocationType.ObjectiveSpace).getItems()
+    return sumBy(markers, (marker) => {
+      const isBest = this.game.players.length > 3 ? marker.location.x! < 2 : marker.location.x === 0
+      switch (marker.location.id) {
+        case 1:
+          return isBest ? 5 : 3
+        case 2:
+          return isBest ? 4 : 2
+        default:
+          return isBest ? 2 : 1
+      }
+    })
   }
 
   getTieBreaker(tieBreaker: number, player: PlayerColor) {
