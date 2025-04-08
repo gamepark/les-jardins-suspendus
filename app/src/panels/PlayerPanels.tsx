@@ -24,7 +24,14 @@ export const PlayerPanels = () => {
             value: rules.getScore(player.id)
           }
         ]
-        return <StyledPlayerPanel key={player.id} player={player} css={[panelCss, getPanelPosition(context, player.id)]} counters={counters} />
+        return (
+          <StyledPlayerPanel
+            key={player.id}
+            player={player}
+            css={[panelCss, getPanelPosition(context, player.id), getPanelBackground(player.id)]}
+            counters={counters}
+          />
+        )
       })}
     </>,
     root
@@ -56,3 +63,16 @@ const rightPanel = (top: number) => css`
   right: 1em;
   top: ${top}em;
 `
+
+const getPanelBackground = (player: PlayerColor) => css`
+  background: ${playerBackground[player][0]};
+  background: linear-gradient(90deg, ${playerBackground[player][0]} 0%, ${playerBackground[player][1]} 100%);
+`
+
+const playerBackground: Record<PlayerColor, [string, string]> = {
+  [PlayerColor.Grey]: ['#737f89', '#96a4b1'],
+  [PlayerColor.Red]: ['#801416', '#c5403b'],
+  [PlayerColor.Purple]: ['#58449a', '#6e62ac'],
+  [PlayerColor.Beige]: ['#eee5a3', '#f3f1b1'],
+  [PlayerColor.Blue]: ['#3ba1c8', '#4dc3f0']
+}
