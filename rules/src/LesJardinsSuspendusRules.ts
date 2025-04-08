@@ -13,7 +13,7 @@ import {
 } from '@gamepark/rules-api'
 import { flatten, range, sum, sumBy, uniq } from 'lodash'
 import { EnhancementId, enhancementsAnatomy } from './material/Enhancement'
-import { Flower, Garden, GardenAnatomy, gardensAnatomy, isAnimal, Tree, treeScore } from './material/Garden'
+import { Flower, Garden, GardenAnatomy, gardensAnatomy, isAnimal, isTree, isVisitor, MainSight, Tree, treeScore, Visitor } from './material/Garden'
 import { IrrigationPattern, irrigationPatterns, irrigationScore } from './material/IrrigationPattern'
 import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
@@ -73,9 +73,9 @@ export class LesJardinsSuspendusRules
     return (
       this.scoreIrrigation(player, anatomy) +
       sumBy(getEnumValues(Flower), (flower) => this.scoreBlooms(player, flower, anatomy)) +
-      this.scoreTrees(player) +
+      this.scoreTrees(player, anatomy) +
       this.scoreAnimals(player, anatomy) +
-      this.scoreVisitors(player) +
+      this.scoreVisitors(player, anatomy) +
       this.scoreRoyalObjectives(player)
     )
   }
@@ -133,8 +133,54 @@ export class LesJardinsSuspendusRules
     return sumBy(range(0, 3), (y) => sumBy(anatomy[y], (anatomies) => anatomies.find((anatomy) => isAnimal(anatomy.main))?.animalScoring![y] ?? 0))
   }
 
-  scoreVisitors(_playerId: PlayerColor): number {
-    return 0
+  scoreVisitors(player: PlayerColor, anatomy = this.getPlayerGardenAnatomy(player)): number {
+    return sumBy(
+      flatten(anatomy)
+        .map((anatomies) => anatomies[0].main)
+        .filter(isVisitor),
+      (visitor) => this.scoreVisitor(player, visitor, anatomy)
+    )
+  }
+
+  scoreVisitor(player: PlayerColor, visitor: Visitor, anatomy = this.getPlayerGardenAnatomy(player)) {
+    switch (visitor) {
+      case Visitor.BlueFlowers:
+        return this.countFlowers(Flower.Blue, anatomy)
+      case Visitor.YellowFlowers:
+        return this.countFlowers(Flower.Yellow, anatomy)
+      case Visitor.RedFlowers:
+        return this.countFlowers(Flower.Red, anatomy)
+      case Visitor.Irrigation:
+        return sumBy(anatomy, (line) => sumBy(line, (anatomies) => (anatomies.some((anatomy) => anatomy.irrigation) ? 1 : 0)))
+      case Visitor.Animals:
+        return this.countMainSight(anatomy, isAnimal)
+      case Visitor.Visitors:
+        return this.countMainSight(anatomy, isVisitor)
+      case Visitor.Trees:
+        return this.countMainSight(anatomy, isTree)
+      case Visitor.Crowns:
+        return sumBy(anatomy, (line) => sumBy(line, (anatomies) => sumBy(anatomies, (anatomy) => (anatomy.crown ? 1 : 0))))
+      case Visitor.GoldBonus:
+        return sumBy(anatomy, (line) => sumBy(line, (anatomies) => sumBy(anatomies, (anatomy) => (anatomy.gold ? 1 : 0))))
+      case Visitor.ToolsBonus:
+        return sumBy(anatomy, (line) => sumBy(line, (anatomies) => sumBy(anatomies, (anatomy) => (anatomy.tools ? 1 : 0))))
+      case Visitor.Objectives:
+        return this.material(MaterialType.ObjectiveMarker).player(player).location(LocationType.ObjectiveSpace).length * 2
+      case Visitor.Enhancement:
+        return sumBy(anatomy, (line) => sumBy(line, (anatomies) => (anatomies.length === 2 ? 1 : 0))) * 2
+      case Visitor.Flowers:
+        return Math.min(...getEnumValues(Flower).map((flower) => this.countFlowers(flower, anatomy))) * 2
+      case Visitor.TreeVisitorAnimal:
+        return Math.min(...[isAnimal, isVisitor, isTree].map((predicate) => this.countMainSight(anatomy, predicate))) * 3
+    }
+  }
+
+  countFlowers(flower: Flower, anatomy: GardenAnatomy[][][]) {
+    return sumBy(anatomy, (line) => sumBy(line, (anatomies) => sumBy(anatomies, (anatomy) => sumBy(anatomy.flowers, (f) => (f === flower ? 1 : 0)))))
+  }
+
+  countMainSight(anatomy: GardenAnatomy[][][], predicate: (main?: MainSight) => boolean) {
+    return sumBy(anatomy, (line) => sumBy(line, (anatomies) => sumBy(anatomies, (anatomy) => (predicate(anatomy.main) ? 1 : 0))))
   }
 
   scoreRoyalObjectives(_playerId: PlayerColor): number {

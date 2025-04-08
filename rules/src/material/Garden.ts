@@ -134,11 +134,11 @@ export enum Visitor {
   ToolsBonus
 }
 
-type MainSight = Animal | Tree | Visitor
+export type MainSight = Animal | Tree | Visitor
 
-export const isAnimal = (main?: MainSight): main is Tree => main !== undefined && main < 10
+export const isAnimal = (main?: MainSight): main is Animal => main !== undefined && main < 10
 export const isTree = (main?: MainSight): main is Tree => main !== undefined && main > 10 && main < 20
-export const isVisitor = (main?: MainSight): main is Tree => main !== undefined && main > 20
+export const isVisitor = (main?: MainSight): main is Visitor => main !== undefined && main > 20
 
 export const gardensAnatomy: Record<Garden, GardenAnatomy> = {
   [Garden.LionIrrigation]: { main: Animal.Lion, irrigation: true, animalScoring: [4, 2, 2] },
@@ -196,15 +196,15 @@ export const gardensAnatomy: Record<Garden, GardenAnatomy> = {
   [Garden.VisitorBlueFlowersIrrigation]: { main: Visitor.BlueFlowers, irrigation: true },
   [Garden.VisitorYellowFlowersIrrigation]: { main: Visitor.YellowFlowers, irrigation: true },
   [Garden.VisitorRedFlowersIrrigation]: { main: Visitor.RedFlowers, irrigation: true },
-  [Garden.VisitorIrrigation]: { main: Visitor.Irrigation },
-  [Garden.VisitorCrowns]: { main: Visitor.Crowns },
+  [Garden.VisitorIrrigation]: { main: Visitor.Irrigation, irrigation: true },
+  [Garden.VisitorCrowns]: { main: Visitor.Crowns, crown: true },
   [Garden.VisitorFlowers]: { main: Visitor.Flowers },
   [Garden.VisitorVisitorsIrrigation]: { main: Visitor.Visitors, irrigation: true },
   [Garden.VisitorObjectivesCrown]: { main: Visitor.Objectives, crown: true },
   [Garden.VisitorAnimalsCrown]: { main: Visitor.Animals, crown: true },
   [Garden.VisitorTreesCrown]: { main: Visitor.Trees, crown: true },
-  [Garden.VisitorGoldBonus]: { main: Visitor.GoldBonus, irrigation: true },
+  [Garden.VisitorGoldBonus]: { main: Visitor.GoldBonus, irrigation: true, gold: true },
   [Garden.VisitorEnhancementGold]: { main: Visitor.Enhancement, gold: true },
   [Garden.VisitorTreeVisitorAnimal]: { main: Visitor.TreeVisitorAnimal },
-  [Garden.VisitorToolsBonus]: { main: Visitor.ToolsBonus, irrigation: true }
+  [Garden.VisitorToolsBonus]: { main: Visitor.ToolsBonus, irrigation: true, tools: true }
 }
