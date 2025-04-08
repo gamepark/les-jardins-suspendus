@@ -9,5 +9,6 @@ export enum MaterialType {
   ObjectiveMarker,
   FirstPlayerMarker,
   GoldCoin,
-  Tool
+  Tool,
+  ScorePad
 }

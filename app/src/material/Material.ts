@@ -10,6 +10,7 @@ import { irrigationCardDescription } from './IrrigationCardDescription'
 import { miniBoardDescription } from './MiniBoardDescription'
 import { objectiveMarkerDescription } from './ObjectiveMarkerDescription'
 import { objectiveTileDescription } from './ObjectiveTileDescription'
+import { scorePadDescription } from './ScorePadDescription'
 import { toolDescription } from './ToolDescription'
 
 export const Material: Partial<Record<MaterialType, MaterialDescription>> = {
@@ -23,5 +24,6 @@ export const Material: Partial<Record<MaterialType, MaterialDescription>> = {
   [MaterialType.ObjectiveMarker]: objectiveMarkerDescription,
   [MaterialType.FirstPlayerMarker]: firstPlayerMarkerDescription,
   [MaterialType.GoldCoin]: goldCoinDescription,
-  [MaterialType.Tool]: toolDescription
+  [MaterialType.Tool]: toolDescription,
+  [MaterialType.ScorePad]: scorePadDescription
 }

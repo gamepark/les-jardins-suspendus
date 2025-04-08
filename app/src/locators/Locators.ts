@@ -18,6 +18,8 @@ import { playerGoldCoinsLocator } from './PlayerGoldCoinsLocator'
 import { playerIrrigationCardLocator } from './PlayerIrrigationCardLocator'
 import { playerObjectiveMarkersLocator } from './PlayerObjectiveMarkersLocator'
 import { playerToolsLocator } from './PlayerToolsLocator'
+import { scorePadBoxLocator } from './ScorePadBoxLocator'
+import { scorePadPlaceLocator } from './ScorePadPlaceLocator'
 import { toolsStockLocator } from './ToolsStockLocator'
 
 export const Locators: Partial<Record<LocationType, Locator<PlayerColor, MaterialType, LocationType>>> = {
@@ -37,5 +39,7 @@ export const Locators: Partial<Record<LocationType, Locator<PlayerColor, Materia
   [LocationType.PlayerGarden]: playerGardenLocator,
   [LocationType.GardenerSpace]: gardenerSpaceLocator,
   [LocationType.EmptyGarden]: emptyGardenLocator,
-  [LocationType.ObjectiveSpace]: objectiveSpaceLocator
+  [LocationType.ObjectiveSpace]: objectiveSpaceLocator,
+  [LocationType.ScorePadPlace]: scorePadPlaceLocator,
+  [LocationType.ScorePadBox]: scorePadBoxLocator
 }

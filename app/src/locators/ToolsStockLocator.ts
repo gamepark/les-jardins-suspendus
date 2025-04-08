@@ -1,8 +1,8 @@
 import { PileLocator } from '@gamepark/react-game'
-import { gardenCardDescription } from '../material/GardenCardDescription'
+import { miniBoardDescription } from '../material/MiniBoardDescription'
 
 class ToolsStockLocator extends PileLocator {
-  coordinates = { x: -30, y: gardenCardDescription.height / 2 }
+  coordinates = { x: -30, y: miniBoardDescription.height / 2 }
   radius = 3
 }
 

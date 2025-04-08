@@ -31,6 +31,6 @@ const tableBorder = css`
 `
 
 const navigationCss = css`
-  top: 50em;
+  top: 38em;
   left: 3em;
 `
