@@ -3,6 +3,7 @@ import { gardenCardDescription } from '../material/GardenCardDescription'
 
 class GardenCardsDeckLocator extends DeckLocator {
   coordinates = { x: -20, y: gardenCardDescription.height / 2 }
+  navigationSorts = []
 }
 
 export const gardenCardsDeckLocator = new GardenCardsDeckLocator()

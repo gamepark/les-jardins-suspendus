@@ -1,5 +1,7 @@
 import { Garden } from '@gamepark/les-jardins-suspendus/material/Garden'
+import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
 import { CardDescription } from '@gamepark/react-game'
+import { MaterialItem } from '../../../../rules-api'
 import CedarCrown from '../images/cards/gardens/CedarCrown.jpg'
 import CedarGold from '../images/cards/gardens/CedarGold.jpg'
 import CedarIrrigation from '../images/cards/gardens/CedarIrrigation.jpg'
@@ -142,6 +144,10 @@ class GardenCardDescription extends CardDescription {
   }
 
   backImage = GardenCardBack
+
+  isFlipped(item: Partial<MaterialItem>): boolean {
+    return item.location?.type === LocationType.GardenCardsDeck
+  }
 }
 
 export const gardenCardDescription = new GardenCardDescription()
