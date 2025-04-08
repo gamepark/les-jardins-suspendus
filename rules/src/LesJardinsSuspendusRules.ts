@@ -13,7 +13,7 @@ import {
 } from '@gamepark/rules-api'
 import { flatten, range, sum, sumBy, uniq } from 'lodash'
 import { EnhancementId, enhancementsAnatomy } from './material/Enhancement'
-import { Flower, Garden, GardenAnatomy, gardensAnatomy, isAnimal } from './material/Garden'
+import { Flower, Garden, GardenAnatomy, gardensAnatomy, isAnimal, Tree, treeScore } from './material/Garden'
 import { IrrigationPattern, irrigationPatterns, irrigationScore } from './material/IrrigationPattern'
 import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
@@ -115,8 +115,18 @@ export class LesJardinsSuspendusRules
     return Math.max(...groups.map((group) => sum(group.values)))
   }
 
-  scoreTrees(_playerId: PlayerColor): number {
-    return 0
+  scoreTrees(player: PlayerColor, anatomy = this.getPlayerGardenAnatomy(player)): number {
+    return sumBy(getEnumValues(Tree), (tree) => {
+      const treeMap = anatomy.map((line) => line.map((anatomies) => (anatomies.some((anatomy) => anatomy.main === tree) ? 1 : 0)))
+      const groups = uniq(flatten(createAdjacentGroups(treeMap, { hexGridSystem: HexGridSystem.Axial })))
+      const score = treeScore[tree]
+      return sumBy(groups, (group) => {
+        const size = group.values.length
+        const completeGroups = Math.floor(size / score.length)
+        const partialGroup = size % score.length
+        return completeGroups * score[score.length - 1] + (partialGroup ? score[partialGroup - 1] : 0)
+      })
+    })
   }
 
   scoreAnimals(player: PlayerColor, anatomy = this.getPlayerGardenAnatomy(player)): number {

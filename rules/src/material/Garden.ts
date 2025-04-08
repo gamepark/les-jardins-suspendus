@@ -111,6 +111,12 @@ export enum Tree {
   DatePalm
 }
 
+export const treeScore: Record<Tree, number[]> = {
+  [Tree.DragonTree]: [2, 7],
+  [Tree.Cedar]: [2, 5, 9],
+  [Tree.DatePalm]: [3, 7, 12, 18]
+}
+
 export enum Visitor {
   BlueFlowers = 21,
   YellowFlowers,
