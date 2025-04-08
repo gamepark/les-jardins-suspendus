@@ -197,8 +197,8 @@ export const gardensAnatomy: Record<Garden, GardenAnatomy> = {
   [Garden.VisitorObjectivesCrown]: { main: Visitor.Objectives, crown: true },
   [Garden.VisitorAnimalsCrown]: { main: Visitor.Animals, crown: true },
   [Garden.VisitorTreesCrown]: { main: Visitor.Trees, crown: true },
-  [Garden.VisitorGoldBonus]: { main: Visitor.GoldBonus },
+  [Garden.VisitorGoldBonus]: { main: Visitor.GoldBonus, irrigation: true },
   [Garden.VisitorEnhancementGold]: { main: Visitor.Enhancement, gold: true },
   [Garden.VisitorTreeVisitorAnimal]: { main: Visitor.TreeVisitorAnimal },
-  [Garden.VisitorToolsBonus]: { main: Visitor.ToolsBonus }
+  [Garden.VisitorToolsBonus]: { main: Visitor.ToolsBonus, irrigation: true }
 }

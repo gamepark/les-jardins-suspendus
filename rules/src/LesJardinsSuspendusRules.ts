@@ -69,11 +69,12 @@ export class LesJardinsSuspendusRules
   }
 
   getScore(player: PlayerColor) {
+    const anatomy = this.getPlayerGardenAnatomy(player)
     return (
-      this.scoreIrrigation(player) +
-      sumBy(getEnumValues(Flower), (flower) => this.scoreBlooms(player, flower)) +
+      this.scoreIrrigation(player, anatomy) +
+      sumBy(getEnumValues(Flower), (flower) => this.scoreBlooms(player, flower, anatomy)) +
       this.scoreTrees(player) +
-      this.scoreAnimals(player) +
+      this.scoreAnimals(player, anatomy) +
       this.scoreVisitors(player) +
       this.scoreRoyalObjectives(player)
     )
@@ -95,24 +96,13 @@ export class LesJardinsSuspendusRules
     return result
   }
 
-  scoreIrrigation(player: PlayerColor) {
+  scoreIrrigation(player: PlayerColor, anatomy = this.getPlayerGardenAnatomy(player)) {
     const pattern = irrigationPatterns[this.material(MaterialType.IrrigationCard).player(player).getItem<IrrigationPattern>()!.id]
-    const garden = this.material(MaterialType.GardenCard).location(LocationType.PlayerGarden).player(player)
-    const xMin = garden.minBy((item) => item.location.x!).getItem()!.location.x!
     const matches = pattern.reduce(
       (sum, patternLine, y) =>
         sum +
         patternLine.reduce((sum, patternMatch, x) => {
-          if (!patternMatch) return sum
-          const gardenCard = garden.location((l) => l.x === x + xMin && l.y === 2 - y)
-          if (!gardenCard.length) return sum
-          const gardenAnatomy = gardensAnatomy[gardenCard.getItem<Garden>()!.id]
-          const enhancement = this.material(MaterialType.EnhancementTile)
-            .parent(gardenCard.getIndex())
-            .location(LocationType.EmptyGarden)
-            .getItem<EnhancementId>()
-          const irrigated = gardenAnatomy.irrigation === true || (enhancement && enhancementsAnatomy[enhancement.id.front!].irrigation)
-          return sum + (irrigated ? 1 : 0)
+          return patternMatch && anatomy[2 - y][x].some((anatomy) => anatomy.irrigation) ? sum + 1 : sum
         }, 0),
       0
     )
@@ -129,21 +119,8 @@ export class LesJardinsSuspendusRules
     return 0
   }
 
-  scoreAnimals(player: PlayerColor): number {
-    const garden = this.material(MaterialType.GardenCard).location(LocationType.PlayerGarden).player(player)
-    return sumBy(garden.entries, ([index, item]) => {
-      const anatomy = gardensAnatomy[item.id as Garden]
-      if (isAnimal(anatomy.main)) {
-        return anatomy.animalScoring![item.location.y!]
-      } else if (!anatomy.main) {
-        const enhancement = this.material(MaterialType.EnhancementTile).parent(index).location(LocationType.EmptyGarden).getItem<EnhancementId>()
-        if (enhancement) {
-          const enhancementAnatomy = enhancementsAnatomy[enhancement.id.front!]
-          return enhancementAnatomy.animalScoring?.[item.location.y!] ?? 0
-        }
-      }
-      return 0
-    })
+  scoreAnimals(player: PlayerColor, anatomy = this.getPlayerGardenAnatomy(player)): number {
+    return sumBy(range(0, 3), (y) => sumBy(anatomy[y], (anatomies) => anatomies.find((anatomy) => isAnimal(anatomy.main))?.animalScoring![y] ?? 0))
   }
 
   scoreVisitors(_playerId: PlayerColor): number {
