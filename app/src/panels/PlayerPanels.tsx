@@ -1,9 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
+import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
 import { MaterialContext, StyledPlayerPanel, useMaterialContext, usePlayers, useRules } from '@gamepark/react-game'
 import { createPortal } from 'react-dom'
+import GoldCoin from '../images/GoldCoin.png'
+import Tool from '../images/Tool.png'
 import { getPlayerLocation, PlayerColumn } from '../locators/PlayerLocation'
 
 export const PlayerPanels = () => {
@@ -20,8 +23,12 @@ export const PlayerPanels = () => {
       {players.map((player) => {
         const counters = [
           {
-            image: '',
-            value: rules.getScore(player.id)
+            image: Tool,
+            value: rules.material(MaterialType.Tool).player(player.id).getQuantity()
+          },
+          {
+            image: GoldCoin,
+            value: rules.material(MaterialType.GoldCoin).player(player.id).getQuantity()
           }
         ]
         return (
@@ -46,7 +53,7 @@ const panelCss = css`
 function getPanelPosition(context: MaterialContext, player: PlayerColor) {
   const { line, column } = getPlayerLocation(context, player)
   const is5Players = context.rules.players.length === 5
-  const topMax = is5Players ? 70 : 68
+  const topMax = is5Players ? 69.8 : 68
   if (column === PlayerColumn.Left) {
     return leftPanel(topMax - line * (is5Players ? 28 : 29.7))
   } else {

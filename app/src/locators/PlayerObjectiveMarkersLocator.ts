@@ -8,7 +8,7 @@ class PlayerObjectiveMarkersLocator extends ListLocator {
   getCoordinates(location: Location, context: MaterialContext) {
     const { x, y } = playerGardenLocator.getCoordinates(location, context)
     return {
-      x: x < 0 ? x + 21 : x - 21,
+      x: x < 0 ? x + 20 : x - 20,
       y: y - 14.8
     }
   }

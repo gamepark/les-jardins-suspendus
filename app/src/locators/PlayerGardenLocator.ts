@@ -29,7 +29,7 @@ class PlayerGardenLocator extends HexagonalGridLocator {
     const { column, line } = getPlayerLocation(context, location.player!)
     const deltaY = context.rules.players.length === 5 && column === PlayerColumn.Right ? 20 : 18.2
     return {
-      x: column === PlayerColumn.Left ? -35 : 35,
+      x: column === PlayerColumn.Left ? -34 : 34,
       y: this.baseY - line * deltaY
     }
   }

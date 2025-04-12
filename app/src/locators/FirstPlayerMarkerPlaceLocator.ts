@@ -6,7 +6,7 @@ class FirstPlayerMarkerPlaceLocator extends Locator {
   getCoordinates(location: Location, context: MaterialContext) {
     const { x, y } = playerGardenLocator.getCoordinates(location, context)
     return {
-      x: x < 0 ? x + 19.3 : x - 19.3,
+      x: x < 0 ? x + 18.9 : x - 18.9,
       y: y - 0.1
     }
   }

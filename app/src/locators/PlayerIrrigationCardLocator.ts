@@ -6,8 +6,8 @@ class PlayerIrrigationCardLocator extends Locator {
   getCoordinates(location: Location, context: MaterialContext) {
     const { x, y } = playerGardenLocator.getCoordinates(location, context)
     return {
-      x: x < 0 ? x - 20 : x + 20,
-      y: y - 6.3
+      x: x < 0 ? x - 22 : x + 22,
+      y: y - 3
     }
   }
 }
