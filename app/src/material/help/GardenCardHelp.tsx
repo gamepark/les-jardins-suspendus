@@ -14,6 +14,7 @@ import CrownIcon from '../../images/icons/CrownIcon.png'
 import GoldLevelIcon from '../../images/icons/GoldLevelIcon.png'
 import Irrigated from '../../images/icons/Irrigated.jpg'
 import RedFlower from '../../images/icons/RedFlower.png'
+import ToolLevelIcon from '../../images/icons/ToolLevelIcon.png'
 import TreeIcon from '../../images/icons/Tree.png'
 import VisitorIcon from '../../images/icons/Visitor.png'
 import YellowFlower from '../../images/icons/YellowFlower.png'
@@ -104,6 +105,7 @@ const GardenCardAnatomyHelp = ({ garden }: { garden: Garden }) => {
       {!anatomy.main && <EmptyCardHelp />}
       {anatomy.crown && <CrownHelp />}
       {anatomy.gold && <GoldHelp />}
+      {anatomy.tools && <ToolsHelp />}
     </>
   )
 }
@@ -235,6 +237,20 @@ const GoldHelp = () => {
         components={{
           icon: <Picture src={GoldLevelIcon} css={pictureCss} />,
           gold: <PlayMoveButton css={linkButtonCss} move={displayMaterialHelp(MaterialType.GoldCoin)} transient />
+        }}
+      />
+    </p>
+  )
+}
+
+const ToolsHelp = () => {
+  return (
+    <p>
+      <Trans
+        defaults="card.tools"
+        components={{
+          icon: <Picture src={ToolLevelIcon} css={pictureCss} />,
+          tool: <PlayMoveButton css={linkButtonCss} move={displayMaterialHelp(MaterialType.Tool)} transient />
         }}
       />
     </p>
