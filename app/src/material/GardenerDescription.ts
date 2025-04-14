@@ -5,6 +5,7 @@ import BlueGardener from '../images/gardeners/BlueGardener.png'
 import GreyGardener from '../images/gardeners/GreyGardener.png'
 import PurpleGardener from '../images/gardeners/PurpleGardener.png'
 import RedGardener from '../images/gardeners/RedGardener.png'
+import { GardenerHelp } from './help/GardenerHelp'
 
 class GardenerDescription extends TokenDescription {
   width = 1.95
@@ -17,6 +18,8 @@ class GardenerDescription extends TokenDescription {
     [PlayerColor.Beige]: BeigeGardener,
     [PlayerColor.Blue]: BlueGardener
   }
+
+  help = GardenerHelp
 }
 
 export const gardenerDescription = new GardenerDescription()
