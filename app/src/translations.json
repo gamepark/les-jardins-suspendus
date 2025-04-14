@@ -147,6 +147,8 @@
       "board.cards.rules": "Pour pouvoir prendre une carte Jardin, il faut un emplacement libre sur le <mini>mini-plateau</mini> pour votre <gardener>jardinier</gardener> dans la colonne correspondante, et il vous faut payer entre 0 et 3 <tool>outils</tool>, selon la ligne où se trouve la carte.",
       "mini-board": "Mini-plateau",
       "mini-board.players": "Sous chaque colonne, il y a autant d'emplacements que le nombre de joueurs dans la partie.",
+      "card": "Carte Jardin",
+      "card.deck": "Il reste {cards} cartes dans la pioche.",
       "Menu": "Menu",
       "OK": "OK",
       "Validate": "Valider",

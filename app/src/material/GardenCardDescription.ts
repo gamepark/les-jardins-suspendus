@@ -69,6 +69,7 @@ import VisitorTreesCrown from '../images/cards/gardens/VisitorTreesCrown.jpg'
 import VisitorTreeVisitorAnimal from '../images/cards/gardens/VisitorTreeVisitorAnimal.jpg'
 import VisitorVisitorsIrrigation from '../images/cards/gardens/VisitorVisitorsIrrigation.jpg'
 import VisitorYellowFlowersIrrigation from '../images/cards/gardens/VisitorYellowFlowersIrrigation.jpg'
+import { GardenCardHelp } from './help/GardenCardHelp'
 
 class GardenCardDescription extends CardDescription {
   width = 6
@@ -148,6 +149,8 @@ class GardenCardDescription extends CardDescription {
   isFlipped(item: Partial<MaterialItem>): boolean {
     return item.location?.type === LocationType.GardenCardsDeck
   }
+
+  help = GardenCardHelp
 }
 
 export const gardenCardDescription = new GardenCardDescription()
