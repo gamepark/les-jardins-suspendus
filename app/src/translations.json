@@ -7,6 +7,7 @@
       "player.3": "Purple",
       "player.4": "Beige",
       "player.5": "Blue",
+      "board": "Main board",
       "Menu": "Menu",
       "OK": "OK",
       "Validate": "Validate",
@@ -80,6 +81,8 @@
       "fs.dialog.p2": "You can also enable fullscreen.",
       "Enable sound": "Enable sound",
       "Mute sound": "Mute sound",
+      "Enable live history": "Show history",
+      "Disable live history": "Hide history",
       "Light mode": "Light mode",
       "Dark mode": "Dark mode",
       "Back to Game Park": "Back to Game Park",
@@ -116,7 +119,9 @@
       "time.wait.max": "Maximum down time",
       "time.awaited": "Made others wait (average)",
       "tuto.over": "Congratulations, you've completed the tutorial!\r\nReady to play with other players?",
-      "quantity.tooltip": "Quantity: {n}"
+      "quantity.tooltip": "Quantity: {n}",
+      "history.game.start": "Start of the game",
+      "history.game.over": "End of the game"
     }
   },
   "fr": {
@@ -135,6 +140,11 @@
       "header.objective.player": "{player} peut validez un objectif royal",
       "header.reveal-card": "Une nouvelle carte Jardin est révélée",
       "header.end-round": "Chaque joueur récupère ses jardiniers",
+      "board": "Plateau principal",
+      "board.objectives": "En haut du plateau se trouvent les <objective>objectifs royaux</objective>.",
+      "board.enhancements": "Au milieu se trouve les 3 <enhancement>tuiles Embelissement</enhancement> disponibles à l'achat, pour 2, 3 ou 4 <gold>pièces d'or</gold>.",
+      "board.cards": "En bas se trouvent les 12 <card>cartes Jardin</card> disponibles.",
+      "board.cards.rules": "Pour pouvoir prendre une carte Jardin, il faut un emplacement libre sur le <mini>mini-plateau</mini> pour votre <gardener>jardinier</gardener> dans la colonne correspondante, et il vous faut payer entre 0 et 3 <tool>outils</tool>, selon la ligne où se trouve la carte.",
       "Menu": "Menu",
       "OK": "OK",
       "Validate": "Valider",
@@ -208,6 +218,8 @@
       "fs.dialog.p2": "Vous pouvez aussi passer en plein écran.",
       "Enable sound": "Activer le son",
       "Mute sound": "Couper le son",
+      "Enable live history": "Afficher l'historique",
+      "Disable live history": "Masquer l'historique",
       "Light mode": "Mode clair",
       "Dark mode": "Mode sombre",
       "Back to Game Park": "Retour à Game Park",
@@ -215,7 +227,7 @@
       "Ranking": "Classement",
       "result.comp.victory": "Bravo, vous remportez la partie !",
       "result.comp.winner": "{player} remporte la partie",
-      "result.comp.tie.you": "Égalité ! Vous partagez la victoire avec {tied, plural, one{# autre joueur} other{#autres joueurs}}.",
+      "result.comp.tie.you": "Égalité ! Vous partagez la victoire avec {tied, plural, one{# autre joueur} other{# autres joueurs}}.",
       "result.comp.tie.other": "Égalité ! {tied} joueurs partagent la victoire.",
       "result.comp.tie.all": "Égalité ! Les joueurs partagent la victoire.",
       "result.score.victory": "Bravo, vous remportez la partie avec {score, plural, one{# point} other{# points}} !",
@@ -244,7 +256,9 @@
       "time.wait.max": "Temps d’attente maximum",
       "time.awaited": "A fait attendre les autres (moyenne)",
       "tuto.over": "Félicitations, vous avez terminé le tutoriel !\nPrêt⸱e à jouer avec d’autres joueurs ?",
-      "quantity.tooltip": "Quantité : {n}"
+      "quantity.tooltip": "Quantité : {n}",
+      "history.game.start": "Début de la partie",
+      "history.game.over": "Fin de la partie"
     }
   },
   "es": {
