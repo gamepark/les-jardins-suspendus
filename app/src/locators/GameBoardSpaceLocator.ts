@@ -3,7 +3,7 @@ import { Locator, MaterialContext } from '@gamepark/react-game'
 import { Location } from '@gamepark/rules-api'
 import { gameBoardDescription } from '../material/GameBoardDescription'
 
-class MainBoardSpaceLocator extends Locator {
+class GameBoardSpaceLocator extends Locator {
   parentItemType = MaterialType.GameBoard
 
   getParentItem(_location: Location, context: MaterialContext) {
@@ -18,4 +18,4 @@ class MainBoardSpaceLocator extends Locator {
   navigationSorts = []
 }
 
-export const mainBoardSpaceLocator = new MainBoardSpaceLocator()
+export const gameBoardSpaceLocator = new GameBoardSpaceLocator()

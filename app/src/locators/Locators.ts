@@ -8,7 +8,7 @@ import { firstPlayerMarkerPlaceLocator } from './FirstPlayerMarkerPlaceLocator'
 import { gardenCardsDeckLocator } from './GardenCardsDeckLocator'
 import { gardenerSpaceLocator } from './GardenerSpaceLocator'
 import { goldCoinsStockLocator } from './GoldCoinsStockLocator'
-import { mainBoardSpaceLocator } from './MainBoardSpaceLocator'
+import { gameBoardSpaceLocator } from './GameBoardSpaceLocator'
 import { miniBoardPlaceLocator } from './MiniBoardPlaceLocator'
 import { objectiveSpaceLocator } from './ObjectiveSpaceLocator'
 import { objectiveTileSpaceLocator } from './ObjectiveTileSpaceLocator'
@@ -25,7 +25,7 @@ import { toolsStockLocator } from './ToolsStockLocator'
 export const Locators: Partial<Record<LocationType, Locator<PlayerColor, MaterialType, LocationType>>> = {
   [LocationType.MiniBoardPlace]: miniBoardPlaceLocator,
   [LocationType.GardenCardsDeck]: gardenCardsDeckLocator,
-  [LocationType.MainBoardSpace]: mainBoardSpaceLocator,
+  [LocationType.GameBoardSpace]: gameBoardSpaceLocator,
   [LocationType.EnhancementPile]: enhancementPileLocator,
   [LocationType.ObjectiveTileSpace]: objectiveTileSpaceLocator,
   [LocationType.PlayerIrrigationCard]: playerIrrigationCardLocator,

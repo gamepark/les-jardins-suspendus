@@ -46,7 +46,7 @@ export class LesJardinsSuspendusRules
   locationsStrategies = {
     [MaterialType.GardenCard]: {
       [LocationType.GardenCardsDeck]: new PositiveSequenceStrategy(),
-      [LocationType.MainBoardSpace]: new PositiveSequenceStrategy('y')
+      [LocationType.GameBoardSpace]: new PositiveSequenceStrategy('y')
     },
     [MaterialType.EnhancementTile]: {
       [LocationType.EnhancementPile]: new PositiveSequenceStrategy()

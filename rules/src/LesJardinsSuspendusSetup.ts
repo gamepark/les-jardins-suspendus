@@ -37,9 +37,9 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
 
   dealGardenCards() {
     const deck = this.material(MaterialType.GardenCard).location(LocationType.GardenCardsDeck).deck()
-    deck.deal({ type: LocationType.MainBoardSpace, id: 1 }, 4)
-    deck.deal({ type: LocationType.MainBoardSpace, id: 2 }, 4)
-    deck.deal({ type: LocationType.MainBoardSpace, id: 3 }, 4)
+    deck.deal({ type: LocationType.GameBoardSpace, id: 1 }, 4)
+    deck.deal({ type: LocationType.GameBoardSpace, id: 2 }, 4)
+    deck.deal({ type: LocationType.GameBoardSpace, id: 3 }, 4)
   }
 
   setupEnhancementTiles() {

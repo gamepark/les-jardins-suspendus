@@ -27,7 +27,7 @@ export class PlaceGardenCardRule extends PlayerTurnRule {
     const tools = this.material(MaterialType.Tool).location(LocationType.PlayerTools).player(this.player).getQuantity()
     const columns = this.availableColumns
     return this.material(MaterialType.GardenCard)
-      .location(LocationType.MainBoardSpace)
+      .location(LocationType.GameBoardSpace)
       .locationId<number>((id) => columns.includes(id))
       .location((l) => l.y! <= tools)
   }
@@ -73,7 +73,7 @@ export class PlaceGardenCardRule extends PlayerTurnRule {
     if (isMoveItemType(MaterialType.GardenCard)(move) && move.location.type === LocationType.PlayerGarden) {
       this.memorize(Memory.GardenPlaced, true)
       const origin = this.material(MaterialType.GardenCard).getItem(move.itemIndex).location
-      if (origin.type === LocationType.MainBoardSpace) {
+      if (origin.type === LocationType.GameBoardSpace) {
         const column = origin.id as number
         const playerGardeners = this.material(MaterialType.Gardener).location(LocationType.PlayerGardeners).player(this.player)
         const moves = [

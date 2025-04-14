@@ -5,9 +5,9 @@ import { RuleId } from './RuleId'
 
 export class RevealNewGardenCardRule extends PlayerTurnRule {
   onRuleStart() {
-    const column = [1, 2, 3].find((column) => this.material(MaterialType.GardenCard).location(LocationType.MainBoardSpace).locationId(column).length < 4)
+    const column = [1, 2, 3].find((column) => this.material(MaterialType.GardenCard).location(LocationType.GameBoardSpace).locationId(column).length < 4)
     const moves: MaterialMove[] = [
-      this.material(MaterialType.GardenCard).location(LocationType.GardenCardsDeck).deck().dealOne({ type: LocationType.MainBoardSpace, id: column })
+      this.material(MaterialType.GardenCard).location(LocationType.GardenCardsDeck).deck().dealOne({ type: LocationType.GameBoardSpace, id: column })
     ]
     const enhancements = this.material(MaterialType.EnhancementTile).location(LocationType.EnhancementPile)
     const enhancementToReveal = enhancements.location(
