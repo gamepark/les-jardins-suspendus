@@ -86,6 +86,7 @@ const GardenCardAnatomyHelp = ({ garden }: { garden: Garden }) => {
       {isAnimal(anatomy.main) && <AnimalHelp animal={anatomy.main} scoring={anatomy.animalScoring!} />}
       {isTree(anatomy.main) && <TreeHelp tree={anatomy.main} />}
       {isVisitor(anatomy.main) && <VisitorHelp visitor={anatomy.main} />}
+      {!anatomy.main && <EmptyCardHelp />}
     </>
   )
 }
@@ -182,4 +183,9 @@ const VisitorHelp = ({ visitor }: { visitor: Visitor }) => {
       {t(`visitor.${visitor}`)}
     </p>
   )
+}
+
+const EmptyCardHelp = () => {
+  const { t } = useTranslation()
+  return <p>{t('card.empty')}</p>
 }
