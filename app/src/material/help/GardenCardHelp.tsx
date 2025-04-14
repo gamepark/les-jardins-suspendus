@@ -18,14 +18,14 @@ import YellowFlower from '../../images/icons/YellowFlower.png'
 import { scorePadDescription } from '../ScorePadDescription'
 import displayMaterialHelp = MaterialMoveBuilder.displayMaterialHelp
 
-export const GardenCardHelp = ({ item }: MaterialHelpProps) => {
+export const GardenCardHelp = ({ item, itemIndex }: MaterialHelpProps) => {
   const { t } = useTranslation()
 
   return (
     <>
       <h2>{t('card')}</h2>
       {item.location?.type === LocationType.GardenCardsDeck && <GardenCardDeckHelp />}
-      {item.location?.type === LocationType.PlayerGarden && <GardenCardInGardenHelp location={item.location} />}
+      {item.location?.type === LocationType.PlayerGarden && <GardenCardInGardenHelp location={item.location} index={itemIndex} />}
       {item.location?.type === LocationType.GameBoardSpace && <GardenCardAvailableHelp location={item.location} />}
       {item.id !== undefined && <GardenCardAnatomyHelp garden={item.id} />}
     </>
@@ -39,16 +39,29 @@ const GardenCardDeckHelp = () => {
   return <p>{t('card.deck', { cards })}</p>
 }
 
-const GardenCardInGardenHelp = ({ location }: { location: Location }) => {
+const GardenCardInGardenHelp = ({ location, index }: { location: Location; index?: number }) => {
   const { t } = useTranslation()
   const me = usePlayerId()
   const player = usePlayerName(location.player)
   const level = location.y! + 1
-  if (location.player === me) {
-    return <p>{t('card.garden.you', { level })}</p>
-  } else {
-    return <p>{t('card.garden.player', { level, player })}</p>
-  }
+  const rules = useRules<LesJardinsSuspendusRules>()!
+  const enhancement = rules.material(MaterialType.EnhancementTile).parent(index ?? -1)
+  const displayEnhancementHelp = displayMaterialHelp(MaterialType.EnhancementTile, enhancement.getItem(), enhancement.getIndex())
+  return (
+    <>
+      <p>{t(location.player === me ? 'card.garden.you' : 'card.garden.player', { level, player })}</p>
+      {enhancement.length === 1 && (
+        <p>
+          <Trans
+            defaults="card.enhancement"
+            components={{
+              enhancement: <PlayMoveButton css={linkButtonCss} move={displayEnhancementHelp} transient />
+            }}
+          />
+        </p>
+      )}
+    </>
+  )
 }
 
 const GardenCardAvailableHelp = ({ location }: { location: Location }) => {

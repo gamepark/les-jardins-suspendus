@@ -175,6 +175,7 @@
       "card.deck": "Il reste {cards} cartes dans la pioche.",
       "card.garden.you": "Cette carte est au {level, plural, =1{1er} other{#ème}} étage de votre jardin.",
       "card.garden.player": "Cette carte est au {level, plural, =1{1er} other{#ème}} étage du jardin de {player}.",
+      "card.enhancement": "<enhancement>Un embellissement</enhancement> est placé sur cette carte.",
       "card.free": "Cette carte est disponible gratuitement.",
       "card.cost": "Cette carte est disponible pour {cost} <tool/>.",
       "card.irrigated": "<irrigated/> : La <card>carte Irrigation</card> que vous avez reçue au début de la partie vous indique où placer vos cartes Jardin avec de l’irrigation pour marquer des points de victoire en fin de partie. Vous pouvez placer vos cartes irriguées ailleurs dans votre jardin, mais elles ne rapporteront pas de points d’irrigation.",
