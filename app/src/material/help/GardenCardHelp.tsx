@@ -1,14 +1,19 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
-import { Garden, gardensAnatomy } from '@gamepark/les-jardins-suspendus/material/Garden'
+import { Animal, Flower, Garden, gardensAnatomy, isAnimal } from '@gamepark/les-jardins-suspendus/material/Garden'
 import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
 import { linkButtonCss, MaterialComponent, MaterialHelpProps, Picture, PlayMoveButton, usePlayerId, usePlayerName, useRules } from '@gamepark/react-game'
 import { Location, MaterialMoveBuilder } from '@gamepark/rules-api'
 import { Trans, useTranslation } from 'react-i18next'
+import AnimalIcon from '../../images/icons/Animal.png'
+import BlueFlower from '../../images/icons/BlueFlower.png'
 import Irrigated from '../../images/icons/Irrigated.jpg'
+import RedFlower from '../../images/icons/RedFlower.png'
+import YellowFlower from '../../images/icons/YellowFlower.png'
+import { scorePadDescription } from '../ScorePadDescription'
 import displayMaterialHelp = MaterialMoveBuilder.displayMaterialHelp
 
 export const GardenCardHelp = ({ item }: MaterialHelpProps) => {
@@ -72,7 +77,13 @@ const toolCss = css`
 
 const GardenCardAnatomyHelp = ({ garden }: { garden: Garden }) => {
   const anatomy = gardensAnatomy[garden]
-  return <>{anatomy.irrigation && <IrrigationHelp />}</>
+  return (
+    <>
+      {anatomy.irrigation && <IrrigationHelp />}
+      {anatomy.flowers && <FlowersHelp flowers={anatomy.flowers} />}
+      {isAnimal(anatomy.main) && <AnimalHelp animal={anatomy.main} scoring={anatomy.animalScoring!} />}
+    </>
+  )
 }
 
 const IrrigationHelp = () => {
@@ -98,3 +109,45 @@ const pictureCss = css`
   vertical-align: sub;
   height: 1.5em;
 `
+
+const FlowersHelp = ({ flowers }: { flowers: Flower[] }) => {
+  return (
+    <p>
+      <Trans
+        defaults="card.flowers"
+        components={{
+          flowers: (
+            <>
+              {flowers.map((flower, index) => (
+                <Picture key={index} src={flowerIcon[flower]} css={pictureCss} />
+              ))}
+            </>
+          ),
+          score: <PlayMoveButton css={linkButtonCss} move={displayMaterialHelp(MaterialType.ScorePad, scorePadDescription.staticItem)} transient />
+        }}
+      />
+    </p>
+  )
+}
+
+const flowerIcon = {
+  [Flower.Blue]: BlueFlower,
+  [Flower.Red]: RedFlower,
+  [Flower.Yellow]: YellowFlower
+}
+
+const AnimalHelp = ({ animal, scoring }: { animal: Animal; scoring: number[] }) => {
+  const min = Math.min(...scoring)
+  const max = Math.max(...scoring)
+  return (
+    <p>
+      <Trans
+        defaults={`card.animal.${animal}`}
+        values={{ min, max }}
+        components={{
+          animal: <Picture src={AnimalIcon} css={pictureCss} />
+        }}
+      />
+    </p>
+  )
+}
