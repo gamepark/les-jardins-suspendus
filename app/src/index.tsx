@@ -7,6 +7,7 @@ import { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
 import { gameAnimations } from './animations/GameAnimations'
 import App from './App'
+import { LesJardinsSuspendusScoringDescription } from './LesJardinsSuspendusScoringDescription'
 import { Locators } from './locators/Locators'
 import { Material } from './material/Material'
 import translations from './translations.json'
@@ -23,6 +24,7 @@ ReactDOM.render(
       material={Material}
       locators={Locators}
       animations={gameAnimations}
+      scoring={new LesJardinsSuspendusScoringDescription()}
     >
       <App />
     </GameProvider>
