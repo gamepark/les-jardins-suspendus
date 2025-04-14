@@ -75,8 +75,8 @@ const GardenCardAvailableHelp = ({ location }: { location: Location }) => {
   }
 }
 
-const toolCss = css`
-  display: inline-block;
-  vertical-align: sub;
-  font-size: 0.5em;
-`
+  const toolCss = css`
+    display: inline-block;
+    vertical-align: sub;
+    font-size: 0.5em;
+  `

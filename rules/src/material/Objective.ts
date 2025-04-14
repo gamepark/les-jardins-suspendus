@@ -1,14 +1,14 @@
 export enum Objective {
-  Irrigation = 1,
+  Animals = 1,
+  Trees,
+  Irrigation,
+  Visitors,
+  GoldBonus,
+  ToolsBonus,
+  Crowns,
   BlueFlowers,
   YellowFlowers,
-  RedFlowers,
-  Animals,
-  Trees,
-  Visitors,
-  Crowns,
-  GoldBonus,
-  ToolsBonus
+  RedFlowers
 }
 
 export function getObjectiveRequiredAmount(objective: Objective) {
