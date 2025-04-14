@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
-import { Animal, Flower, Garden, gardensAnatomy, isAnimal } from '@gamepark/les-jardins-suspendus/material/Garden'
+import { Animal, Flower, Garden, gardensAnatomy, isAnimal, isTree, isVisitor, Tree, Visitor } from '@gamepark/les-jardins-suspendus/material/Garden'
 import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
@@ -12,6 +12,8 @@ import AnimalIcon from '../../images/icons/Animal.png'
 import BlueFlower from '../../images/icons/BlueFlower.png'
 import Irrigated from '../../images/icons/Irrigated.jpg'
 import RedFlower from '../../images/icons/RedFlower.png'
+import TreeIcon from '../../images/icons/Tree.png'
+import VisitorIcon from '../../images/icons/Visitor.png'
 import YellowFlower from '../../images/icons/YellowFlower.png'
 import { scorePadDescription } from '../ScorePadDescription'
 import displayMaterialHelp = MaterialMoveBuilder.displayMaterialHelp
@@ -82,6 +84,8 @@ const GardenCardAnatomyHelp = ({ garden }: { garden: Garden }) => {
       {anatomy.irrigation && <IrrigationHelp />}
       {anatomy.flowers && <FlowersHelp flowers={anatomy.flowers} />}
       {isAnimal(anatomy.main) && <AnimalHelp animal={anatomy.main} scoring={anatomy.animalScoring!} />}
+      {isTree(anatomy.main) && <TreeHelp tree={anatomy.main} />}
+      {isVisitor(anatomy.main) && <VisitorHelp visitor={anatomy.main} />}
     </>
   )
 }
@@ -148,6 +152,34 @@ const AnimalHelp = ({ animal, scoring }: { animal: Animal; scoring: number[] }) 
           animal: <Picture src={AnimalIcon} css={pictureCss} />
         }}
       />
+    </p>
+  )
+}
+
+const TreeHelp = ({ tree }: { tree: Tree }) => {
+  const { t } = useTranslation()
+  return (
+    <>
+      <p>
+        <Trans
+          defaults="card.tree"
+          components={{
+            tree: <Picture src={TreeIcon} css={pictureCss} />
+          }}
+        />
+      </p>
+      <p>{t(`card.tree.${tree}`)}</p>
+    </>
+  )
+}
+
+const VisitorHelp = ({ visitor }: { visitor: Visitor }) => {
+  const { t } = useTranslation()
+  return (
+    <p>
+      <Picture src={VisitorIcon} css={pictureCss} />
+      &nbsp;
+      {t(`visitor.${visitor}`)}
     </p>
   )
 }

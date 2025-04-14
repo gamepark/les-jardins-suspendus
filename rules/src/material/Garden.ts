@@ -122,16 +122,16 @@ export enum Visitor {
   YellowFlowers,
   RedFlowers,
   Irrigation,
-  Crowns,
-  Flowers,
-  Visitors,
-  Objectives,
   Animals,
+  Visitors,
   Trees,
+  Crowns,
   GoldBonus,
+  ToolsBonus,
+  Objectives,
   Enhancement,
-  TreeVisitorAnimal,
-  ToolsBonus
+  Flowers,
+  TreeVisitorAnimal
 }
 
 export type MainSight = Animal | Tree | Visitor
