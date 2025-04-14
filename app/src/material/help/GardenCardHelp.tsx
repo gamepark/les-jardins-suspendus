@@ -14,6 +14,7 @@ import Irrigated from '../../images/icons/Irrigated.jpg'
 import RedFlower from '../../images/icons/RedFlower.png'
 import TreeIcon from '../../images/icons/Tree.png'
 import VisitorIcon from '../../images/icons/Visitor.png'
+import CrownIcon from '../../images/icons/CrownIcon.png'
 import YellowFlower from '../../images/icons/YellowFlower.png'
 import { scorePadDescription } from '../ScorePadDescription'
 import displayMaterialHelp = MaterialMoveBuilder.displayMaterialHelp
@@ -100,6 +101,7 @@ const GardenCardAnatomyHelp = ({ garden }: { garden: Garden }) => {
       {isTree(anatomy.main) && <TreeHelp tree={anatomy.main} />}
       {isVisitor(anatomy.main) && <VisitorHelp visitor={anatomy.main} />}
       {!anatomy.main && <EmptyCardHelp />}
+      {anatomy.crown && <CrownHelp />}
     </>
   )
 }
@@ -201,4 +203,24 @@ const VisitorHelp = ({ visitor }: { visitor: Visitor }) => {
 const EmptyCardHelp = () => {
   const { t } = useTranslation()
   return <p>{t('card.empty')}</p>
+}
+
+const CrownHelp = () => {
+  const rules = useRules<LesJardinsSuspendusRules>()!
+  const firstPlayerMarker = rules.material(MaterialType.FirstPlayerMarker)
+  const displayFirstPlayerMarkerHelp = displayMaterialHelp(MaterialType.FirstPlayerMarker, firstPlayerMarker.getItem(), firstPlayerMarker.getIndex())
+  const firstObjectiveTile = rules.material(MaterialType.ObjectiveTile).limit(1)
+  const displayFirstObjectiveTileHelp = displayMaterialHelp(MaterialType.ObjectiveTile, firstObjectiveTile.getItem(), firstObjectiveTile.getIndex())
+  return (
+    <p>
+      <Trans
+        defaults="card.crown"
+        components={{
+          crown: <Picture src={CrownIcon} css={pictureCss} />,
+          marker: <PlayMoveButton css={linkButtonCss} move={displayFirstPlayerMarkerHelp} transient />,
+          objective: <PlayMoveButton css={linkButtonCss} move={displayFirstObjectiveTileHelp} transient />
+        }}
+      />
+    </p>
+  )
 }
