@@ -29,6 +29,7 @@ import MonkeyCrown from '../images/tiles/enhancements/MonkeyCrown.png'
 import MonkeyIrrigation from '../images/tiles/enhancements/MonkeyIrrigation.png'
 import Peacock from '../images/tiles/enhancements/Peacock.png'
 import PeacockIrrigation from '../images/tiles/enhancements/PeacockIrrigation.png'
+import { EnhancementTileHelp } from './help/EnhancementTileHelp'
 
 class EnhancementTileDescription extends TokenDescription {
   images = {
@@ -75,6 +76,8 @@ class EnhancementTileDescription extends TokenDescription {
   isFlipped(item: Partial<MaterialItem>) {
     return item.location?.rotation === true
   }
+
+  help = EnhancementTileHelp
 }
 
 export const enhancementTileDescription = new EnhancementTileDescription()
