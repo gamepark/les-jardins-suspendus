@@ -1,10 +1,11 @@
 /** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
 import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
-import { MaterialHelpProps, usePlayerId, usePlayerName, useRules } from '@gamepark/react-game'
-import { useTranslation } from 'react-i18next'
-import { Location } from '../../../../../rules-api'
+import { MaterialComponent, MaterialHelpProps, usePlayerId, usePlayerName, useRules } from '@gamepark/react-game'
+import { Location } from '@gamepark/rules-api'
+import { Trans, useTranslation } from 'react-i18next'
 
 export const GardenCardHelp = ({ item }: MaterialHelpProps) => {
   const { t } = useTranslation()
@@ -14,6 +15,7 @@ export const GardenCardHelp = ({ item }: MaterialHelpProps) => {
       <h2>{t('card')}</h2>
       {item.location?.type === LocationType.GardenCardsDeck && <GardenCardDeckHelp />}
       {item.location?.type === LocationType.PlayerGarden && <GardenCardInGardenHelp location={item.location} />}
+      {item.location?.type === LocationType.GameBoardSpace && <GardenCardAvailableHelp location={item.location} />}
     </>
   )
 }
@@ -36,3 +38,29 @@ const GardenCardInGardenHelp = ({ location }: { location: Location }) => {
     return <p>{t('card.garden.player', { level, player })}</p>
   }
 }
+
+const GardenCardAvailableHelp = ({ location }: { location: Location }) => {
+  const { t } = useTranslation()
+  const cost = location.y!
+  if (!cost) {
+    return <p>{t('card.free')}</p>
+  } else {
+    return (
+      <p>
+        <Trans
+          defaults="card.cost"
+          values={{ cost }}
+          components={{
+            tool: <MaterialComponent type={MaterialType.Tool} css={toolCss} />
+          }}
+        />
+      </p>
+    )
+  }
+}
+
+const toolCss = css`
+  display: inline-block;
+  vertical-align: sub;
+  font-size: 0.5em;
+`

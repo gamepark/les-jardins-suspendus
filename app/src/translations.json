@@ -151,6 +151,8 @@
       "card.deck": "Il reste {cards} cartes dans la pioche.",
       "card.garden.you": "Cette carte est au {level, plural, =1{1er} other{#ème}} étage de votre jardin.",
       "card.garden.player": "Cette carte est au {level, plural, =1{1er} other{#ème}} étage du jardin de {player}.",
+      "card.free": "Cette carte est disponible gratuitement.",
+      "card.cost": "Cette carte est disponible pour {cost} <tool/>.",
       "Menu": "Menu",
       "OK": "OK",
       "Validate": "Valider",
