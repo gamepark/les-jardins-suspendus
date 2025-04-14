@@ -10,11 +10,12 @@ import { Location, MaterialMoveBuilder } from '@gamepark/rules-api'
 import { Trans, useTranslation } from 'react-i18next'
 import AnimalIcon from '../../images/icons/Animal.png'
 import BlueFlower from '../../images/icons/BlueFlower.png'
+import CrownIcon from '../../images/icons/CrownIcon.png'
+import GoldLevelIcon from '../../images/icons/GoldLevelIcon.png'
 import Irrigated from '../../images/icons/Irrigated.jpg'
 import RedFlower from '../../images/icons/RedFlower.png'
 import TreeIcon from '../../images/icons/Tree.png'
 import VisitorIcon from '../../images/icons/Visitor.png'
-import CrownIcon from '../../images/icons/CrownIcon.png'
 import YellowFlower from '../../images/icons/YellowFlower.png'
 import { scorePadDescription } from '../ScorePadDescription'
 import displayMaterialHelp = MaterialMoveBuilder.displayMaterialHelp
@@ -102,6 +103,7 @@ const GardenCardAnatomyHelp = ({ garden }: { garden: Garden }) => {
       {isVisitor(anatomy.main) && <VisitorHelp visitor={anatomy.main} />}
       {!anatomy.main && <EmptyCardHelp />}
       {anatomy.crown && <CrownHelp />}
+      {anatomy.gold && <GoldHelp />}
     </>
   )
 }
@@ -219,6 +221,20 @@ const CrownHelp = () => {
           crown: <Picture src={CrownIcon} css={pictureCss} />,
           marker: <PlayMoveButton css={linkButtonCss} move={displayFirstPlayerMarkerHelp} transient />,
           objective: <PlayMoveButton css={linkButtonCss} move={displayFirstObjectiveTileHelp} transient />
+        }}
+      />
+    </p>
+  )
+}
+
+const GoldHelp = () => {
+  return (
+    <p>
+      <Trans
+        defaults="card.gold"
+        components={{
+          icon: <Picture src={GoldLevelIcon} css={pictureCss} />,
+          gold: <PlayMoveButton css={linkButtonCss} move={displayMaterialHelp(MaterialType.GoldCoin)} transient />
         }}
       />
     </p>
