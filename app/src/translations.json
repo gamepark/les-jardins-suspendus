@@ -145,6 +145,8 @@
       "board.enhancements": "Au milieu se trouve les 3 <enhancement>tuiles Embelissement</enhancement> disponibles à l'achat, pour 2, 3 ou 4 <gold>pièces d'or</gold>.",
       "board.cards": "En bas se trouvent les 12 <card>cartes Jardin</card> disponibles.",
       "board.cards.rules": "Pour pouvoir prendre une carte Jardin, il faut un emplacement libre sur le <mini>mini-plateau</mini> pour votre <gardener>jardinier</gardener> dans la colonne correspondante, et il vous faut payer entre 0 et 3 <tool>outils</tool>, selon la ligne où se trouve la carte.",
+      "mini-board": "Mini-plateau",
+      "mini-board.players": "Sous chaque colonne, il y a autant d'emplacements que le nombre de joueurs dans la partie.",
       "Menu": "Menu",
       "OK": "OK",
       "Validate": "Valider",

@@ -4,6 +4,7 @@ import MiniBoard1Or2Players from '../images/boards/MiniBoard1Or2Players.jpg'
 import MiniBoard3Players from '../images/boards/MiniBoard3Players.jpg'
 import MiniBoard4Players from '../images/boards/MiniBoard4Players.jpg'
 import MiniBoard5Players from '../images/boards/MiniBoard5Players.jpg'
+import { MiniBoardHelp } from './help/MiniBoardHelp'
 
 class MiniBoardDescription extends BoardDescription {
   width = 24.5
@@ -18,6 +19,8 @@ class MiniBoardDescription extends BoardDescription {
   getStaticItems({ rules: { players } }: MaterialContext) {
     return [{ id: Math.max(2, players.length), location: { type: LocationType.MiniBoardPlace } }]
   }
+
+  help = MiniBoardHelp
 }
 
 export const miniBoardDescription = new MiniBoardDescription()

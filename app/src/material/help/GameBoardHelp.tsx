@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */
+import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
 import { EnhancementType } from '@gamepark/les-jardins-suspendus/material/Enhancement'
 import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
-import { linkButtonCss, PlayMoveButton, useMaterialContext, usePlayerId } from '@gamepark/react-game'
+import { linkButtonCss, PlayMoveButton, useMaterialContext, usePlayerId, useRules } from '@gamepark/react-game'
 import { MaterialMoveBuilder } from '@gamepark/rules-api'
 import { Trans, useTranslation } from 'react-i18next'
 import { miniBoardDescription } from '../MiniBoardDescription'
@@ -11,9 +12,7 @@ import displayMaterialHelp = MaterialMoveBuilder.displayMaterialHelp
 
 export const GameBoardHelp = () => {
   const { t } = useTranslation()
-  const context = useMaterialContext()
-  const rules = context.rules
-  const player = usePlayerId<PlayerColor>()
+  const rules = useRules<LesJardinsSuspendusRules>()!
   const firstObjectiveTile = rules.material(MaterialType.ObjectiveTile).limit(1)
   const displayFirstObjectiveTileHelp = displayMaterialHelp(MaterialType.ObjectiveTile, firstObjectiveTile.getItem(), firstObjectiveTile.getIndex())
   const firstEnhancementTile = rules
@@ -28,9 +27,6 @@ export const GameBoardHelp = () => {
     .locationId(1)
     .minBy((item) => item.location.y!)
   const displayCardHelp = displayMaterialHelp(MaterialType.GardenCard, card.getItem(), card.getIndex())
-  const displayMiniBoardHelp = displayMaterialHelp(MaterialType.MiniBoard, miniBoardDescription.getStaticItems(context)[0])
-  const gardener = rules.material(MaterialType.Gardener).id(player ?? rules.players[0])
-  const displayGardenerHelp = displayMaterialHelp(MaterialType.Gardener, gardener.getItem(), gardener.getIndex())
   return (
     <>
       <h2>{t('board')}</h2>
@@ -59,16 +55,28 @@ export const GameBoardHelp = () => {
           }}
         />
       </p>
-      <p>
-        <Trans
-          defaults="board.cards.rules"
-          components={{
-            mini: <PlayMoveButton css={linkButtonCss} move={displayMiniBoardHelp} transient />,
-            gardener: <PlayMoveButton css={linkButtonCss} move={displayGardenerHelp} transient />,
-            tool: <PlayMoveButton css={linkButtonCss} move={displayMaterialHelp(MaterialType.Tool)} transient />
-          }}
-        />
-      </p>
+      <BoardCardRulesHelp />
     </>
+  )
+}
+
+export const BoardCardRulesHelp = () => {
+  const context = useMaterialContext()
+  const rules = context.rules
+  const player = usePlayerId<PlayerColor>()
+  const displayMiniBoardHelp = displayMaterialHelp(MaterialType.MiniBoard, miniBoardDescription.getStaticItems(context)[0])
+  const gardener = rules.material(MaterialType.Gardener).id(player ?? rules.players[0])
+  const displayGardenerHelp = displayMaterialHelp(MaterialType.Gardener, gardener.getItem(), gardener.getIndex())
+  return (
+    <p>
+      <Trans
+        defaults="board.cards.rules"
+        components={{
+          mini: <PlayMoveButton css={linkButtonCss} move={displayMiniBoardHelp} transient />,
+          gardener: <PlayMoveButton css={linkButtonCss} move={displayGardenerHelp} transient />,
+          tool: <PlayMoveButton css={linkButtonCss} move={displayMaterialHelp(MaterialType.Tool)} transient />
+        }}
+      />
+    </p>
   )
 }
