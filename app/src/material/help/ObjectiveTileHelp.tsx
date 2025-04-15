@@ -42,6 +42,7 @@ export const ObjectiveTileHelp = ({ item }: MaterialHelpProps) => {
         <Trans
           defaults="objective.mark"
           components={{
+            objective: <strong />,
             marker: <PlayMoveButton css={linkButtonCss} move={displayObjectiveMarkerHelp} transient />
           }}
         />
