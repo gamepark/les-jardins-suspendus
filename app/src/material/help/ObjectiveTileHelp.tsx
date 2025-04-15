@@ -34,7 +34,8 @@ export const ObjectiveTileHelp = ({ item }: MaterialHelpProps) => {
         <Trans
           defaults="objective.discount"
           components={{
-            marker: <PlayMoveButton css={linkButtonCss} move={displayFirstPlayerMarkerHelp} transient />
+            marker: <PlayMoveButton css={linkButtonCss} move={displayFirstPlayerMarkerHelp} transient />,
+            objective: <strong />
           }}
         />
       </p>
