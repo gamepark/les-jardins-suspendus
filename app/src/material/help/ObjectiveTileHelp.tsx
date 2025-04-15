@@ -4,9 +4,11 @@ import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJar
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
 import { Objective } from '@gamepark/les-jardins-suspendus/material/Objective'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
-import { linkButtonCss, MaterialComponent, MaterialHelpProps, PlayMoveButton, usePlayerId, useRules } from '@gamepark/react-game'
+import { linkButtonCss, MaterialHelpProps, Picture, PlayMoveButton, usePlayerId, useRules } from '@gamepark/react-game'
 import { MaterialMoveBuilder } from '@gamepark/rules-api'
 import { Trans, useTranslation } from 'react-i18next'
+import GoldCoin from '../../images/GoldCoin.png'
+import Tool from '../../images/Tool.png'
 import displayMaterialHelp = MaterialMoveBuilder.displayMaterialHelp
 
 export const ObjectiveTileHelp = ({ item }: MaterialHelpProps) => {
@@ -52,8 +54,8 @@ export const ObjectiveTileHelp = ({ item }: MaterialHelpProps) => {
         <Trans
           defaults="objective.bonus"
           components={{
-            tool: <MaterialComponent type={MaterialType.Tool} css={iconCss} />,
-            gold: <MaterialComponent type={MaterialType.GoldCoin} css={iconCss} />
+            tool: <Picture src={Tool} css={pictureCss} />,
+            gold: <Picture src={GoldCoin} css={pictureCss} />
           }}
         />
       </p>
@@ -61,8 +63,8 @@ export const ObjectiveTileHelp = ({ item }: MaterialHelpProps) => {
   )
 }
 
-const iconCss = css`
+const pictureCss = css`
   display: inline-block;
   vertical-align: sub;
-  font-size: 0.5em;
+  height: 1.5em;
 `

@@ -4,9 +4,10 @@ import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJar
 import { Garden, gardensAnatomy } from '@gamepark/les-jardins-suspendus/material/Garden'
 import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
-import { linkButtonCss, MaterialComponent, MaterialHelpProps, PlayMoveButton, usePlayerId, usePlayerName, useRules } from '@gamepark/react-game'
+import { linkButtonCss, MaterialHelpProps, Picture, PlayMoveButton, usePlayerId, usePlayerName, useRules } from '@gamepark/react-game'
 import { Location, MaterialMoveBuilder } from '@gamepark/rules-api'
 import { Trans, useTranslation } from 'react-i18next'
+import Tool from '../../images/Tool.png'
 import { GardenAnatomyHelp } from './GardenAnatomyHelp'
 import displayMaterialHelp = MaterialMoveBuilder.displayMaterialHelp
 
@@ -67,7 +68,7 @@ const GardenCardAvailableHelp = ({ location }: { location: Location }) => {
           defaults="card.cost"
           values={{ cost }}
           components={{
-            tool: <MaterialComponent type={MaterialType.Tool} css={toolCss} />
+            tool: <Picture src={Tool} css={pictureCss} />
           }}
         />
       </p>
@@ -75,8 +76,8 @@ const GardenCardAvailableHelp = ({ location }: { location: Location }) => {
   }
 }
 
-const toolCss = css`
+const pictureCss = css`
   display: inline-block;
   vertical-align: sub;
-  font-size: 0.5em;
+  height: 1.5em;
 `
