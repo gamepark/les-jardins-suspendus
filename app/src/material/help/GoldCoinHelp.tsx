@@ -37,10 +37,10 @@ export const GoldCoinHelp = ({ item }: MaterialHelpProps) => {
       {owner !== undefined && (
         <p>
           <Trans
-            defaults={owner === me ? 'gold.you' : 'gold.player'}
-            values={{ gold: item.quantity, player }}
+            defaults={owner === me ? 'amount.you' : 'amount.player'}
+            values={{ amount: item.quantity, player }}
             components={{
-              gold: <Picture src={GoldCoin} css={pictureCss} />
+              icon: <Picture src={GoldCoin} css={pictureCss} />
             }}
           />
         </p>
