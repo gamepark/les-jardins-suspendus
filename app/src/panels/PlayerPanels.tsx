@@ -53,11 +53,11 @@ const panelCss = css`
 function getPanelPosition(context: MaterialContext, player: PlayerColor) {
   const { line, column } = getPlayerLocation(context, player)
   const is5Players = context.rules.players.length === 5
-  const topMax = is5Players ? 69.8 : 68
+  const topMax = is5Players ? 70.4 : 68
   if (column === PlayerColumn.Left) {
-    return leftPanel(topMax - line * (is5Players ? 28 : 29.7))
+    return leftPanel(topMax - line * (is5Players ? 27.5 : 29.7))
   } else {
-    return rightPanel(topMax - line * (is5Players ? 30.75 : 29.7))
+    return rightPanel(topMax - line * (is5Players ? 30.3 : 29.7))
   }
 }
 
