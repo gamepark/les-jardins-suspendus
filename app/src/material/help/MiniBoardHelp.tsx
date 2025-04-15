@@ -4,7 +4,6 @@ import { BoardCardRulesHelp } from './GameBoardHelp'
 
 export const MiniBoardHelp = () => {
   const { t } = useTranslation()
-
   return (
     <>
       <h2>{t('mini-board')}</h2>

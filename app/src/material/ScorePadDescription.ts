@@ -4,6 +4,7 @@ import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationT
 import { BoardDescription, ItemContext } from '@gamepark/react-game'
 import { Location, MaterialItem } from '../../../../rules-api'
 import ScorePad from '../images/ScorePad.jpg'
+import { ScorePadHelp } from './help/ScorePadHelp'
 
 class ScorePadDescription extends BoardDescription {
   width = 10
@@ -31,6 +32,8 @@ class ScorePadDescription extends BoardDescription {
     }
     return locations
   }
+
+  help = ScorePadHelp
 }
 
 export const scorePadDescription = new ScorePadDescription()
