@@ -35,7 +35,7 @@ export class CompleteObjectiveRule extends PlayerTurnRule {
   }
 
   countMaxItemsOnSameLine(objective: Objective) {
-    return Math.max(...range(0, 2).map((line) => this.countItemsOnLine(objective, line)))
+    return Math.max(...range(0, 3).map((line) => this.countItemsOnLine(objective, line)))
   }
 
   countItemsOnLine(objective: Objective, line: number) {
