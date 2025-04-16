@@ -136,7 +136,7 @@ export class LesJardinsSuspendusRules
   scoreVisitors(player: PlayerColor, anatomy = this.getPlayerGardenAnatomy(player)): number {
     return sumBy(
       flatten(anatomy)
-        .map((anatomies) => anatomies[0].main)
+        .map((anatomies) => anatomies[0]?.main)
         .filter(isVisitor),
       (visitor) => this.scoreVisitor(player, visitor, anatomy)
     )
