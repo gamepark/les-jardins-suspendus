@@ -315,6 +315,7 @@
       "scorepad.objectives": "Objectifs <icon/>: marquez les points des <objective>objectifs royaux</objective> que vous avez réalisés.",
       "scorepad.winner": "Le joueur ayant le plus de points de victoire remporte la partie.",
       "scorepad.tie": "En cas d’égalité, c’est le joueur qui possède le plus d’outils et de pièces d’or qui l’emporte. Si l’égalité persiste, les joueurs à égalité remportent la partie ensemble.",
+      "tuto.welcome": "Bienvenue dans le tutoriel pour <bold>Les Jardins Suspendus</bold> !",
       "Menu": "Menu",
       "OK": "OK",
       "Validate": "Valider",

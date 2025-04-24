@@ -11,6 +11,7 @@ import { LesJardinsSuspendusScoringDescription } from './LesJardinsSuspendusScor
 import { Locators } from './locators/Locators'
 import { Material } from './material/Material'
 import translations from './translations.json'
+import { Tutorial } from './tutorial/Tutorial'
 
 setupTranslation(translations, { debug: false })
 
@@ -25,6 +26,7 @@ ReactDOM.render(
       locators={Locators}
       animations={gameAnimations}
       scoring={new LesJardinsSuspendusScoringDescription()}
+      tutorial={new Tutorial()}
     >
       <App />
     </GameProvider>
