@@ -13,7 +13,7 @@ export class CompleteObjectiveRule extends PlayerTurnRule {
   getPlayerMoves() {
     const markers = this.material(MaterialType.ObjectiveMarker).location(LocationType.PlayerObjectiveMarkers).id(this.player)
     return [
-      ...this.objectivesICanComplete.map((tile) => markers.moveItem({ type: LocationType.ObjectiveSpace, id: tile.location.id }, 1)),
+      ...this.objectivesICanComplete.map((tile) => markers.moveItem({ type: LocationType.ObjectiveSpace, id: tile.location.id })),
       this.customMove(CustomMoveType.Pass)
     ]
   }
