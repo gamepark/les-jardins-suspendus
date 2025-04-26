@@ -9,12 +9,12 @@ import { sample } from 'lodash'
 
 export class TutorialSetup extends LesJardinsSuspendusSetup {
   dealGardenCards() {
-    this.material(MaterialType.GardenCard).id(Garden.LionIrrigation).moveItem({ type: LocationType.GameBoardSpace, id: 1 })
+    this.material(MaterialType.GardenCard).id(Garden.Lion).moveItem({ type: LocationType.GameBoardSpace, id: 1 })
     this.material(MaterialType.GardenCard).id(Garden.DragonTreeY).moveItem({ type: LocationType.GameBoardSpace, id: 1 })
     this.material(MaterialType.GardenCard).id(Garden.EmptyBYCrown).moveItem({ type: LocationType.GameBoardSpace, id: 2 })
-    this.material(MaterialType.GardenCard).id(Garden.EmptyBRY).moveItem({ type: LocationType.GameBoardSpace, id: 2 })
+    this.material(MaterialType.GardenCard).id(Garden.EmptyRYIrrigation).moveItem({ type: LocationType.GameBoardSpace, id: 2 })
     this.material(MaterialType.GardenCard).id(Garden.DragonTreeIrrigation).moveItem({ type: LocationType.GameBoardSpace, id: 3 })
-    this.material(MaterialType.GardenCard).id(Garden.EmptyBIrrigationTools).moveItem({ type: LocationType.GameBoardSpace, id: 3 })
+    this.material(MaterialType.GardenCard).id(Garden.EmptyBRTools).moveItem({ type: LocationType.GameBoardSpace, id: 3 })
     const deck = this.material(MaterialType.GardenCard).location(LocationType.GardenCardsDeck).deck()
     deck.deal({ type: LocationType.GameBoardSpace, id: 1 }, 2)
     deck.deal({ type: LocationType.GameBoardSpace, id: 2 }, 2)
@@ -41,14 +41,14 @@ export class TutorialSetup extends LesJardinsSuspendusSetup {
 
   setupIrrigationCards() {
     this.material(MaterialType.IrrigationCard).createItem({
-      id: IrrigationPattern.Borders,
+      id: IrrigationPattern.Center,
       location: {
         type: LocationType.PlayerIrrigationCard,
         player: this.players[0]
       }
     })
     this.material(MaterialType.IrrigationCard).createItem({
-      id: IrrigationPattern.Center,
+      id: IrrigationPattern.Borders,
       location: {
         type: LocationType.PlayerIrrigationCard,
         player: this.players[1]
