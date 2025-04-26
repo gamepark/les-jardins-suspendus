@@ -3,6 +3,8 @@ import { Enhancement, EnhancementId, EnhancementType } from '@gamepark/les-jardi
 import { Garden } from '@gamepark/les-jardins-suspendus/material/Garden'
 import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
+import { Objective } from '@gamepark/les-jardins-suspendus/material/Objective'
+import { sample } from 'lodash'
 
 export class TutorialSetup extends LesJardinsSuspendusSetup {
   dealGardenCards() {
@@ -27,5 +29,12 @@ export class TutorialSetup extends LesJardinsSuspendusSetup {
     this.material(MaterialType.EnhancementTile)
       .id<EnhancementId>((id) => id.front === Enhancement.FlowerRR)
       .moveItem({ type: LocationType.EnhancementPile, id: EnhancementType.Simple, rotation: false })
+  }
+
+  setupObjectives() {
+    super.setupObjectives()
+    if (this.material(MaterialType.ObjectiveTile).id(Objective.RedFlowers).length === 0) {
+      sample(this.material(MaterialType.ObjectiveTile).getItems())!.id = Objective.RedFlowers
+    }
   }
 }
