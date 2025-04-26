@@ -1,3 +1,5 @@
+import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
+import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
 import { MaterialTutorial, TutorialStep } from '@gamepark/react-game'
 import { Trans } from 'react-i18next'
@@ -27,6 +29,16 @@ export class Tutorial extends MaterialTutorial {
       popup: {
         text: () => <Trans defaults="tuto.goal" components={BaseComponents} />
       }
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.cards" components={BaseComponents} />,
+        position: { x: -25 }
+      },
+      focus: (game) => ({
+        materials: [this.material(game, MaterialType.GardenCard).location(LocationType.GameBoardSpace)],
+        margin: { top: 1, bottom: 1, right: 1 }
+      })
     }
   ]
 }
