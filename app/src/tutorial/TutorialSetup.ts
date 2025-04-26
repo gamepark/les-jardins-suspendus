@@ -1,4 +1,5 @@
 import { LesJardinsSuspendusSetup } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusSetup'
+import { Enhancement, EnhancementId, EnhancementType } from '@gamepark/les-jardins-suspendus/material/Enhancement'
 import { Garden } from '@gamepark/les-jardins-suspendus/material/Garden'
 import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
@@ -15,5 +16,16 @@ export class TutorialSetup extends LesJardinsSuspendusSetup {
     deck.deal({ type: LocationType.GameBoardSpace, id: 1 }, 2)
     deck.deal({ type: LocationType.GameBoardSpace, id: 2 }, 2)
     deck.deal({ type: LocationType.GameBoardSpace, id: 3 }, 2)
+  }
+
+  setupEnhancementTiles() {
+    super.setupEnhancementTiles()
+    this.material(MaterialType.EnhancementTile)
+      .locationId(EnhancementType.Simple)
+      .maxBy((item) => item.location.x!)
+      .rotateItem(true)
+    this.material(MaterialType.EnhancementTile)
+      .id<EnhancementId>((id) => id.front === Enhancement.FlowerRR)
+      .moveItem({ type: LocationType.EnhancementPile, id: EnhancementType.Simple, rotation: false })
   }
 }
