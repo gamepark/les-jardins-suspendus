@@ -22,6 +22,11 @@ export class Tutorial extends MaterialTutorial {
       popup: {
         text: () => <Trans defaults="tuto.welcome" components={BaseComponents} />
       }
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.goal" components={BaseComponents} />
+      }
     }
   ]
 }
