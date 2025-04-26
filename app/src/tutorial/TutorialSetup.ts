@@ -1,6 +1,7 @@
 import { LesJardinsSuspendusSetup } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusSetup'
 import { Enhancement, EnhancementId, EnhancementType } from '@gamepark/les-jardins-suspendus/material/Enhancement'
 import { Garden } from '@gamepark/les-jardins-suspendus/material/Garden'
+import { IrrigationPattern } from '@gamepark/les-jardins-suspendus/material/IrrigationPattern'
 import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
 import { Objective } from '@gamepark/les-jardins-suspendus/material/Objective'
@@ -36,5 +37,22 @@ export class TutorialSetup extends LesJardinsSuspendusSetup {
     if (this.material(MaterialType.ObjectiveTile).id(Objective.RedFlowers).length === 0) {
       sample(this.material(MaterialType.ObjectiveTile).getItems())!.id = Objective.RedFlowers
     }
+  }
+
+  setupIrrigationCards() {
+    this.material(MaterialType.IrrigationCard).createItem({
+      id: IrrigationPattern.Borders,
+      location: {
+        type: LocationType.PlayerIrrigationCard,
+        player: this.players[0]
+      }
+    })
+    this.material(MaterialType.IrrigationCard).createItem({
+      id: IrrigationPattern.Center,
+      location: {
+        type: LocationType.PlayerIrrigationCard,
+        player: this.players[1]
+      }
+    })
   }
 }
