@@ -1,11 +1,13 @@
+import { css } from '@emotion/react'
 import { Garden } from '@gamepark/les-jardins-suspendus/material/Garden'
 import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
-import { MaterialTutorial, TutorialStep } from '@gamepark/react-game'
+import { MaterialTutorial, Picture, TutorialStep } from '@gamepark/react-game'
 import { isMoveItemType, MaterialGame, MaterialMove, MoveItem } from '@gamepark/rules-api'
 import { range } from 'lodash'
 import { Trans } from 'react-i18next'
+import Irrigated from '../images/icons/Irrigated.jpg'
 import { TutorialSetup } from './TutorialSetup'
 
 const me = PlayerColor.Blue
@@ -190,6 +192,24 @@ export class Tutorial extends MaterialTutorial {
         materials: [this.material(game, MaterialType.IrrigationCard).player(me)],
         margin: { bottom: 1 }
       })
+    },
+    {
+      popup: {
+        text: () => (
+          <Trans
+            defaults="tuto.irrigation"
+            components={{
+              ...BaseComponents,
+              irrigated: <Picture src={Irrigated} css={pictureCss} />
+            }}
+          />
+        ),
+        position: { y: -20 }
+      },
+      focus: (game) => ({
+        materials: [this.material(game, MaterialType.IrrigationCard).player(me), this.material(game, MaterialType.GardenCard).id(Garden.EmptyRYIrrigation)],
+        margin: { bottom: 1 }
+      })
     }
   ]
 
@@ -202,3 +222,9 @@ const BaseComponents = {
   bold: <strong />,
   italic: <em />
 }
+
+const pictureCss = css`
+  display: inline-block;
+  vertical-align: sub;
+  height: 1.5em;
+`
