@@ -125,6 +125,21 @@ export class Tutorial extends MaterialTutorial {
         margin: { top: 1, bottom: 1, right: 1, left: 20 },
         scale: 0.6
       })
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tool.use" components={BaseComponents} />,
+        position: { x: -30 }
+      },
+      focus: (game) => ({
+        materials: [
+          this.material(game, MaterialType.GardenCard)
+            .location(LocationType.GameBoardSpace)
+            .location((l) => l.y !== 0)
+        ],
+        margin: { top: 1, bottom: 1, right: 1, left: 20 },
+        scale: 0.6
+      })
     }
   ]
 
