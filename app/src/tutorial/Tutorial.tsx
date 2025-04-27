@@ -210,6 +210,22 @@ export class Tutorial extends MaterialTutorial {
         materials: [this.material(game, MaterialType.IrrigationCard).player(me), this.material(game, MaterialType.GardenCard).id(Garden.EmptyRYIrrigation)],
         margin: { bottom: 1 }
       })
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.floor2" components={BaseComponents} />,
+        position: { y: -20 }
+      },
+      focus: (game) => ({
+        materials: [this.material(game, MaterialType.GardenCard).id(Garden.EmptyBRTools)],
+        locations: [{ type: LocationType.PlayerGarden, player: me, x: 0, y: 1 }],
+        margin: { right: 1 },
+        scale: 0.6
+      }),
+      move: {
+        filter: (move, game) => this.isMoveCard(Garden.EmptyBRTools, move, game) && move.location.y === 1,
+        interrupt: isMoveItemType(MaterialType.Tool)
+      }
     }
   ]
 
