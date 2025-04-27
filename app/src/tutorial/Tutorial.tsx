@@ -389,6 +389,30 @@ export class Tutorial extends MaterialTutorial {
         margin: { top: 1, bottom: 15, right: 1 },
         scale: 0.6
       })
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.round" components={BaseComponents} />,
+        position: { x: -20 }
+      },
+      focus: (game) => ({
+        materials: [this.material(game, MaterialType.Gardener)],
+        margin: { top: 1, bottom: 15, right: 1 },
+        scale: 0.6
+      })
+    },
+    { move: { player: opponent } },
+    { move: { player: opponent } },
+    {
+      popup: {
+        text: () => <Trans defaults="first-player.round" components={BaseComponents} />,
+        position: { y: 15 }
+      },
+      focus: (game) => ({
+        materials: [this.material(game, MaterialType.FirstPlayerMarker)],
+        margin: { top: 1, bottom: 15, right: 1 },
+        scale: 0.6
+      })
     }
   ]
 
