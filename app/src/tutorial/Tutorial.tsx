@@ -93,6 +93,27 @@ export class Tutorial extends MaterialTutorial {
       popup: {
         text: () => <Trans defaults="tuto.opponent.1" components={BaseComponents} />
       }
+    },
+    {
+      move: {
+        player: opponent,
+        filter: (move, game) => this.isMoveCard(Garden.DragonTreeY, move, game)
+      }
+    },
+    { move: { player: opponent } },
+    { move: { player: opponent } },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.gardener.blocked" components={BaseComponents} />,
+        position: { x: -20 }
+      },
+      focus: (game) => ({
+        materials: [
+          this.material(game, MaterialType.Gardener).location(LocationType.GardenerSpace),
+          this.material(game, MaterialType.GardenCard).location(LocationType.GameBoardSpace).locationId(1)
+        ],
+        margin: { top: 1, bottom: 1, right: 1 }
+      })
     }
   ]
 
