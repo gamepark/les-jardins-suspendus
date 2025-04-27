@@ -180,6 +180,16 @@ export class Tutorial extends MaterialTutorial {
       popup: {
         text: () => <Trans defaults="tuto.opponent.2" components={BaseComponents} />
       }
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.garden" components={BaseComponents} />,
+        position: { y: -20 }
+      },
+      focus: (game) => ({
+        materials: [this.material(game, MaterialType.IrrigationCard).player(me)],
+        margin: { bottom: 1 }
+      })
     }
   ]
 
