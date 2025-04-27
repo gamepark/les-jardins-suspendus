@@ -358,6 +358,11 @@ export class Tutorial extends MaterialTutorial {
       move: {
         filter: isMoveItemType(MaterialType.ObjectiveMarker)
       }
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.opponent.3" components={BaseComponents} />
+      }
     }
   ]
 
