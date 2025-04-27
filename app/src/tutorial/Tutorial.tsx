@@ -9,6 +9,7 @@ import { MaterialTutorial, Picture, TutorialStep } from '@gamepark/react-game'
 import { isMoveItemType, MaterialGame, MaterialMove, MoveItem } from '@gamepark/rules-api'
 import { range } from 'lodash'
 import { Trans } from 'react-i18next'
+import CrownIcon from '../images/icons/CrownIcon.png'
 import Irrigated from '../images/icons/Irrigated.jpg'
 import { TutorialSetup } from './TutorialSetup'
 
@@ -363,6 +364,31 @@ export class Tutorial extends MaterialTutorial {
       popup: {
         text: () => <Trans defaults="tuto.opponent.3" components={BaseComponents} />
       }
+    },
+    {
+      move: {
+        player: opponent,
+        filter: (move, game) => this.isMoveCard(Garden.EmptyBYCrown, move, game)
+      }
+    },
+    {
+      popup: {
+        text: () => (
+          <Trans
+            defaults="tuto.opponent.crown"
+            components={{
+              ...BaseComponents,
+              crown: <Picture src={CrownIcon} css={pictureCss} />
+            }}
+          />
+        ),
+        position: { y: 20 }
+      },
+      focus: (game) => ({
+        materials: [this.material(game, MaterialType.FirstPlayerMarker), this.material(game, MaterialType.GardenCard).id(Garden.EmptyBYCrown)],
+        margin: { top: 1, bottom: 15, right: 1 },
+        scale: 0.6
+      })
     }
   ]
 
