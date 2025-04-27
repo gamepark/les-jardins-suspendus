@@ -334,7 +334,7 @@
       "tuto.gold": "Voici votre stock de <bold>pièces d'Or</bold>.",
       "tuto.enhance.cost": "L'or sert à acheter des <bold>tuiles Embellissements</bold>. Vous pouvez acheter au maximum un embellissement par tour, et il coûte 2, 3 ou 4 pièces d'or.",
       "tuto.enhance.place": "Les embellissements se placent sur des cartes vides, comme celle-ci (et sans embellissement).",
-      "tuto.enhance.buy": "Achetez cet embellissement et placez-le sur votre carte vide.",
+      "tuto.enhance.buy": "Achetez cet embellissement et placez-le sur cette carte vide.",
       "tuto.objective": "À la fin de votre tour vous avez aussi la possibilité de <bold>valider un Objectif Royal</bold>.",
       "tuto.objective.flowers": "Pour compléter un objectif, vous devez avoir les éléments demandés <bold>au même étage</bold>.\nPar exemple, celui-ci requiert 4 fleurs rouges au même étage.",
       "tuto.objective.count": "Vous avez 3 fleurs rouges au premier étage de votre jardin.",

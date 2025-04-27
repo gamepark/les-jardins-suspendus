@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+import { Enhancement, EnhancementId } from '@gamepark/les-jardins-suspendus/material/Enhancement'
 import { Garden } from '@gamepark/les-jardins-suspendus/material/Garden'
 import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
@@ -274,11 +275,38 @@ export class Tutorial extends MaterialTutorial {
         ],
         margin: { top: 1, bottom: 1, right: 1 }
       })
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.enhance.buy" components={BaseComponents} />,
+        position: { x: -30 }
+      },
+      focus: (game) => ({
+        materials: [
+          this.material(game, MaterialType.EnhancementTile).id<EnhancementId>((id) => id.front === Enhancement.FlowerRR),
+          this.material(game, MaterialType.GardenCard).id(Garden.EmptyRYIrrigation)
+        ],
+        margin: { top: 1, bottom: 1, right: 1 }
+      }),
+      move: {
+        filter: (move, game) => this.isMoveEnhancementOnCard(Enhancement.FlowerRR, Garden.EmptyRYIrrigation, move, game)
+      }
     }
   ]
 
   isMoveCard(card: Garden, move: MaterialMove, game: MaterialGame): move is MoveItem {
     return isMoveItemType(MaterialType.GardenCard)(move) && move.itemIndex === this.material(game, MaterialType.GardenCard).id(card).getIndex()
+  }
+
+  isMoveEnhancementOnCard(enhancement: Enhancement, card: Garden, move: MaterialMove, game: MaterialGame): move is MoveItem {
+    return (
+      isMoveItemType(MaterialType.EnhancementTile)(move) &&
+      move.itemIndex ===
+        this.material(game, MaterialType.EnhancementTile)
+          .id<EnhancementId>((id) => id.front === enhancement)
+          .getIndex() &&
+      move.location.parent === this.material(game, MaterialType.GardenCard).id(card).getIndex()
+    )
   }
 }
 
