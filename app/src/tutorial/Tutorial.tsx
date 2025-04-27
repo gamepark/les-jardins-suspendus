@@ -114,6 +114,17 @@ export class Tutorial extends MaterialTutorial {
         ],
         margin: { top: 1, bottom: 1, right: 1 }
       })
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.tools" components={BaseComponents} />,
+        position: { x: -30 }
+      },
+      focus: (game) => ({
+        materials: [this.material(game, MaterialType.Tool).player(me)],
+        margin: { top: 1, bottom: 1, right: 1, left: 20 },
+        scale: 0.6
+      })
     }
   ]
 
