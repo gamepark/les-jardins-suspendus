@@ -328,6 +328,21 @@ export class Tutorial extends MaterialTutorial {
         margin: { top: 1, bottom: 1, right: 1 },
         scale: 0.7
       })
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.objective.reduce" components={BaseComponents} />,
+        position: { x: 20 }
+      },
+      focus: (game) => ({
+        materials: [
+          this.material(game, MaterialType.FirstPlayerMarker),
+          this.material(game, MaterialType.GardenCard).id(Garden.EmptyRYIrrigation),
+          this.material(game, MaterialType.EnhancementTile).id<EnhancementId>((id) => id.front === Enhancement.FlowerRR)
+        ],
+        margin: { top: 1, bottom: 1, right: 1 },
+        scale: 0.7
+      })
     }
   ]
 
