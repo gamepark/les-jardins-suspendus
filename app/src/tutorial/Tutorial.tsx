@@ -165,6 +165,21 @@ export class Tutorial extends MaterialTutorial {
         margin: { top: 1, bottom: 1, right: 1, left: 20 },
         scale: 0.6
       })
+    },
+    { move: { auto: true } },
+    { move: { auto: true } },
+    {
+      move: {
+        player: opponent,
+        filter: (move, game) => this.isMoveCard(Garden.DragonTreeIrrigation, move, game)
+      }
+    },
+    { move: { player: opponent } },
+    { move: { player: opponent } },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.opponent.2" components={BaseComponents} />
+      }
     }
   ]
 
