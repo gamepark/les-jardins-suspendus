@@ -325,7 +325,7 @@
       "tuto.gardener.blocked": "À vous de jouer. Les cartes de cette colonne ne sont plus disponibles, car il n'y a plus d'emplacement libre pour un pion Jardinier en bas de la colonne.",
       "tuto.tools": "Voici votre stock d'<bold>Outils</bold>.\n<italic>Les joueurs commencent avec 4 outils (5 outils pour le dernier joueur).</italic>",
       "tuto.tools.pay": "Prenez cette carte et placez là dans votre jardin. Elle vous coûtera 1 Outil.",
-      "tuto.vp": "Les cartes que vous placez dans votre jardin vous rapporteront des points de victoire en fin de partie.\nPar exemple, ce lion vous rapportera 4 points de victoire, car il est placé au premier étage de votre jardin.\n<bold>À tout moment, vous pouvez cliquer sur une carte Jardin pour connaître ses effets.</bold>",
+      "tuto.vp": "Les cartes que vous placez dans votre jardin vous rapporteront des points de victoire en fin de partie.\nPar exemple, ce lion vous rapportera 5 points de victoire, car il est placé au premier étage de votre jardin.\n<bold>À tout moment, vous pouvez cliquer sur une carte Jardin pour connaître ses effets.</bold>",
       "tuto.opponent.2": "Votre adversaire a joué sa deuxième carte, c'est à nouveau votre tour.",
       "tuto.garden": "Voici votre <bold>carte Irrigation</bold>. Elle représente la forme finale de votre jardin (5 cartes au premier étage, 4 au second et 3 au dernier étage).",
       "tuto.irrigation": "Votre carte Irrigation vous indique également comment obtenir des points de victoire en fin de partie en plaçant judicieusement vos cartes irriguées : <irrigated/>.",

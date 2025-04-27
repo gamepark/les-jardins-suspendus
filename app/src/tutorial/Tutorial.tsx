@@ -155,6 +155,16 @@ export class Tutorial extends MaterialTutorial {
       move: {
         filter: (move, game) => this.isMoveCard(Garden.EmptyRYIrrigation, move, game) && move.location.x === 1
       }
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.vp" components={BaseComponents} />
+      },
+      focus: (game) => ({
+        materials: [this.material(game, MaterialType.GardenCard).id(Garden.Lion)],
+        margin: { top: 1, bottom: 1, right: 1, left: 20 },
+        scale: 0.6
+      })
     }
   ]
 
