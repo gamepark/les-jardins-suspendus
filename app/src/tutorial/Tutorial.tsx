@@ -291,6 +291,17 @@ export class Tutorial extends MaterialTutorial {
       move: {
         filter: (move, game) => this.isMoveEnhancementOnCard(Enhancement.FlowerRR, Garden.EmptyRYIrrigation, move, game)
       }
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.objective" components={BaseComponents} />,
+        position: { x: 20, y: 20 }
+      },
+      focus: (game) => ({
+        materials: [this.material(game, MaterialType.ObjectiveTile)],
+        margin: { top: 1, bottom: 1, right: 1 },
+        scale: 0.7
+      })
     }
   ]
 
