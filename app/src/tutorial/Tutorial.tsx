@@ -3,6 +3,7 @@ import { Enhancement, EnhancementId } from '@gamepark/les-jardins-suspendus/mate
 import { Garden } from '@gamepark/les-jardins-suspendus/material/Garden'
 import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
+import { Objective } from '@gamepark/les-jardins-suspendus/material/Objective'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
 import { MaterialTutorial, Picture, TutorialStep } from '@gamepark/react-game'
 import { isMoveItemType, MaterialGame, MaterialMove, MoveItem } from '@gamepark/rules-api'
@@ -299,6 +300,17 @@ export class Tutorial extends MaterialTutorial {
       },
       focus: (game) => ({
         materials: [this.material(game, MaterialType.ObjectiveTile)],
+        margin: { top: 1, bottom: 1, right: 1 },
+        scale: 0.7
+      })
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.objective.flowers" components={BaseComponents} />,
+        position: { x: 20, y: 20 }
+      },
+      focus: (game) => ({
+        materials: [this.material(game, MaterialType.ObjectiveTile).id(Objective.RedFlowers)],
         margin: { top: 1, bottom: 1, right: 1 },
         scale: 0.7
       })
