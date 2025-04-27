@@ -6,7 +6,7 @@ import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialT
 import { Objective } from '@gamepark/les-jardins-suspendus/material/Objective'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
 import { MaterialTutorial, Picture, TutorialStep } from '@gamepark/react-game'
-import { isMoveItemType, MaterialGame, MaterialMove, MoveItem } from '@gamepark/rules-api'
+import { isCustomMove, isMoveItemType, MaterialGame, MaterialMove, MoveItem } from '@gamepark/rules-api'
 import { range } from 'lodash'
 import { Trans } from 'react-i18next'
 import CrownIcon from '../images/icons/CrownIcon.png'
@@ -172,7 +172,7 @@ export class Tutorial extends MaterialTutorial {
         scale: 0.6
       })
     },
-    { move: { auto: true } },
+    { move: { auto: true, filter: isCustomMove } },
     { move: { auto: true } },
     {
       move: {
