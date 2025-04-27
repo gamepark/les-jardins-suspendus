@@ -238,6 +238,17 @@ export class Tutorial extends MaterialTutorial {
         scale: 0.6
       }),
       move: {}
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.gold" components={BaseComponents} />,
+        position: { x: -30 }
+      },
+      focus: (game) => ({
+        materials: [this.material(game, MaterialType.GoldCoin).player(me)],
+        margin: { top: 1, bottom: 1, right: 1, left: 20 },
+        scale: 0.6
+      })
     }
   ]
 
