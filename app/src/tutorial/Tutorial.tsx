@@ -11,6 +11,7 @@ import { range } from 'lodash'
 import { Trans } from 'react-i18next'
 import CrownIcon from '../images/icons/CrownIcon.png'
 import Irrigated from '../images/icons/Irrigated.jpg'
+import { scorePadDescription } from '../material/ScorePadDescription'
 import { TutorialSetup } from './TutorialSetup'
 
 const me = PlayerColor.Blue
@@ -418,6 +419,16 @@ export class Tutorial extends MaterialTutorial {
       popup: {
         text: () => <Trans defaults="tuto.end-game" components={BaseComponents} />
       }
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.score" components={BaseComponents} />
+      },
+      focus: () => ({
+        staticItems: { [MaterialType.ScorePad]: [scorePadDescription.staticItem] },
+        margin: { top: 1, bottom: 5, right: 1 },
+        scale: 0.6
+      })
     }
   ]
 
