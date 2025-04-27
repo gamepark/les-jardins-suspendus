@@ -86,6 +86,13 @@ export class Tutorial extends MaterialTutorial {
         margin: { top: 1, bottom: 1, right: 1 },
         scale: 0.6
       })
+    },
+    { move: { auto: true } },
+    { move: { auto: true } },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.opponent.1" components={BaseComponents} />
+      }
     }
   ]
 
