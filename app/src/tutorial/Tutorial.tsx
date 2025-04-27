@@ -3,7 +3,7 @@ import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationT
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
 import { MaterialTutorial, TutorialStep } from '@gamepark/react-game'
-import { isMoveItemType, MaterialGame, MaterialMove } from '@gamepark/rules-api'
+import { isMoveItemType, MaterialGame, MaterialMove, MoveItem } from '@gamepark/rules-api'
 import { range } from 'lodash'
 import { Trans } from 'react-i18next'
 import { TutorialSetup } from './TutorialSetup'
@@ -140,10 +140,25 @@ export class Tutorial extends MaterialTutorial {
         margin: { top: 1, bottom: 1, right: 1, left: 20 },
         scale: 0.6
       })
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.tools.pay" components={BaseComponents} />,
+        position: { x: -30 }
+      },
+      focus: (game) => ({
+        materials: [this.material(game, MaterialType.GardenCard).id(Garden.EmptyRYIrrigation)],
+        locations: [{ type: LocationType.PlayerGarden, player: me, x: 1, y: 0 }],
+        margin: { top: 1, bottom: 1, right: 1, left: 20 },
+        scale: 0.6
+      }),
+      move: {
+        filter: (move, game) => this.isMoveCard(Garden.EmptyRYIrrigation, move, game) && move.location.x === 1
+      }
     }
   ]
 
-  isMoveCard(card: Garden, move: MaterialMove, game: MaterialGame) {
+  isMoveCard(card: Garden, move: MaterialMove, game: MaterialGame): move is MoveItem {
     return isMoveItemType(MaterialType.GardenCard)(move) && move.itemIndex === this.material(game, MaterialType.GardenCard).id(card).getIndex()
   }
 }
