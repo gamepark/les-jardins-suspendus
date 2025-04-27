@@ -4,6 +4,7 @@ import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialT
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
 import { MaterialTutorial, TutorialStep } from '@gamepark/react-game'
 import { isMoveItemType, MaterialGame, MaterialMove } from '@gamepark/rules-api'
+import { range } from 'lodash'
 import { Trans } from 'react-i18next'
 import { TutorialSetup } from './TutorialSetup'
 
@@ -54,8 +55,22 @@ export class Tutorial extends MaterialTutorial {
         scale: 0.6
       }),
       move: {
-        filter: (move, game) => this.isMoveCard(Garden.Lion, move, game)
+        filter: (move, game) => this.isMoveCard(Garden.Lion, move, game),
+        interrupt: isMoveItemType(MaterialType.Gardener)
       }
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.gardener" components={BaseComponents} />,
+        position: { x: -35 }
+      },
+      focus: (game) => ({
+        materials: [this.material(game, MaterialType.Gardener).player(me)],
+        locations: range(0, 2).map((x) => ({ type: LocationType.GardenerSpace, id: 1, x })),
+        margin: { top: 1, bottom: 1, right: 1 },
+        scale: 0.6
+      }),
+      move: {}
     }
   ]
 

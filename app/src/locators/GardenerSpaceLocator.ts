@@ -1,4 +1,3 @@
-import { css } from '@emotion/react'
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
 import { LocationDescription, Locator, MaterialContext } from '@gamepark/react-game'
 import { Location, XYCoordinates } from '@gamepark/rules-api'
@@ -12,12 +11,9 @@ class GardenerSpaceLocator extends Locator {
   }
 
   locationDescription = new LocationDescription({
-    width: 1.9,
-    height: 1.9,
-    borderRadius: 1,
-    extraCss: css`
-      border: 1px solid red;
-    `
+    width: 2,
+    height: 2,
+    borderRadius: 1
   })
 
   getPositionOnParent({ id, x = 0 }: Location, { rules: { players } }: MaterialContext) {
