@@ -71,6 +71,21 @@ export class Tutorial extends MaterialTutorial {
         scale: 0.6
       }),
       move: {}
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.gardener.space" components={BaseComponents} />,
+        position: { x: -35 }
+      },
+      focus: (game) => ({
+        materials: [
+          this.material(game, MaterialType.Gardener).location(LocationType.GardenerSpace),
+          this.material(game, MaterialType.GardenCard).location(LocationType.GameBoardSpace).locationId(1)
+        ],
+        locations: range(0, 2).map((x) => ({ type: LocationType.GardenerSpace, id: 1, x })),
+        margin: { top: 1, bottom: 1, right: 1 },
+        scale: 0.6
+      })
     }
   ]
 
