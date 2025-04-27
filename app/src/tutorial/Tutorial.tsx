@@ -413,6 +413,11 @@ export class Tutorial extends MaterialTutorial {
         margin: { top: 1, bottom: 15, right: 1 },
         scale: 0.6
       })
+    },
+    {
+      popup: {
+        text: () => <Trans defaults="tuto.end-game" components={BaseComponents} />
+      }
     }
   ]
 
