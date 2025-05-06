@@ -8,6 +8,13 @@ import { PlaceGardenCardRule } from './PlaceGardenCardRule'
 import { RuleId } from './RuleId'
 
 export class BuyEnhancementRule extends PlayerTurnRule {
+  onRuleStart() {
+    if (this.getPlayerMoves().length === 1) {
+      return [this.startRule(RuleId.CompleteObjective)]
+    }
+    return []
+  }
+
   getPlayerMoves() {
     const enhancements = this.availableEnhancements
     const pass = this.customMove(CustomMoveType.Pass)
