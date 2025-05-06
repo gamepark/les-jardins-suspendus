@@ -374,7 +374,7 @@ export class Tutorial extends MaterialTutorial {
       },
       focus: (game) => ({
         materials: [this.material(game, MaterialType.ObjectiveTile).id(Objective.RedFlowers)],
-        locations: [{ type: LocationType.ObjectiveSpace, id: 3 }],
+        locations: [{ type: LocationType.ObjectiveSpace, id: this.material(game, MaterialType.ObjectiveTile).id(Objective.RedFlowers).getItem()!.location.id }],
         margin: { top: 1, bottom: 1, right: 1 },
         scale: 0.7
       }),
