@@ -1,4 +1,8 @@
 import { css } from '@emotion/react'
+import { ClotheType, EyebrowType, EyeType, FacialHairType, MouthType, TopType } from '@gamepark/avataaars'
+import ClotheColorName from '@gamepark/avataaars/dist/avatar/clothes/ClotheColorName'
+import SkinColor from '@gamepark/avataaars/dist/avatar/SkinColor'
+import HairColorName from '@gamepark/avataaars/dist/avatar/top/HairColorName'
 import { Enhancement, EnhancementId } from '@gamepark/les-jardins-suspendus/material/Enhancement'
 import { Garden } from '@gamepark/les-jardins-suspendus/material/Garden'
 import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
@@ -24,7 +28,24 @@ export class Tutorial extends MaterialTutorial {
     players: [{ id: me }, { id: opponent }]
   }
 
-  players = [{ id: me }, { id: opponent }]
+  players = [
+    { id: me },
+    {
+      id: opponent,
+      name: 'Marduk',
+      avatar: {
+        topType: TopType.Eyepatch,
+        hairColor: HairColorName.Black,
+        facialHairType: FacialHairType.BeardMajestic,
+        clotheType: ClotheType.ShirtScoopNeck,
+        clotheColor: ClotheColorName.Heather,
+        eyeType: EyeType.Surprised,
+        eyebrowType: EyebrowType.AngryNatural,
+        mouthType: MouthType.Default,
+        skinColor: SkinColor.Brown
+      }
+    }
+  ]
 
   setup = new TutorialSetup()
 
