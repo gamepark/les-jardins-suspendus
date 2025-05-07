@@ -2,7 +2,7 @@ import { getEnumValues, MaterialGameSetup } from '@gamepark/rules-api'
 import { sample, sampleSize } from 'lodash'
 import { LesJardinsSuspendusOptions } from './LesJardinsSuspendusOptions'
 import { LesJardinsSuspendusRules } from './LesJardinsSuspendusRules'
-import { Automaton } from './material/Automaton'
+import { Automaton, getSoloGold, getSoloTools } from './material/Automaton'
 import { Enhancement, EnhancementId, EnhancementType, getEnhancementType } from './material/Enhancement'
 import { getGardenCards } from './material/Garden'
 import { IrrigationPattern } from './material/IrrigationPattern'
@@ -18,7 +18,7 @@ import { RuleId } from './rules/RuleId'
 export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, MaterialType, LocationType, LesJardinsSuspendusOptions> {
   Rules = LesJardinsSuspendusRules
 
-  setupMaterial(_options: LesJardinsSuspendusOptions) {
+  setupMaterial(options: LesJardinsSuspendusOptions) {
     this.setupGardenCardsDeck()
     this.dealGardenCards()
     this.setupEnhancementTiles()
@@ -27,8 +27,8 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
     this.setupGardeners()
     this.setupObjectiveMarkers()
     this.setupFirstPlayerMarker()
-    this.setupGoldCoins()
-    this.setupTools()
+    this.setupGoldCoins(options)
+    this.setupTools(options)
     if (this.players.length === 1) {
       this.setupAutomaton()
     }
@@ -124,28 +124,32 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
     })
   }
 
-  setupGoldCoins() {
+  setupGoldCoins(options: LesJardinsSuspendusOptions) {
     this.material(MaterialType.GoldCoin).createItem({
       location: { type: LocationType.GoldCoinsStock },
       quantity: 20
     })
     const stock = this.material(MaterialType.GoldCoin).location(LocationType.GoldCoinsStock)
+    const quantity = options.players.length > 1 ? 2 : getSoloGold(options.soloDifficulty)
     for (const player of this.players) {
-      stock.moveItem({ type: LocationType.PlayerGoldCoins, player }, 2)
+      stock.moveItem({ type: LocationType.PlayerGoldCoins, player }, quantity)
     }
   }
 
-  setupTools() {
+  setupTools(options: LesJardinsSuspendusOptions) {
     this.material(MaterialType.Tool).createItem({
       location: { type: LocationType.ToolsStock },
       quantity: 30
     })
     const stock = this.material(MaterialType.Tool).location(LocationType.ToolsStock)
+    const quantity = options.players.length > 1 ? 4 : getSoloTools(options.soloDifficulty)
     for (const player of this.players) {
-      stock.moveItem({ type: LocationType.PlayerTools, player }, 4)
+      stock.moveItem({ type: LocationType.PlayerTools, player }, quantity)
     }
-    const lastPlayer = this.players[this.players.length - 1]
-    stock.moveItem({ type: LocationType.PlayerTools, player: lastPlayer }, 1)
+    if (options.players.length > 1) {
+      const lastPlayer = this.players[this.players.length - 1]
+      stock.moveItem({ type: LocationType.PlayerTools, player: lastPlayer }, 1)
+    }
   }
 
   setupAutomaton() {

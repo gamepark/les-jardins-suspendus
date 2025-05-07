@@ -1,4 +1,5 @@
-import { OptionsSpec } from '@gamepark/rules-api'
+import { getEnumValues, OptionsSpec } from '@gamepark/rules-api'
+import { getSoloGold, getSoloTools, SoloDifficulty } from './material/Automaton'
 import { PlayerColor, playerColors } from './PlayerColor'
 
 /**
@@ -12,6 +13,7 @@ type PlayerOptions = { id: PlayerColor }
  */
 export type LesJardinsSuspendusOptions = {
   players: PlayerOptions[]
+  soloDifficulty: SoloDifficulty
 }
 
 /**
@@ -25,5 +27,12 @@ export const LesJardinsSuspendusOptionsSpec: OptionsSpec<LesJardinsSuspendusOpti
       values: playerColors,
       valueSpec: (id) => ({ label: (t) => t(`player.${id}`) })
     }
+  },
+  soloDifficulty: {
+    label: (t) => t('solo.diff'),
+    values: getEnumValues(SoloDifficulty),
+    valueSpec: (diff) => ({ label: (t) => t(`solo.diff.${diff}`), help: (t) => t('solo.diff.help', { gold: getSoloGold(diff), tools: getSoloTools(diff) }) }),
+    competitiveDisabled: true,
+    solo: true
   }
 }

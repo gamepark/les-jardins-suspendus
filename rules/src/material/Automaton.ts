@@ -18,3 +18,13 @@ export enum Automaton {
   Automaton17,
   Automaton18
 }
+
+export enum SoloDifficulty {
+  Easy = 1,
+  Medium,
+  Advanced,
+  Expert
+}
+
+export const getSoloGold = (difficulty = SoloDifficulty.Easy) => 4 - difficulty
+export const getSoloTools = (difficulty = SoloDifficulty.Easy) => 5 - difficulty
