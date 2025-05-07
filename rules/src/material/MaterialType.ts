@@ -10,5 +10,6 @@ export enum MaterialType {
   FirstPlayerMarker,
   GoldCoin,
   Tool,
-  ScorePad
+  ScorePad,
+  AutomatonCard
 }

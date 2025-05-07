@@ -56,6 +56,9 @@ export class LesJardinsSuspendusRules
     },
     [MaterialType.ObjectiveMarker]: {
       [LocationType.ObjectiveSpace]: new PositiveSequenceStrategy()
+    },
+    [MaterialType.AutomatonCard]: {
+      [LocationType.AutomatonDeck]: new PositiveSequenceStrategy()
     }
   }
 

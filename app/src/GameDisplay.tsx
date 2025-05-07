@@ -14,7 +14,7 @@ export const GameDisplay = ({ players }: GameDisplayProps) => {
     <>
       <GameTable
         xMin={players === 5 ? -64 : -63}
-        xMax={players === 2 ? gameBoardDescription.width / 2 + 1 : players === 5 ? 64 : 63}
+        xMax={players <= 2 ? gameBoardDescription.width / 2 + 1 : players === 5 ? 64 : 63}
         yMin={-gameBoardDescription.height / 2 - (players === 5 ? 5.5 : 1)}
         yMax={gameBoardDescription.height / 2 + miniBoardDescription.height + 1}
         css={process.env.NODE_ENV === 'development' && tableBorder}

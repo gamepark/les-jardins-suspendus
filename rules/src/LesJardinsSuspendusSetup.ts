@@ -2,6 +2,7 @@ import { getEnumValues, MaterialGameSetup } from '@gamepark/rules-api'
 import { sampleSize } from 'lodash'
 import { LesJardinsSuspendusOptions } from './LesJardinsSuspendusOptions'
 import { LesJardinsSuspendusRules } from './LesJardinsSuspendusRules'
+import { Automaton } from './material/Automaton'
 import { Enhancement, EnhancementId, EnhancementType, getEnhancementType } from './material/Enhancement'
 import { getGardenCards } from './material/Garden'
 import { IrrigationPattern } from './material/IrrigationPattern'
@@ -28,6 +29,9 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
     this.setupFirstPlayerMarker()
     this.setupGoldCoins()
     this.setupTools()
+    if (this.players.length === 1) {
+      this.setupAutomaton()
+    }
   }
 
   setupGardenCardsDeck() {
@@ -142,6 +146,10 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
     }
     const lastPlayer = this.players[this.players.length - 1]
     stock.moveItem({ type: LocationType.PlayerTools, player: lastPlayer }, 1)
+  }
+
+  setupAutomaton() {
+    this.material(MaterialType.AutomatonCard).createItems(getEnumValues(Automaton).map((id) => ({ id, location: { type: LocationType.AutomatonDeck } })))
   }
 
   start() {

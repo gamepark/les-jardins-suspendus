@@ -18,5 +18,6 @@ export enum LocationType {
   EmptyGarden,
   ObjectiveSpace,
   ScorePadPlace,
-  ScorePadBox
+  ScorePadBox,
+  AutomatonDeck
 }
