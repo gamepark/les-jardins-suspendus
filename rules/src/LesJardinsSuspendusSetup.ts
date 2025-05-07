@@ -1,5 +1,5 @@
 import { getEnumValues, MaterialGameSetup } from '@gamepark/rules-api'
-import { sampleSize } from 'lodash'
+import { sample, sampleSize } from 'lodash'
 import { LesJardinsSuspendusOptions } from './LesJardinsSuspendusOptions'
 import { LesJardinsSuspendusRules } from './LesJardinsSuspendusRules'
 import { Automaton } from './material/Automaton'
@@ -150,6 +150,17 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
 
   setupAutomaton() {
     this.material(MaterialType.AutomatonCard).createItems(getEnumValues(Automaton).map((id) => ({ id, location: { type: LocationType.AutomatonDeck } })))
+    const automatonColor = sample(getEnumValues(PlayerColor).filter((color) => color !== this.players[0]))
+    this.material(MaterialType.Gardener).createItem({
+      id: automatonColor,
+      location: { type: LocationType.AutomatonGardeners },
+      quantity: 3
+    })
+    this.material(MaterialType.ObjectiveMarker).createItem({
+      id: automatonColor,
+      location: { type: LocationType.AutomatonObjectiveMarkers },
+      quantity: 4
+    })
   }
 
   start() {

@@ -19,5 +19,7 @@ export enum LocationType {
   ObjectiveSpace,
   ScorePadPlace,
   ScorePadBox,
-  AutomatonDeck
+  AutomatonDeck,
+  AutomatonGardeners,
+  AutomatonObjectiveMarkers
 }
