@@ -205,6 +205,6 @@ export const gardensAnatomy: Record<Garden, GardenAnatomy> = {
   [Garden.VisitorTreesCrown]: { main: Visitor.Trees, crown: true },
   [Garden.VisitorGoldBonus]: { main: Visitor.GoldBonus, irrigation: true, gold: true },
   [Garden.VisitorEnhancementGold]: { main: Visitor.Enhancement, gold: true },
-  [Garden.VisitorTreeVisitorAnimal]: { main: Visitor.TreeVisitorAnimal },
+  [Garden.VisitorTreeVisitorAnimal]: { main: Visitor.TreeVisitorAnimal, tools: true },
   [Garden.VisitorToolsBonus]: { main: Visitor.ToolsBonus, irrigation: true, tools: true }
 }
