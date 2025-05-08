@@ -131,8 +131,10 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
     })
     const stock = this.material(MaterialType.GoldCoin).location(LocationType.GoldCoinsStock)
     const quantity = options.players.length > 1 ? 2 : getSoloGold(options.soloDifficulty)
-    for (const player of this.players) {
-      stock.moveItem({ type: LocationType.PlayerGoldCoins, player }, quantity)
+    if (quantity > 0) {
+      for (const player of this.players) {
+        stock.moveItem({ type: LocationType.PlayerGoldCoins, player }, quantity)
+      }
     }
   }
 
