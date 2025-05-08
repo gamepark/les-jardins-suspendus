@@ -1,3 +1,4 @@
 export enum Memory {
-  GardenPlaced = 1
+  GardenPlaced = 1,
+  SoloDifficulty
 }

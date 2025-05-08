@@ -10,6 +10,7 @@ import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
 import { Objective } from './material/Objective'
 import { PlayerColor } from './PlayerColor'
+import { Memory } from './rules/Memory'
 import { RuleId } from './rules/RuleId'
 
 /**
@@ -30,6 +31,7 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
     this.setupGoldCoins(options)
     this.setupTools(options)
     if (this.players.length === 1) {
+      this.memorize(Memory.SoloDifficulty, options.soloDifficulty)
       this.setupAutoma()
     }
   }

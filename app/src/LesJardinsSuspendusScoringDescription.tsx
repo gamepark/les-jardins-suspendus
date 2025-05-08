@@ -1,8 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
+import { SoloDifficulty } from '@gamepark/les-jardins-suspendus/material/Automa'
 import { Flower } from '@gamepark/les-jardins-suspendus/material/Garden'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
+import { Memory } from '@gamepark/les-jardins-suspendus/rules/Memory'
 import { Picture, ScoringDescription, ScoringValue } from '@gamepark/react-game'
 import { getEnumValues } from '@gamepark/rules-api'
 import { Trans } from 'react-i18next'
@@ -25,12 +27,13 @@ enum ScoringKey {
   Visitors,
   Objectives,
   Total,
+  SoloMode,
   SoloComment
 }
 
 export class LesJardinsSuspendusScoringDescription implements ScoringDescription {
   getScoringKeys(rules: LesJardinsSuspendusRules) {
-    return rules.players.length === 1 ? getEnumValues(ScoringKey) : getEnumValues(ScoringKey).filter((key) => key !== ScoringKey.SoloComment)
+    return rules.players.length === 1 ? getEnumValues(ScoringKey) : getEnumValues(ScoringKey).filter((key) => key < 10)
   }
 
   getScoringHeader(key: ScoringKey): ScoringValue {
@@ -53,6 +56,8 @@ export class LesJardinsSuspendusScoringDescription implements ScoringDescription
         return <Picture src={Objective} css={iconCss} />
       case ScoringKey.Total:
         return <span css={totalCss}>=</span>
+      case ScoringKey.SoloMode:
+        return <Trans defaults="solo.diff" />
       case ScoringKey.SoloComment:
         return <Trans defaults="comment" />
     }
@@ -78,6 +83,8 @@ export class LesJardinsSuspendusScoringDescription implements ScoringDescription
         return rules.scoreRoyalObjectives(player)
       case ScoringKey.Total:
         return rules.getScore(player)
+      case ScoringKey.SoloMode:
+        return <Trans defaults={`solo.diff.${rules.remind(Memory.SoloDifficulty) ?? SoloDifficulty.Easy}`} />
       case ScoringKey.SoloComment:
         return <Trans defaults={`comment.${getCommentNumber(rules.getScore(player))}`} />
     }
