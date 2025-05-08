@@ -104,7 +104,7 @@ export class PlaceGardenCardRule extends PlayerTurnRule {
     const moves: MaterialMove[] = []
     if (anatomy.crown) {
       const firstPlayerMarker = this.material(MaterialType.FirstPlayerMarker)
-      if (firstPlayerMarker.getItem()?.location.player !== this.player) {
+      if (firstPlayerMarker.getItem()!.location.player !== this.player) {
         moves.push(firstPlayerMarker.moveItem({ type: LocationType.FirstPlayerMarkerPlace, player: this.player }))
       }
     }

@@ -2,7 +2,7 @@ import { getEnumValues, MaterialGameSetup } from '@gamepark/rules-api'
 import { sample, sampleSize } from 'lodash'
 import { LesJardinsSuspendusOptions } from './LesJardinsSuspendusOptions'
 import { LesJardinsSuspendusRules } from './LesJardinsSuspendusRules'
-import { Automaton, getSoloGold, getSoloTools } from './material/Automaton'
+import { Automa, getSoloGold, getSoloTools } from './material/Automa'
 import { Enhancement, EnhancementId, EnhancementType, getEnhancementType } from './material/Enhancement'
 import { getGardenCards } from './material/Garden'
 import { IrrigationPattern } from './material/IrrigationPattern'
@@ -30,7 +30,7 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
     this.setupGoldCoins(options)
     this.setupTools(options)
     if (this.players.length === 1) {
-      this.setupAutomaton()
+      this.setupAutoma()
     }
   }
 
@@ -152,17 +152,17 @@ export class LesJardinsSuspendusSetup extends MaterialGameSetup<PlayerColor, Mat
     }
   }
 
-  setupAutomaton() {
-    this.material(MaterialType.AutomatonCard).createItems(getEnumValues(Automaton).map((id) => ({ id, location: { type: LocationType.AutomatonDeck } })))
-    const automatonColor = sample(getEnumValues(PlayerColor).filter((color) => color !== this.players[0]))
+  setupAutoma() {
+    this.material(MaterialType.AutomaCard).createItems(getEnumValues(Automa).map((id) => ({ id, location: { type: LocationType.AutomaDeck } })))
+    const automaColor = sample(getEnumValues(PlayerColor).filter((color) => color !== this.players[0]))
     this.material(MaterialType.Gardener).createItem({
-      id: automatonColor,
-      location: { type: LocationType.AutomatonGardeners },
+      id: automaColor,
+      location: { type: LocationType.AutomaGardeners },
       quantity: 3
     })
     this.material(MaterialType.ObjectiveMarker).createItem({
-      id: automatonColor,
-      location: { type: LocationType.AutomatonObjectiveMarkers },
+      id: automaColor,
+      location: { type: LocationType.AutomaObjectiveMarkers },
       quantity: 4
     })
   }

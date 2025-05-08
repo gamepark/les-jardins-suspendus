@@ -16,15 +16,33 @@ export class RevealNewGardenCardRule extends PlayerTurnRule {
     if (enhancementToReveal.length === 1) {
       moves.push(enhancementToReveal.rotateItem(false))
     }
-    const isEndOfRound = this.material(MaterialType.Gardener).location(LocationType.PlayerGardeners).length === 0
-    const isGameOver = isEndOfRound && this.material(MaterialType.GardenCard).location(LocationType.PlayerGarden).length === 12 * this.game.players.length
-    if (isGameOver) {
-      moves.push(this.endGame())
-    } else if (isEndOfRound) {
-      moves.push(this.startRule(RuleId.EndOfRound))
-    } else {
-      moves.push(this.startPlayerTurn(RuleId.PlaceGardenCard, this.nextPlayer))
-    }
+    moves.push(this.nextRule)
     return moves
+  }
+
+  get automaHasGardener() {
+    return this.material(MaterialType.Gardener).location(LocationType.AutomaGardeners).length > 0
+  }
+
+  get isEndOfRound() {
+    return this.material(MaterialType.Gardener).location(LocationType.PlayerGardeners).length === 0
+  }
+
+  get isGameOver() {
+    return this.material(MaterialType.GardenCard).location(LocationType.PlayerGarden).length === 12 * this.game.players.length
+  }
+
+  get nextRule() {
+    if (this.game.players.length === 1 && this.automaHasGardener) {
+      return this.startRule(RuleId.Automa)
+    } else if (this.isEndOfRound) {
+      if (this.isGameOver) {
+        return this.endGame()
+      } else {
+        return this.startRule(RuleId.EndOfRound)
+      }
+    } else {
+      return this.startPlayerTurn(RuleId.PlaceGardenCard, this.nextPlayer)
+    }
   }
 }

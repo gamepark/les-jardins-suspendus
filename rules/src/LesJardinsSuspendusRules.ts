@@ -18,6 +18,7 @@ import { IrrigationPattern, irrigationPatterns, irrigationScore } from './materi
 import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
 import { PlayerColor } from './PlayerColor'
+import { AutomaRule } from './rules/AutomaRule'
 import { BuyEnhancementRule } from './rules/BuyEnhancementRule'
 import { CompleteObjectiveRule } from './rules/CompleteObjectiveRule'
 import { EndOfRoundRule } from './rules/EndOfRoundRule'
@@ -40,16 +41,19 @@ export class LesJardinsSuspendusRules
     [RuleId.BuyEnhancement]: BuyEnhancementRule,
     [RuleId.CompleteObjective]: CompleteObjectiveRule,
     [RuleId.RevealNewGardenCard]: RevealNewGardenCardRule,
-    [RuleId.EndOfRound]: EndOfRoundRule
+    [RuleId.EndOfRound]: EndOfRoundRule,
+    [RuleId.Automa]: AutomaRule
   }
 
   locationsStrategies = {
     [MaterialType.GardenCard]: {
       [LocationType.GardenCardsDeck]: new PositiveSequenceStrategy(),
-      [LocationType.GameBoardSpace]: new PositiveSequenceStrategy('y')
+      [LocationType.GameBoardSpace]: new PositiveSequenceStrategy('y'),
+      [LocationType.GardenCardsDiscard]: new PositiveSequenceStrategy()
     },
     [MaterialType.EnhancementTile]: {
-      [LocationType.EnhancementPile]: new PositiveSequenceStrategy()
+      [LocationType.EnhancementPile]: new PositiveSequenceStrategy(),
+      [LocationType.EnhancementDiscard]: new PositiveSequenceStrategy()
     },
     [MaterialType.Gardener]: {
       [LocationType.GardenerSpace]: new PositiveSequenceStrategy()
@@ -57,8 +61,9 @@ export class LesJardinsSuspendusRules
     [MaterialType.ObjectiveMarker]: {
       [LocationType.ObjectiveSpace]: new PositiveSequenceStrategy()
     },
-    [MaterialType.AutomatonCard]: {
-      [LocationType.AutomatonDeck]: new PositiveSequenceStrategy()
+    [MaterialType.AutomaCard]: {
+      [LocationType.AutomaDeck]: new PositiveSequenceStrategy(),
+      [LocationType.AutomaDiscard]: new PositiveSequenceStrategy()
     }
   }
 
@@ -68,6 +73,9 @@ export class LesJardinsSuspendusRules
     },
     [MaterialType.EnhancementTile]: {
       [LocationType.EnhancementPile]: (item: MaterialItem) => (item.location.rotation ? ['id.front'] : [])
+    },
+    [MaterialType.AutomaCard]: {
+      [LocationType.AutomaDeck]: hideItemId
     }
   }
 

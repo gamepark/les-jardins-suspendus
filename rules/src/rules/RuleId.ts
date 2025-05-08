@@ -3,5 +3,6 @@ export enum RuleId {
   BuyEnhancement,
   CompleteObjective,
   RevealNewGardenCard,
-  EndOfRound
+  EndOfRound,
+  Automa
 }

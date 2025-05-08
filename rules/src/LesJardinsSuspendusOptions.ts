@@ -1,5 +1,5 @@
 import { getEnumValues, OptionsSpec } from '@gamepark/rules-api'
-import { getSoloGold, getSoloTools, SoloDifficulty } from './material/Automaton'
+import { getSoloGold, getSoloTools, SoloDifficulty } from './material/Automa'
 import { PlayerColor, playerColors } from './PlayerColor'
 
 /**

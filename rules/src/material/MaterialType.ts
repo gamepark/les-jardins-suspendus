@@ -11,5 +11,5 @@ export enum MaterialType {
   GoldCoin,
   Tool,
   ScorePad,
-  AutomatonCard
+  AutomaCard
 }

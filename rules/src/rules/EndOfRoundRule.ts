@@ -6,16 +6,20 @@ import { RuleId } from './RuleId'
 
 export class EndOfRoundRule extends MaterialRulesPart {
   onRuleStart() {
-    const firstPlayer = this.material(MaterialType.FirstPlayerMarker).getItem()!.location.player!
+    const firstPlayer = this.material(MaterialType.FirstPlayerMarker).getItem()!.location.player
     return [
       ...this.material(MaterialType.Gardener)
         .sort((item) => -item.location.x!)
         .sort((item) => -item.location.id!)
-        .moveItems((item) => ({
-          type: LocationType.PlayerGardeners,
-          player: item.id as PlayerColor
-        })),
-      this.startPlayerTurn(RuleId.PlaceGardenCard, firstPlayer)
+        .moveItems((item) => {
+          const player = item.id as PlayerColor
+          if (this.game.players.includes(player)) {
+            return { type: LocationType.PlayerGardeners, player: item.id as PlayerColor }
+          } else {
+            return { type: LocationType.AutomaGardeners }
+          }
+        }),
+      firstPlayer ? this.startPlayerTurn(RuleId.PlaceGardenCard, firstPlayer) : this.startRule(RuleId.Automa)
     ]
   }
 }

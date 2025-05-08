@@ -1,6 +1,6 @@
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
 import { MaterialDescription } from '@gamepark/react-game'
-import { automatonCardDescription } from './AutomatonCardDescription'
+import { automaCardDescription } from './AutomaCardDescription'
 import { enhancementTileDescription } from './EnhancementTileDescription'
 import { firstPlayerMarkerDescription } from './FirstPlayerMarkerDescription'
 import { gameBoardDescription } from './GameBoardDescription'
@@ -27,5 +27,5 @@ export const Material: Partial<Record<MaterialType, MaterialDescription>> = {
   [MaterialType.GoldCoin]: goldCoinDescription,
   [MaterialType.Tool]: toolDescription,
   [MaterialType.ScorePad]: scorePadDescription,
-  [MaterialType.AutomatonCard]: automatonCardDescription
+  [MaterialType.AutomaCard]: automaCardDescription
 }
