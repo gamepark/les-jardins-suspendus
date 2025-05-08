@@ -88,7 +88,7 @@ export class AutomaRule extends MaterialRulesPart {
       if (card.length) {
         return card
       } else {
-        return columnCards.location((location) => location.x === fallback - 1)
+        return columnCards.location((location) => location.y === fallback - 1)
       }
     }
   }
