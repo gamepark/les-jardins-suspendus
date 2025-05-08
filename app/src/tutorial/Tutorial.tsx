@@ -115,7 +115,6 @@ export class Tutorial extends MaterialTutorial {
       })
     },
     { move: { auto: true } },
-    { move: { auto: true } },
     {
       popup: {
         text: () => <Trans defaults="tuto.opponent.1" components={BaseComponents} />
@@ -127,7 +126,6 @@ export class Tutorial extends MaterialTutorial {
         filter: (move, game) => this.isMoveCard(Garden.DragonTreeY, move, game)
       }
     },
-    { move: { player: opponent } },
     { move: { player: opponent } },
     {
       popup: {
@@ -201,7 +199,6 @@ export class Tutorial extends MaterialTutorial {
         filter: (move, game) => this.isMoveCard(Garden.DragonTreeIrrigation, move, game)
       }
     },
-    { move: { player: opponent } },
     { move: { player: opponent } },
     {
       popup: {
