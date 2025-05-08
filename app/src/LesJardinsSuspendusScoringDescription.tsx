@@ -5,6 +5,7 @@ import { Flower } from '@gamepark/les-jardins-suspendus/material/Garden'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
 import { Picture, ScoringDescription, ScoringValue } from '@gamepark/react-game'
 import { getEnumValues } from '@gamepark/rules-api'
+import { Trans } from 'react-i18next'
 import Animal from '../src/images/icons/Animal.png'
 import BlueFlower from '../src/images/icons/BlueFlower.png'
 import Irrigation from '../src/images/icons/Irrigation.png'
@@ -23,12 +24,13 @@ enum ScoringKey {
   Animals,
   Visitors,
   Objectives,
-  Total
+  Total,
+  SoloComment
 }
 
 export class LesJardinsSuspendusScoringDescription implements ScoringDescription {
-  getScoringKeys() {
-    return getEnumValues(ScoringKey)
+  getScoringKeys(rules: LesJardinsSuspendusRules) {
+    return rules.players.length === 1 ? getEnumValues(ScoringKey) : getEnumValues(ScoringKey).filter((key) => key !== ScoringKey.SoloComment)
   }
 
   getScoringHeader(key: ScoringKey): ScoringValue {
@@ -51,6 +53,8 @@ export class LesJardinsSuspendusScoringDescription implements ScoringDescription
         return <Picture src={Objective} css={iconCss} />
       case ScoringKey.Total:
         return <span css={totalCss}>=</span>
+      case ScoringKey.SoloComment:
+        return <Trans defaults="comment" />
     }
   }
 
@@ -74,6 +78,8 @@ export class LesJardinsSuspendusScoringDescription implements ScoringDescription
         return rules.scoreRoyalObjectives(player)
       case ScoringKey.Total:
         return rules.getScore(player)
+      case ScoringKey.SoloComment:
+        return <Trans defaults={`comment.${getCommentNumber(rules.getScore(player))}`} />
     }
   }
 }
@@ -88,3 +94,10 @@ const totalCss = css`
   font-weight: bold;
   line-height: 0.7;
 `
+
+function getCommentNumber(score: number) {
+  if (score <= 45) return 1
+  else if (score <= 55) return 2
+  else if (score <= 65) return 3
+  else return 4
+}
