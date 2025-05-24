@@ -15,6 +15,8 @@ class GameBoardSpaceLocator extends Locator {
     return { x: (id - 2) * 32 + 50, y: y * -14.2 + 91 + fixIrregularY }
   }
 
+  getHoverTransform = () => ['translateZ(10em)', 'scale(2.5)']
+
   navigationSorts = []
 }
 

@@ -18,6 +18,8 @@ class EmptyGardenLocator extends Locator {
         return { x: 0.05, y: -0.55 }
     }
   }
+
+  getHoverTransform = () => ['translateZ(10em)', 'scale(2.5)']
 }
 
 export const emptyGardenLocator = new EmptyGardenLocator()

@@ -42,6 +42,8 @@ class PlayerGardenLocator extends HexagonalGridLocator {
     const deltaX = ((minX + maxX) * this.size.x * Math.sqrt(3)) / 2
     return { x: x! - deltaX, y, z }
   }
+
+  getHoverTransform = () => ['translateZ(10em)', 'scale(2.5)']
 }
 
 class PlayerGardenDescription extends DropAreaDescription {
