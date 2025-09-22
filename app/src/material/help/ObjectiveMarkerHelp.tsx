@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
 import { linkButtonCss, PlayMoveButton, useRules } from '@gamepark/react-game'
@@ -16,7 +15,7 @@ export const ObjectiveMarkerHelp = () => {
       <h2>{t('objective.marker')}</h2>
       <p>
         <Trans
-          defaults="objective.mark"
+          i18nKey="objective.mark"
           components={{
             objective: <PlayMoveButton css={linkButtonCss} move={displayFirstObjectiveTileHelp} transient />,
             marker: <strong />

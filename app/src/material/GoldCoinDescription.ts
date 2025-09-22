@@ -6,6 +6,7 @@ class GoldCoinDescription extends TokenDescription {
   width = 2.58
   height = 2.5
   image = GoldCoin
+  transparency = true
   help = GoldCoinHelp
 }
 

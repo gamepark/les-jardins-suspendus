@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { EnhancementId, enhancementsAnatomy } from '@gamepark/les-jardins-suspendus/material/Enhancement'
 import { MaterialHelpProps, Picture } from '@gamepark/react-game'
@@ -16,7 +15,7 @@ export const EnhancementTileHelp = ({ item }: MaterialHelpProps) => {
       <p>{t('enhancement.rule')}</p>
       <p>
         <Trans
-          defaults="enhancement.cost"
+          i18nKey="enhancement.cost"
           values={{ cost: id.back + 1 }}
           components={{
             gold: <Picture src={GoldCoin} css={pictureCss} />

@@ -19,6 +19,8 @@ class GardenerDescription extends TokenDescription {
     [PlayerColor.Blue]: BlueGardener
   }
 
+  transparency = true
+
   help = GardenerHelp
 }
 

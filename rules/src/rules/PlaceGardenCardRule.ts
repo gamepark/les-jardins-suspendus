@@ -1,5 +1,5 @@
 import { isMoveItemType, ItemMove, MaterialMove, PlayerTurnRule, XYCoordinates } from '@gamepark/rules-api'
-import { minBy } from 'lodash'
+import { minBy } from 'es-toolkit/compat'
 import { Garden, GardenAnatomy, gardensAnatomy } from '../material/Garden'
 import { LocationType } from '../material/LocationType'
 import { MaterialType } from '../material/MaterialType'

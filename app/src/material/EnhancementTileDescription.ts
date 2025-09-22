@@ -66,6 +66,8 @@ class EnhancementTileDescription extends TokenDescription {
     [EnhancementType.Irrigation]: EnhancementIrrigationBack
   }
 
+  transparency = true
+
   getSize({ back }: EnhancementId): ComponentSize {
     return {
       width: 4.1,

@@ -2,7 +2,7 @@ import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJar
 import { Flower } from '@gamepark/les-jardins-suspendus/material/Garden'
 import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
 import { BoardDescription, ItemContext } from '@gamepark/react-game'
-import { Location, MaterialItem } from '../../../../rules-api'
+import { Location, MaterialItem } from '@gamepark/rules-api'
 import ScorePad from '../images/ScorePad.jpg'
 import { ScorePadHelp } from './help/ScorePadHelp'
 

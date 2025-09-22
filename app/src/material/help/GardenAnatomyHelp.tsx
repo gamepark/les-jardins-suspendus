@@ -43,7 +43,7 @@ const IrrigationHelp = () => {
   return (
     <p>
       <Trans
-        defaults="card.irrigated"
+        i18nKey="card.irrigated"
         components={{
           irrigated: <Picture src={Irrigated} css={pictureCss} />,
           card: <PlayMoveButton css={linkButtonCss} move={displayIrrigationCardHelp} transient />
@@ -63,7 +63,7 @@ const FlowersHelp = ({ flowers }: { flowers: Flower[] }) => {
   return (
     <p>
       <Trans
-        defaults="card.flowers"
+        i18nKey="card.flowers"
         components={{
           flowers: (
             <>
@@ -91,7 +91,7 @@ const AnimalHelp = ({ animal, scoring }: { animal: Animal; scoring: number[] }) 
   return (
     <p>
       <Trans
-        defaults={`card.animal.${animal}`}
+        i18nKey={`card.animal.${animal}`}
         values={{ min, max }}
         components={{
           animal: <Picture src={AnimalIcon} css={pictureCss} />
@@ -107,7 +107,7 @@ const TreeHelp = ({ tree }: { tree: Tree }) => {
     <>
       <p>
         <Trans
-          defaults="card.tree"
+          i18nKey="card.tree"
           components={{
             tree: <Picture src={TreeIcon} css={pictureCss} />
           }}
@@ -143,7 +143,7 @@ const CrownHelp = () => {
   return (
     <p>
       <Trans
-        defaults="card.crown"
+        i18nKey="card.crown"
         components={{
           crown: <Picture src={CrownIcon} css={pictureCss} />,
           marker: <PlayMoveButton css={linkButtonCss} move={displayFirstPlayerMarkerHelp} transient />,
@@ -158,7 +158,7 @@ const GoldHelp = () => {
   return (
     <p>
       <Trans
-        defaults="card.gold"
+        i18nKey="card.gold"
         components={{
           icon: <Picture src={GoldLevelIcon} css={pictureCss} />,
           gold: <PlayMoveButton css={linkButtonCss} move={displayMaterialHelp(MaterialType.GoldCoin)} transient />
@@ -172,7 +172,7 @@ const ToolsHelp = () => {
   return (
     <p>
       <Trans
-        defaults="card.tools"
+        i18nKey="card.tools"
         components={{
           icon: <Picture src={ToolLevelIcon} css={pictureCss} />,
           tool: <PlayMoveButton css={linkButtonCss} move={displayMaterialHelp(MaterialType.Tool)} transient />

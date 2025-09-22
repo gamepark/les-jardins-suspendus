@@ -1,5 +1,5 @@
 import { getEnumValues, MaterialGameSetup } from '@gamepark/rules-api'
-import { sample, sampleSize } from 'lodash'
+import { sample, sampleSize } from 'es-toolkit/compat'
 import { LesJardinsSuspendusOptions } from './LesJardinsSuspendusOptions'
 import { LesJardinsSuspendusRules } from './LesJardinsSuspendusRules'
 import { Automa, getSoloGold, getSoloTools } from './material/Automa'

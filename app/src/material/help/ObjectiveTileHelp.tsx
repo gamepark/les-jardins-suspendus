@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
@@ -26,7 +25,7 @@ export const ObjectiveTileHelp = ({ item }: MaterialHelpProps) => {
       <p>{t(`objective.${objective}`)}</p>
       <p>
         <Trans
-          defaults="objective.complete"
+          i18nKey="objective.complete"
           components={{
             bold: <strong />
           }}
@@ -34,7 +33,7 @@ export const ObjectiveTileHelp = ({ item }: MaterialHelpProps) => {
       </p>
       <p>
         <Trans
-          defaults="objective.discount"
+          i18nKey="objective.discount"
           components={{
             marker: <PlayMoveButton css={linkButtonCss} move={displayFirstPlayerMarkerHelp} transient />,
             objective: <strong />
@@ -43,7 +42,7 @@ export const ObjectiveTileHelp = ({ item }: MaterialHelpProps) => {
       </p>
       <p>
         <Trans
-          defaults="objective.mark"
+          i18nKey="objective.mark"
           components={{
             objective: <strong />,
             marker: <PlayMoveButton css={linkButtonCss} move={displayObjectiveMarkerHelp} transient />
@@ -52,7 +51,7 @@ export const ObjectiveTileHelp = ({ item }: MaterialHelpProps) => {
       </p>
       <p>
         <Trans
-          defaults="objective.bonus"
+          i18nKey="objective.bonus"
           components={{
             tool: <Picture src={Tool} css={pictureCss} />,
             gold: <Picture src={GoldCoin} css={pictureCss} />

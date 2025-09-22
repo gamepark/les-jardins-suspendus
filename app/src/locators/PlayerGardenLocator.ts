@@ -4,7 +4,7 @@ import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialT
 import { Memory } from '@gamepark/les-jardins-suspendus/rules/Memory'
 import { PlaceGardenCardRule } from '@gamepark/les-jardins-suspendus/rules/PlaceGardenCardRule'
 import { RuleId } from '@gamepark/les-jardins-suspendus/rules/RuleId'
-import { DropAreaDescription, HexagonalGridLocator, MaterialContext } from '@gamepark/react-game'
+import { DropAreaDescription, HexagonalGridLocator, HexOrientation, MaterialContext } from '@gamepark/react-game'
 import { HexGridSystem, Location } from '@gamepark/rules-api'
 import { gameBoardDescription } from '../material/GameBoardDescription'
 import { gardenCardDescription } from '../material/GardenCardDescription'
@@ -21,6 +21,7 @@ class PlayerGardenLocator extends HexagonalGridLocator {
   }
 
   coordinatesSystem = HexGridSystem.Axial
+  orientation = HexOrientation.Pointy
   size = { x: 3.7, y: -4.2 }
 
   baseY = gameBoardDescription.height / 2 + gardenCardDescription.height / 2

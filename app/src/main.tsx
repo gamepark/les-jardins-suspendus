@@ -1,10 +1,9 @@
-/** @jsxImportSource @emotion/react */
 import { LesJardinsSuspendusOptionsSpec } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusOptions'
 import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
 import { LesJardinsSuspendusSetup } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusSetup'
 import { GameProvider, setupTranslation } from '@gamepark/react-game'
 import { StrictMode } from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { gameAnimations } from './animations/GameAnimations'
 import App from './App'
 import { LesJardinsSuspendusScoringDescription } from './LesJardinsSuspendusScoringDescription'
@@ -15,7 +14,7 @@ import { Tutorial } from './tutorial/Tutorial'
 
 setupTranslation(translations, { debug: false })
 
-ReactDOM.render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <GameProvider
       game="les-jardins-suspendus"
@@ -30,6 +29,5 @@ ReactDOM.render(
     >
       <App />
     </GameProvider>
-  </StrictMode>,
-  document.getElementById('root')
+  </StrictMode>
 )

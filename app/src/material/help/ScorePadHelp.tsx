@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
@@ -30,7 +29,7 @@ export const ScorePadHelp = () => {
       <p>{t('scorepad.score')}</p>
       <p>
         <Trans
-          defaults="scorepad.irrigation"
+          i18nKey="scorepad.irrigation"
           components={{
             irrigation: <Picture src={Irrigation} css={pictureCss} />,
             card: <PlayMoveButton css={linkButtonCss} move={displayIrrigationCardHelp} transient />
@@ -39,7 +38,7 @@ export const ScorePadHelp = () => {
       </p>
       <p>
         <Trans
-          defaults="scorepad.blooms"
+          i18nKey="scorepad.blooms"
           components={{
             blue: <Picture src={BlueFlower} css={pictureCss} />,
             red: <Picture src={RedFlower} css={pictureCss} />,
@@ -49,7 +48,7 @@ export const ScorePadHelp = () => {
       </p>
       <p>
         <Trans
-          defaults="scorepad.trees"
+          i18nKey="scorepad.trees"
           components={{
             tree: <Picture src={TreeIcon} css={pictureCss} />
           }}
@@ -57,7 +56,7 @@ export const ScorePadHelp = () => {
       </p>
       <p>
         <Trans
-          defaults="scorepad.animals"
+          i18nKey="scorepad.animals"
           components={{
             animal: <Picture src={AnimalIcon} css={pictureCss} />
           }}
@@ -65,7 +64,7 @@ export const ScorePadHelp = () => {
       </p>
       <p>
         <Trans
-          defaults="scorepad.visitors"
+          i18nKey="scorepad.visitors"
           components={{
             visitor: <Picture src={VisitorIcon} css={pictureCss} />
           }}
@@ -73,7 +72,7 @@ export const ScorePadHelp = () => {
       </p>
       <p>
         <Trans
-          defaults="scorepad.objectives"
+          i18nKey="scorepad.objectives"
           components={{
             icon: <Picture src={ObjectiveIcon} css={pictureCss} />,
             objective: <PlayMoveButton css={linkButtonCss} move={displayFirstObjectiveTileHelp} transient />

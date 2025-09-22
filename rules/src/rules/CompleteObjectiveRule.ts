@@ -1,5 +1,5 @@
 import { CustomMove, isMoveItemType, ItemMove, MaterialMove, PlayerTurnRule } from '@gamepark/rules-api'
-import { range, sumBy } from 'lodash'
+import { range, sumBy } from 'es-toolkit/compat'
 import { EnhancementId, enhancementsAnatomy } from '../material/Enhancement'
 import { Flower, Garden, GardenAnatomy, gardensAnatomy, isAnimal, isTree, isVisitor } from '../material/Garden'
 import { LocationType } from '../material/LocationType'

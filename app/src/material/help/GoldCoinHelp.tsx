@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
 import { EnhancementType } from '@gamepark/les-jardins-suspendus/material/Enhancement'
@@ -28,7 +27,7 @@ export const GoldCoinHelp = ({ item }: MaterialHelpProps) => {
       <h2>{t('gold')}</h2>
       <p>
         <Trans
-          defaults="gold.use"
+          i18nKey="gold.use"
           components={{
             enhancement: <PlayMoveButton css={linkButtonCss} move={displayFirstEnhancementTileHelp} transient />
           }}
@@ -37,7 +36,7 @@ export const GoldCoinHelp = ({ item }: MaterialHelpProps) => {
       {owner !== undefined && (
         <p>
           <Trans
-            defaults={owner === me ? 'amount.you' : 'amount.player'}
+            i18nKey={owner === me ? 'amount.you' : 'amount.player'}
             values={{ amount: item.quantity, player }}
             components={{
               icon: <Picture src={GoldCoin} css={pictureCss} />

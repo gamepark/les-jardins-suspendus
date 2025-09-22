@@ -1,7 +1,7 @@
 import { Automa } from '@gamepark/les-jardins-suspendus/material/Automa'
 import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
 import { CardDescription } from '@gamepark/react-game'
-import { MaterialItem } from '../../../../rules-api'
+import { MaterialItem } from '@gamepark/rules-api'
 import Automa1 from '../images/cards/automa/Automa1.jpg'
 import Automa10 from '../images/cards/automa/Automa10.jpg'
 import Automa11 from '../images/cards/automa/Automa11.jpg'

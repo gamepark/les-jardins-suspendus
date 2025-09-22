@@ -11,7 +11,7 @@ import { Objective } from '@gamepark/les-jardins-suspendus/material/Objective'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
 import { MaterialTutorial, Picture, TutorialStep } from '@gamepark/react-game'
 import { isCustomMove, isMoveItemType, MaterialGame, MaterialMove, MoveItem } from '@gamepark/rules-api'
-import { range } from 'lodash'
+import { range } from 'es-toolkit/compat'
 import { Trans } from 'react-i18next'
 import CrownIcon from '../images/icons/CrownIcon.png'
 import Irrigated from '../images/icons/Irrigated.jpg'
@@ -52,17 +52,17 @@ export class Tutorial extends MaterialTutorial {
   steps: TutorialStep[] = [
     {
       popup: {
-        text: () => <Trans defaults="tuto.welcome" components={BaseComponents} />
+        text: () => <Trans i18nKey="tuto.welcome" components={BaseComponents} />
       }
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.goal" components={BaseComponents} />
+        text: () => <Trans i18nKey="tuto.goal" components={BaseComponents} />
       }
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.cards" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.cards" components={BaseComponents} />,
         position: { x: -25 }
       },
       focus: (game) => ({
@@ -72,7 +72,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.turn" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.turn" components={BaseComponents} />,
         position: { x: -25, y: -10 }
       },
       focus: (game) => ({
@@ -88,7 +88,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.gardener" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.gardener" components={BaseComponents} />,
         position: { x: -35 }
       },
       focus: (game) => ({
@@ -101,7 +101,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.gardener.space" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.gardener.space" components={BaseComponents} />,
         position: { x: -35 }
       },
       focus: (game) => ({
@@ -117,7 +117,7 @@ export class Tutorial extends MaterialTutorial {
     { move: { auto: true } },
     {
       popup: {
-        text: () => <Trans defaults="tuto.opponent.1" components={BaseComponents} />
+        text: () => <Trans i18nKey="tuto.opponent.1" components={BaseComponents} />
       }
     },
     {
@@ -129,7 +129,7 @@ export class Tutorial extends MaterialTutorial {
     { move: { player: opponent } },
     {
       popup: {
-        text: () => <Trans defaults="tuto.gardener.blocked" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.gardener.blocked" components={BaseComponents} />,
         position: { x: -20 }
       },
       focus: (game) => ({
@@ -142,7 +142,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.tools" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.tools" components={BaseComponents} />,
         position: { x: -30 }
       },
       focus: (game) => ({
@@ -153,7 +153,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tool.use" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tool.use" components={BaseComponents} />,
         position: { x: -30 }
       },
       focus: (game) => ({
@@ -168,7 +168,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.tools.pay" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.tools.pay" components={BaseComponents} />,
         position: { x: -30 }
       },
       focus: (game) => ({
@@ -183,7 +183,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.vp" components={BaseComponents} />
+        text: () => <Trans i18nKey="tuto.vp" components={BaseComponents} />
       },
       focus: (game) => ({
         materials: [this.material(game, MaterialType.GardenCard).id(Garden.Lion)],
@@ -202,12 +202,12 @@ export class Tutorial extends MaterialTutorial {
     { move: { player: opponent } },
     {
       popup: {
-        text: () => <Trans defaults="tuto.opponent.2" components={BaseComponents} />
+        text: () => <Trans i18nKey="tuto.opponent.2" components={BaseComponents} />
       }
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.garden" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.garden" components={BaseComponents} />,
         position: { y: -20 }
       },
       focus: (game) => ({
@@ -219,7 +219,7 @@ export class Tutorial extends MaterialTutorial {
       popup: {
         text: () => (
           <Trans
-            defaults="tuto.irrigation"
+            i18nKey="tuto.irrigation"
             components={{
               ...BaseComponents,
               irrigated: <Picture src={Irrigated} css={pictureCss} />
@@ -235,7 +235,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.floor2" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.floor2" components={BaseComponents} />,
         position: { y: -20 }
       },
       focus: (game) => ({
@@ -251,7 +251,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.bonus" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.bonus" components={BaseComponents} />,
         position: { x: -35, y: -10 }
       },
       focus: (game) => ({
@@ -263,7 +263,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.gold" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.gold" components={BaseComponents} />,
         position: { x: -30 }
       },
       focus: (game) => ({
@@ -274,7 +274,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.enhance.cost" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.enhance.cost" components={BaseComponents} />,
         position: { x: -30 }
       },
       focus: (game) => ({
@@ -285,7 +285,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.enhance.place" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.enhance.place" components={BaseComponents} />,
         position: { x: -30 }
       },
       focus: (game) => ({
@@ -299,7 +299,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.enhance.buy" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.enhance.buy" components={BaseComponents} />,
         position: { x: -30 }
       },
       focus: (game) => ({
@@ -315,7 +315,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.objective" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.objective" components={BaseComponents} />,
         position: { x: 20, y: 20 }
       },
       focus: (game) => ({
@@ -326,7 +326,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.objective.flowers" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.objective.flowers" components={BaseComponents} />,
         position: { x: 20, y: 20 }
       },
       focus: (game) => ({
@@ -337,7 +337,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.objective.count" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.objective.count" components={BaseComponents} />,
         position: { x: 20 }
       },
       focus: (game) => ({
@@ -351,7 +351,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.objective.reduce" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.objective.reduce" components={BaseComponents} />,
         position: { x: 20 }
       },
       focus: (game) => ({
@@ -366,7 +366,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.objective.complete" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.objective.complete" components={BaseComponents} />,
         position: { x: 20, y: 20 }
       },
       focus: (game) => ({
@@ -381,7 +381,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.opponent.3" components={BaseComponents} />
+        text: () => <Trans i18nKey="tuto.opponent.3" components={BaseComponents} />
       }
     },
     {
@@ -394,7 +394,7 @@ export class Tutorial extends MaterialTutorial {
       popup: {
         text: () => (
           <Trans
-            defaults="tuto.opponent.crown"
+            i18nKey="tuto.opponent.crown"
             components={{
               ...BaseComponents,
               crown: <Picture src={CrownIcon} css={pictureCss} />
@@ -411,7 +411,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.round" components={BaseComponents} />,
+        text: () => <Trans i18nKey="tuto.round" components={BaseComponents} />,
         position: { x: -20 }
       },
       focus: (game) => ({
@@ -424,7 +424,7 @@ export class Tutorial extends MaterialTutorial {
     { move: { player: opponent } },
     {
       popup: {
-        text: () => <Trans defaults="first-player.round" components={BaseComponents} />,
+        text: () => <Trans i18nKey="first-player.round" components={BaseComponents} />,
         position: { y: 15 }
       },
       focus: (game) => ({
@@ -435,12 +435,12 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.end-game" components={BaseComponents} />
+        text: () => <Trans i18nKey="tuto.end-game" components={BaseComponents} />
       }
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.score" components={BaseComponents} />
+        text: () => <Trans i18nKey="tuto.score" components={BaseComponents} />
       },
       focus: () => ({
         staticItems: { [MaterialType.ScorePad]: [scorePadDescription.staticItem] },
@@ -450,7 +450,7 @@ export class Tutorial extends MaterialTutorial {
     },
     {
       popup: {
-        text: () => <Trans defaults="tuto.complete" components={BaseComponents} />
+        text: () => <Trans i18nKey="tuto.complete" components={BaseComponents} />
       }
     }
   ]

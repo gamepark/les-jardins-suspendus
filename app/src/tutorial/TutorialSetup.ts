@@ -5,7 +5,7 @@ import { IrrigationPattern } from '@gamepark/les-jardins-suspendus/material/Irri
 import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
 import { Objective } from '@gamepark/les-jardins-suspendus/material/Objective'
-import { sample } from 'lodash'
+import { sample } from 'es-toolkit/compat'
 
 export class TutorialSetup extends LesJardinsSuspendusSetup {
   dealGardenCards() {

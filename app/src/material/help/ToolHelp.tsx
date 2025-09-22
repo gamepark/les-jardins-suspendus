@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
 import { MaterialHelpProps, Picture, usePlayerId, usePlayerName } from '@gamepark/react-game'
@@ -17,7 +16,7 @@ export const ToolHelp = ({ item }: MaterialHelpProps) => {
       {owner !== undefined && (
         <p>
           <Trans
-            defaults={owner === me ? 'amount.you' : 'amount.player'}
+            i18nKey={owner === me ? 'amount.you' : 'amount.player'}
             values={{ amount: item.quantity, player }}
             components={{
               icon: <Picture src={Tool} css={pictureCss} />

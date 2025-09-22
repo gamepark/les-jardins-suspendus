@@ -20,6 +20,8 @@ class ObjectiveMarkerDescription extends TokenDescription {
     [PlayerColor.Blue]: BlueMarker
   }
 
+  transparency = true
+
   help = ObjectiveMarkerHelp
 }
 

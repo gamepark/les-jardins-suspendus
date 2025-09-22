@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
 import { usePlayerId, usePlayerName, useRules } from '@gamepark/react-game'

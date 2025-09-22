@@ -6,6 +6,7 @@ class FirstPlayerMarkerDescription extends TokenDescription {
   width = 5.05
   height = 6.4
   image = FirstPlayer
+  transparency = true
   help = FirstPlayerMarkerHelp
 }
 

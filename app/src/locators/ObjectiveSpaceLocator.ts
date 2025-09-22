@@ -3,7 +3,7 @@ import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialT
 import { ObjectiveSpace } from '@gamepark/les-jardins-suspendus/material/ObjectiveSpace'
 import { DropAreaDescription, FlexLocator, MaterialContext } from '@gamepark/react-game'
 import { Location, MaterialMove } from '@gamepark/rules-api'
-import { range } from 'lodash'
+import { range } from 'es-toolkit/compat'
 import { gameBoardDescription } from '../material/GameBoardDescription'
 
 class ObjectiveSpaceLocator extends FlexLocator {

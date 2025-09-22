@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
 import { MaterialHelpProps, Picture, usePlayerId, usePlayerName } from '@gamepark/react-game'
@@ -15,7 +14,7 @@ export const IrrigationCardHelp = ({ item }: MaterialHelpProps) => {
       <p>{item.location?.player === me ? t('irrigation.you') : t('irrigation.player', { player })}</p>
       <p>
         <Trans
-          defaults="card.irrigated"
+          i18nKey="card.irrigated"
           components={{
             irrigated: <Picture src={Irrigation} css={pictureCss} />,
             card: <strong />

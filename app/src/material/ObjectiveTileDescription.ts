@@ -29,6 +29,8 @@ class ObjectiveTileDescription extends TokenDescription {
     [Objective.RedFlowers]: RedFlowers
   }
 
+  transparency = true
+
   help = ObjectiveTileHelp
 }
 

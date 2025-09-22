@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
 import { PlayerColor } from '@gamepark/les-jardins-suspendus/PlayerColor'
 import { CustomMoveType } from '@gamepark/les-jardins-suspendus/rules/CustomMoveType'
@@ -16,7 +15,7 @@ export const BuyEnhancementHeader = () => {
   if (activePlayer === me) {
     return (
       <Trans
-        defaults="header.enhancement.you"
+        i18nKey="header.enhancement.you"
         components={{
           pass: <PlayMoveButton move={pass} />
         }}

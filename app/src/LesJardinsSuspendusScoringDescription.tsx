@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
 import { SoloDifficulty } from '@gamepark/les-jardins-suspendus/material/Automa'
@@ -57,9 +56,9 @@ export class LesJardinsSuspendusScoringDescription implements ScoringDescription
       case ScoringKey.Total:
         return <span css={totalCss}>=</span>
       case ScoringKey.SoloMode:
-        return <Trans defaults="solo.diff" />
+        return <Trans i18nKey="solo.diff" />
       case ScoringKey.SoloComment:
-        return <Trans defaults="comment" />
+        return <Trans i18nKey="comment" />
     }
   }
 
@@ -84,9 +83,9 @@ export class LesJardinsSuspendusScoringDescription implements ScoringDescription
       case ScoringKey.Total:
         return rules.getScore(player)
       case ScoringKey.SoloMode:
-        return <Trans defaults={`solo.diff.${rules.remind(Memory.SoloDifficulty) ?? SoloDifficulty.Easy}`} />
+        return <Trans i18nKey={`solo.diff.${rules.remind(Memory.SoloDifficulty) ?? SoloDifficulty.Easy}`} />
       case ScoringKey.SoloComment:
-        return <Trans defaults={`comment.${getCommentNumber(rules.getScore(player))}`} />
+        return <Trans i18nKey={`comment.${getCommentNumber(rules.getScore(player))}`} />
     }
   }
 }

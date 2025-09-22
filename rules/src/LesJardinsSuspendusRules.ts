@@ -11,7 +11,7 @@ import {
   PositiveSequenceStrategy,
   TimeLimit
 } from '@gamepark/rules-api'
-import { flatten, range, sum, sumBy, uniq } from 'lodash'
+import { flatten, range, sum, sumBy, uniq } from 'es-toolkit/compat'
 import { EnhancementId, enhancementsAnatomy } from './material/Enhancement'
 import { Flower, Garden, GardenAnatomy, gardensAnatomy, isAnimal, isTree, isVisitor, MainSight, Tree, treeScore, Visitor } from './material/Garden'
 import { IrrigationPattern, irrigationPatterns, irrigationScore } from './material/IrrigationPattern'

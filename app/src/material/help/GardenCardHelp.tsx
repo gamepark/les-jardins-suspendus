@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
 import { Garden, gardensAnatomy } from '@gamepark/les-jardins-suspendus/material/Garden'
@@ -45,7 +44,7 @@ const GardenCardInGardenHelp = ({ location, index }: { location: Location; index
       {enhancement.length === 1 && (
         <p>
           <Trans
-            defaults="card.enhancement"
+            i18nKey="card.enhancement"
             components={{
               enhancement: <PlayMoveButton css={linkButtonCss} move={displayEnhancementHelp} transient />
             }}
@@ -65,7 +64,7 @@ const GardenCardAvailableHelp = ({ location }: { location: Location }) => {
     return (
       <p>
         <Trans
-          defaults="card.cost"
+          i18nKey="card.cost"
           values={{ cost }}
           components={{
             tool: <Picture src={Tool} css={pictureCss} />

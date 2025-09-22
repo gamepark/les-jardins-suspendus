@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
 import { EnhancementType } from '@gamepark/les-jardins-suspendus/material/Enhancement'
 import { LocationType } from '@gamepark/les-jardins-suspendus/material/LocationType'
@@ -32,7 +31,7 @@ export const GameBoardHelp = () => {
       <h2>{t('board')}</h2>
       <p>
         <Trans
-          defaults="board.objectives"
+          i18nKey="board.objectives"
           components={{
             objective: <PlayMoveButton css={linkButtonCss} move={displayFirstObjectiveTileHelp} transient />
           }}
@@ -40,7 +39,7 @@ export const GameBoardHelp = () => {
       </p>
       <p>
         <Trans
-          defaults="board.enhancements"
+          i18nKey="board.enhancements"
           components={{
             enhancement: <PlayMoveButton css={linkButtonCss} move={displayFirstEnhancementTileHelp} transient />,
             gold: <PlayMoveButton css={linkButtonCss} move={displayMaterialHelp(MaterialType.GoldCoin)} transient />
@@ -49,7 +48,7 @@ export const GameBoardHelp = () => {
       </p>
       <p>
         <Trans
-          defaults="board.cards"
+          i18nKey="board.cards"
           components={{
             card: <PlayMoveButton css={linkButtonCss} move={displayCardHelp} transient />
           }}
@@ -70,7 +69,7 @@ export const BoardCardRulesHelp = () => {
   return (
     <p>
       <Trans
-        defaults="board.cards.rules"
+        i18nKey="board.cards.rules"
         components={{
           mini: <PlayMoveButton css={linkButtonCss} move={displayMiniBoardHelp} transient />,
           gardener: <PlayMoveButton css={linkButtonCss} move={displayGardenerHelp} transient />,

@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
 import { MaterialType } from '@gamepark/les-jardins-suspendus/material/MaterialType'
 import { linkButtonCss, PlayMoveButton, useRules } from '@gamepark/react-game'
@@ -16,7 +15,7 @@ export const FirstPlayerMarkerHelp = () => {
       <h2>{t('first-player')}</h2>
       <p>
         <Trans
-          defaults="first-player.round"
+          i18nKey="first-player.round"
           components={{
             bold: <strong />
           }}
@@ -24,7 +23,7 @@ export const FirstPlayerMarkerHelp = () => {
       </p>
       <p>
         <Trans
-          defaults="objective.discount"
+          i18nKey="objective.discount"
           components={{
             marker: <strong />,
             objective: <PlayMoveButton css={linkButtonCss} move={displayFirstObjectiveTileHelp} transient />
