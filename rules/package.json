@@ -1,6 +1,6 @@
 {
   "name": "@gamepark/les-jardins-suspendus",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "The rules of Les Jardins Suspendus adapted for Game Park",
   "sideEffects": false,
   "type": "module",
