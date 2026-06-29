@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { GameTable, GameTableNavigation } from '@gamepark/react-game'
+import { DevToolsHub, GameTable, GameTableNavigation } from '@gamepark/react-game'
 import { gameBoardDescription } from './material/GameBoardDescription'
 import { miniBoardDescription } from './material/MiniBoardDescription'
 import { PlayerPanels } from './panels/PlayerPanels'
@@ -20,6 +20,7 @@ export const GameDisplay = ({ players }: GameDisplayProps) => {
       >
         <GameTableNavigation css={navigationCss} />
         <PlayerPanels />
+        {process.env.NODE_ENV === 'development' && <DevToolsHub fabBottom="calc(5em)" />}
       </GameTable>
     </>
   )

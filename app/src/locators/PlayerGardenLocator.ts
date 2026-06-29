@@ -35,6 +35,15 @@ class PlayerGardenLocator extends HexagonalGridLocator {
     }
   }
 
+  getPositionDependencies(location: Location, context: MaterialContext) {
+    const garden = context.rules.material(MaterialType.GardenCard).location(LocationType.PlayerGarden).player(location.player)
+    return {
+      players: context.rules.players.length,
+      minX: garden.minBy((item) => item.location.x!).getItem()?.location.x ?? 0,
+      maxX: garden.maxBy((item) => item.location.x!).getItem()?.location.x ?? 0
+    }
+  }
+
   getLocationCoordinates(location: Location, context: MaterialContext) {
     const { x, y, z } = super.getLocationCoordinates(location, context)
     const garden = context.rules.material(MaterialType.GardenCard).location(LocationType.PlayerGarden).player(location.player)

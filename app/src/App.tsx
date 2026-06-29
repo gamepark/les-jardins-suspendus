@@ -15,7 +15,7 @@ export default function App() {
   return (
     <>
       {!!game && <GameDisplay players={game.players.length} />}
-      <LoadingScreen display={loading} author={['Grégory Grard', 'Matthieu Verdier']} artist="Miguel Coimbra" publisher="Gigamic" developer="Game Park" />
+      <LoadingScreen display={loading} />
       <MaterialHeader rulesStepsHeaders={Headers} loading={loading} />
       <MaterialImageLoader onImagesLoad={() => setImagesLoading(false)} />
       <Menu />
