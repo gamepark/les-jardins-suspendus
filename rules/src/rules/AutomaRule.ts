@@ -21,7 +21,7 @@ export class AutomaRule extends MaterialRulesPart {
       const column = anatomy.columns.find((column) => availableColumns.includes(column))!
 
       const gardeners = this.material(MaterialType.Gardener).location(LocationType.AutomaGardeners)
-      moves.push(gardeners.moveItem({ type: LocationType.GardenerSpace, id: column }))
+      moves.push(gardeners.moveItem({ type: LocationType.GardenerSpace, id: column }, 1))
 
       const cardsToDiscard = this.getCardsToDiscard(column, anatomy.discard, anatomy.discardFallback)
       moves.push(...cardsToDiscard.moveItems({ type: LocationType.GardenCardsDiscard }))
@@ -40,7 +40,7 @@ export class AutomaRule extends MaterialRulesPart {
           const markers = this.material(MaterialType.ObjectiveMarker).location(LocationType.AutomaObjectiveMarkers)
           const markersLeft = markers.getQuantity()
           if (markersLeft > 0) {
-            moves.push(markers.moveItem({ type: LocationType.ObjectiveSpace, id: 5 - markersLeft }))
+            moves.push(markers.moveItem({ type: LocationType.ObjectiveSpace, id: 5 - markersLeft }, 1))
           }
           break
         }
