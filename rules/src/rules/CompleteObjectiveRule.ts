@@ -5,7 +5,7 @@ import { Flower, Garden, GardenAnatomy, gardensAnatomy, isAnimal, isTree, isVisi
 import { LocationType } from '../material/LocationType'
 import { MaterialType } from '../material/MaterialType'
 import { getObjectiveRequiredAmount, Objective } from '../material/Objective'
-import { ObjectiveSpace } from '../material/ObjectiveSpace'
+import { getObjectiveSpacePlaces, ObjectiveSpace } from '../material/ObjectiveSpace'
 import { CustomMoveType } from './CustomMoveType'
 import { RuleId } from './RuleId'
 
@@ -20,8 +20,15 @@ export class CompleteObjectiveRule extends PlayerTurnRule {
 
   get objectivesICanComplete() {
     const objectiveTiles = this.material(MaterialType.ObjectiveTile).getItems<Objective>()
-    const markers = this.material(MaterialType.ObjectiveMarker).location(LocationType.ObjectiveSpace).id(this.player).getItems()
-    return objectiveTiles.filter((tile) => !markers.some((marker) => marker.location.id === tile.location.id) && this.canComplete(tile.id))
+    const markers = this.material(MaterialType.ObjectiveMarker).location(LocationType.ObjectiveSpace)
+    const myMarkers = markers.id(this.player).getItems()
+    const places = getObjectiveSpacePlaces(this.game.players.length)
+    return objectiveTiles.filter(
+      (tile) =>
+        !myMarkers.some((marker) => marker.location.id === tile.location.id) &&
+        markers.locationId(tile.location.id).length < places &&
+        this.canComplete(tile.id)
+    )
   }
 
   canComplete(objective: Objective) {
