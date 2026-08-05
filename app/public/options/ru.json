@@ -1,0 +1,17 @@
+{
+  "identities": "Цвет игрока",
+  "identities.1": "Серый",
+  "identities.2": "Красный",
+  "identities.3": "Фиолетовый",
+  "identities.4": "Бежевый",
+  "identities.5": "Синий",
+  "option.soloDifficulty": "Сложность одиночного режима",
+  "option.soloDifficulty.1": "Лёгкий",
+  "option.soloDifficulty.1.help": "3 золотые монеты и 4 инструмента",
+  "option.soloDifficulty.2": "Средний",
+  "option.soloDifficulty.2.help": "2 золотые монеты и 3 инструмента",
+  "option.soloDifficulty.3": "Продвинутый",
+  "option.soloDifficulty.3.help": "1 золотая монета и 2 инструмента",
+  "option.soloDifficulty.4": "Эксперт",
+  "option.soloDifficulty.4.help": "0 золотых монет и 1 инструмент"
+}

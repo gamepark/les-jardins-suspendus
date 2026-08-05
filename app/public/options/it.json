@@ -1,0 +1,17 @@
+{
+  "identities": "Colore del giocatore",
+  "identities.1": "Grigio",
+  "identities.2": "Rosso",
+  "identities.3": "Viola",
+  "identities.4": "Beige",
+  "identities.5": "Blu",
+  "option.soloDifficulty": "Difficoltà della modalità in solitario",
+  "option.soloDifficulty.1": "Facile",
+  "option.soloDifficulty.1.help": "3 monete d’oro e 4 attrezzi",
+  "option.soloDifficulty.2": "Medio",
+  "option.soloDifficulty.2.help": "2 monete d’oro e 3 attrezzi",
+  "option.soloDifficulty.3": "Avanzato",
+  "option.soloDifficulty.3.help": "1 moneta d’oro e 2 attrezzi",
+  "option.soloDifficulty.4": "Esperto",
+  "option.soloDifficulty.4.help": "0 monete d’oro e 1 attrezzo"
+}

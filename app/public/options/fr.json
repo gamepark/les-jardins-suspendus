@@ -1,0 +1,17 @@
+{
+  "identities": "Couleur du joueur",
+  "identities.1": "Gris",
+  "identities.2": "Rouge",
+  "identities.3": "Violet",
+  "identities.4": "Beige",
+  "identities.5": "Bleu",
+  "option.soloDifficulty": "Mode solo : difficulté",
+  "option.soloDifficulty.1": "Facile",
+  "option.soloDifficulty.1.help": "3 pièces d'or et 4 outils",
+  "option.soloDifficulty.2": "Moyen",
+  "option.soloDifficulty.2.help": "2 pièces d'or et 3 outils",
+  "option.soloDifficulty.3": "Avancé",
+  "option.soloDifficulty.3.help": "1 pièce d'or et 2 outils",
+  "option.soloDifficulty.4": "Expert",
+  "option.soloDifficulty.4.help": "0 pièce d'or et 1 outil"
+}

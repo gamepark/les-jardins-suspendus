@@ -1,0 +1,17 @@
+{
+  "identities": "Player color",
+  "identities.1": "Grey",
+  "identities.2": "Red",
+  "identities.3": "Purple",
+  "identities.4": "Beige",
+  "identities.5": "Blue",
+  "option.soloDifficulty": "Solo mode difficulty",
+  "option.soloDifficulty.1": "Easy",
+  "option.soloDifficulty.1.help": "3 gold coins and 4 tools",
+  "option.soloDifficulty.2": "Medium",
+  "option.soloDifficulty.2.help": "2 gold coins and 3 tools",
+  "option.soloDifficulty.3": "Advanced",
+  "option.soloDifficulty.3.help": "1 gold coin and 2 tools",
+  "option.soloDifficulty.4": "Expert",
+  "option.soloDifficulty.4.help": "0 gold coins and 1 tool"
+}

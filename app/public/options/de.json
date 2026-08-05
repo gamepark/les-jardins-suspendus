@@ -1,0 +1,17 @@
+{
+  "identities": "Spielerfarbe",
+  "identities.1": "Grau",
+  "identities.2": "Rot",
+  "identities.3": "Lila",
+  "identities.4": "Beige",
+  "identities.5": "Blau",
+  "option.soloDifficulty": "Schwierigkeit des Solomodus",
+  "option.soloDifficulty.1": "Leicht",
+  "option.soloDifficulty.1.help": "3 Goldmünzen und 4 Werkzeuge",
+  "option.soloDifficulty.2": "Mittel",
+  "option.soloDifficulty.2.help": "2 Goldmünzen und 3 Werkzeuge",
+  "option.soloDifficulty.3": "Fortgeschritten",
+  "option.soloDifficulty.3.help": "1 Goldmünze und 2 Werkzeuge",
+  "option.soloDifficulty.4": "Experte",
+  "option.soloDifficulty.4.help": "0 Goldmünzen und 1 Werkzeug"
+}
