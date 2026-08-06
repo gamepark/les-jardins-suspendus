@@ -1,4 +1,4 @@
-import { LesJardinsSuspendusOptionsSpec } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusOptions'
+import { LesJardinsSuspendusOptionsSpecV2 } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusOptions'
 import { LesJardinsSuspendusRules } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusRules'
 import { LesJardinsSuspendusSetup } from '@gamepark/les-jardins-suspendus/LesJardinsSuspendusSetup'
 import { GameProvider } from '@gamepark/react-game'
@@ -16,7 +16,7 @@ createRoot(document.getElementById('root')!).render(
     <GameProvider
       game="les-jardins-suspendus"
       Rules={LesJardinsSuspendusRules}
-      optionsSpec={LesJardinsSuspendusOptionsSpec}
+      optionsSpec={LesJardinsSuspendusOptionsSpecV2}
       GameSetup={LesJardinsSuspendusSetup}
       material={Material}
       locators={Locators}
